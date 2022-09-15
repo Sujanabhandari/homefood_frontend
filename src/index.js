@@ -8,12 +8,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import App from './App';
 import Login from './Componets/login.js'
+import Home from './Componets/home.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
     </Routes>
   </Router>
