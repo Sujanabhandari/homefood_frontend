@@ -67,3 +67,44 @@ a:hover {
 /* Here starts the codes for footer */
 
 /* Here ends the code for footer */
+
+
+
+/* Here ends the code for Register Form */
+
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.bg-primary {
+    background-color:var(--green) !important;
+}
+.left-register {
+  padding: 1em 2em;
+  border-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.right-register {
+  width: 700px;
+  height: 800px;
+  background: #ffffff;
+}
+.btn-color {
+  background-color: #5cbfba;
+}
+
+.icon-face {
+  color: #3b5998;
+}
+.icon-google {
+  color: #4285f4;
+}
+
+/* Here ends the code for Register */
