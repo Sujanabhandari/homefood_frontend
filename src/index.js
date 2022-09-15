@@ -8,6 +8,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import App from './App';
 import Login from './Componets/login.js'
+import Register  from './Componets/Register';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+import './styles/main.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +19,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   </Router>
 );
