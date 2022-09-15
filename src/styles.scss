@@ -4,25 +4,25 @@
 */
 
 /*********** General Styles Start ***********/
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-    --textColor: #3a3a3a;
-    --green: #5CBFBA;
-    --darkGreen: #48A49F;
-    --grey: #545454;
-    --orange: #FE955E;
+  --textColor: #3a3a3a;
+  --green: #5cbfba;
+  --darkGreen: #48a49f;
+  --grey: #545454;
+  --orange: #fe955e;
 
-    --xs: 0;
-    --sm: 576px;
-    --md: 768px;
-    --lg: 992px;
-    --xl: 1200px;
-    --xxl: 1400px;
+  --xs: 0;
+  --sm: 576px;
+  --md: 768px;
+  --lg: 992px;
+  --xl: 1200px;
+  --xxl: 1400px;
 }
 
 body {
-  font-family: 'Nunito', Helvetica, sans-serif !important;
+  font-family: "Nunito", Helvetica, sans-serif !important;
   color: var(--textColor) !important;
 }
 
@@ -35,43 +35,67 @@ h2 {
   font-weight: 500;
 }
 
-h3, h4, h5, h6 {
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
 }
 
-a {
-  color: var(--green) !important;
-  text-decoration: none !important;
-}
+// a {
+//   color: var(--green) !important;
+//   text-decoration: none !important;
+// }
 
-a:hover {
-  color: var(--darkGreen) !important;
-}
-.btn, .buttonGreen {
+// a:hover {
+//   color: var(--darkGreen) !important;
+// }
+// .btn,
+.buttonGreen {
   background: var(--green) !important;
   color: #fff !important;
   padding: 1rem 3rem;
   border: none !important;
 }
 
-.btn:hover, .buttonGreen:hover {
+.btn:hover,
+.buttonGreen:hover {
   background: var(--darkGreen) !important;
 }
 
 /* Here starts the codes for header */
+.main-nav {
+  // background-color: var(--green) !important;
+  color: white;
+  line-height: 80px;
+  height: 80px;
+  padding-top: 0;
+}
 
+.icon-circle {
+  // display: inline-block;
+  border-radius: 20px;
+  box-shadow: 0 0 1px white;
+  background-color: white;
+  color: black;
+  padding: 1em 1em;
+  // margin: 5px;
+}
+.icon-circle-img{
+  border-radius: 20px;
+  
+}
+.searchbar{
+  max-width: 250px;
+  min-width: 200px;
+}
 /* Here ends the code for header */
-
-
 
 /* Here starts the codes for footer */
 
 /* Here ends the code for footer */
 
-
-
-/* Here ends the code for Register Form */
-
+/* Here ends the code starts for Register Form */
 
 .divider:after,
 .divider:before {
@@ -81,9 +105,6 @@ a:hover {
   background: #eee;
 }
 
-.bg-primary {
-    background-color:var(--green) !important;
-}
 .left-register {
   padding: 1em 2em;
   border-color: black;
