@@ -11,7 +11,7 @@ export default class Register extends Component {
           <div className="container">
             <div className="row justify-content-center bg-primary rounded-3 align-items-center my-5">
               <div className="col-md-5 rounded-3 p-5">
-                <h2>Healthy Home Made Food Made With Love For You</h2>
+                <h2 className='text-white'>Healthy Home Made Food Made With Love For You</h2>
               </div>
 
               <div className="col-md-7 bg-white rounded-3 shadow border p-5 text-center">
