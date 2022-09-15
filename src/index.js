@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import './index.css';
+import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.css';
-import { BrowserRouter as Router } from "react-router-dom";
+
+import App from './App';
+import Login from './Componets/login.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    <App />
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   </Router>
 );
 
