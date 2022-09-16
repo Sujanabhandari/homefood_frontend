@@ -3,15 +3,20 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // import './index.css';
-import './styles.scss';
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
+
+import './_variables.scss';
+import './styles.scss';
 
 import App from './App';
 import Login from './Componets/login.js'
 import Register  from './Componets/Register';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-import './styles/main.css'
+// import './styles/main.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
