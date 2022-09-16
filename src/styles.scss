@@ -62,7 +62,32 @@ a:hover {
 
 /* Here ends the code for header */
 
+/* Home Section Start */
+.specialOffer {
+  padding: 1rem;
+  & img {
+    max-width: 200px;
+  }
+  & .category {
 
+  }
+  &:nth-child(1) {
+    background: #f3f4ff;
+    & .discount {
+      color: var(--green) !important;
+    }
+  }
+  &:nth-child(2) {
+    background: #fef2ec;
+    & .discount {
+      color: var(--orange) !important;
+    }
+  }
+  & .desc {
+
+  }
+}
+/* Home Section End */
 
 /* Here starts the codes for footer */
 
