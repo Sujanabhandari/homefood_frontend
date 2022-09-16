@@ -32,7 +32,31 @@ class Home extends Component {
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
+                <div className="featured">Featured</div>
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
+                </div>
+
+                <div className="card-body">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                      <div className="col-lg-6 col-md-8">
+                        <div className="card-text foodTitle">Text</div>
+                        <div class="foodTime">test date</div><div class="price">5€</div>
+                      </div>
+                      <div className="col-lg-6 col-md-8 text-end">
+                        <button type="button" className="btn btn-sm btn-outline-secondary"><i class="bi bi-bag"></i></button>
+                        <p class="foodAddress">Adresse</p>
+                      </div>
+                    <div className="tags">test tag 1, test tag 2</div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="card shadow-sm">
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
+                </div>
 
                 <div className="card-body">
                   <p className="card-text">Text</p>
@@ -48,72 +72,9 @@ class Home extends Component {
             </div>
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
-
-                <div className="card-body">
-                  <p className="card-text">Text</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
-                    </div>
-                    <small className="text-muted">Text</small>
-                  </div>
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
                 </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
-
-                <div className="card-body">
-                  <p className="card-text">Text</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
-                    </div>
-                    <small className="text-muted">Text</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col">
-              <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
-
-                <div className="card-body">
-                  <p className="card-text">Text</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
-                    </div>
-                    <small className="text-muted">Text</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
-
-                <div className="card-body">
-                  <p className="card-text">Text</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
-                    </div>
-                    <small className="text-muted">Text</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
 
                 <div className="card-body">
                   <p className="card-text">Text</p>
@@ -130,7 +91,9 @@ class Home extends Component {
 
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
+                </div>
 
                 <div className="card-body">
                   <p className="card-text">Text</p>
@@ -146,7 +109,9 @@ class Home extends Component {
             </div>
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
+                </div>
 
                 <div className="card-body">
                   <p className="card-text">Text</p>
@@ -162,7 +127,64 @@ class Home extends Component {
             </div>
             <div className="col">
               <div className="card shadow-sm">
-                <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Text</text></svg>
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
+                </div>
+
+                <div className="card-body">
+                  <p className="card-text">Text</p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className="btn-group">
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
+                    </div>
+                    <small className="text-muted">Text</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col">
+              <div className="card shadow-sm">
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
+                </div>
+
+                <div className="card-body">
+                  <p className="card-text">Text</p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className="btn-group">
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
+                    </div>
+                    <small className="text-muted">Text</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="card shadow-sm">
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
+                </div>
+
+                <div className="card-body">
+                  <p className="card-text">Text</p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className="btn-group">
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary">Text</button>
+                    </div>
+                    <small className="text-muted">Text</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="card shadow-sm">
+                <div class="wrapperImg">
+                  <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
+                </div>
 
                 <div className="card-body">
                   <p className="card-text">Text</p>
