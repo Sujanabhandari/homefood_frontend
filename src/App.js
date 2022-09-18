@@ -6,13 +6,10 @@ import Footer from './Componets/Footer';
 import CreatePost from './Componets/CreatePost';
 function App() {
   return (
-    <div className="App">
-      {/* <Navbar /> */}
-      {/* <h1 className='text-primary' style={{ marginTop: '100px'}}>Hello Home Made App</h1> */}
-      {/* <Register /> */}
-      {/* <Login /> */}
+    <div>
+      <Navbar />
       <CreatePost />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
