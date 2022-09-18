@@ -10,27 +10,23 @@ const CreatePost = () => {
     for (let i = 1; i <= 20; i++) {
         incrementNum.push(i);
     }
-
+    //useRef hook
 
     let formFile = useRef(null);
     let imgFrame = useRef(null);
-    // let src= "";
-
+    
     const previewUploadedImage = (event) => {
-        console.log("Hello", event.target.files[0])
         setImgsrc(event.target.files[0])
-       
     }
     
    const imagePreview=imgsrc && URL.createObjectURL(imgsrc);
 
-    const clearImage = (event) => {
-        console.log("Hello", formFile)
+    const changeImage = (event) => {
+        console.log(formFile.value)
         formFile.value = "";
         imgFrame.src = "";
         setImgsrc("");
     }
-
     return (
         <div className="container">
             <div className="row mt-5">
@@ -169,7 +165,7 @@ const CreatePost = () => {
                     </form>
                 </div>
                 <div className='col-md-4 col-md-2'>
-                    <p>Specials</p>
+                    <p className='fw-bolder'>Specials</p>
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                         <label className="form-check-label" for="flexCheckDefault">
@@ -194,16 +190,15 @@ const CreatePost = () => {
                             Offer Packaging
                         </label>
                     </div>
+                    
                     <div className='mt-5'>
                         <div className="container col-md-6">
                             <div className="mb-5">
-                                {/* <label for="Image" className="form-label">Bootstrap 5 image Upload with Preview</label> */}
-                                <input className="form-control-lg" type="file" ref={formFile} onChange={previewUploadedImage} />
-                                {/* <button onClick={preview}>Done</button> */}
-                                <button onClick={clearImage} className="btn btn-primary mt-3">Change</button>
+                                <img ref={imgFrame} className="rounded-circle" style={{width:"200px"}} src={imagePreview}/>
+                                <input className="form-control mt-3" type="file" ref={formFile} onChange={previewUploadedImage} />
+                                <button onClick={changeImage} className="btn btn-primary mt-3">Change</button>
                             </div>
                             <div>
-                            <img ref={imgFrame} src={imagePreview}/>
                             </div>
                            
                         </div>
