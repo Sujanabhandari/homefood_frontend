@@ -14,6 +14,7 @@ import './styles.scss';
 import App from './App';
 import Login from './Componets/login.js'
 import Home from './Componets/home.js';
+import OrderHistory from './Componets/OrderHistory.js';
 import Register  from './Componets/Register';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from './Componets/Navbar';
@@ -29,6 +30,7 @@ root.render(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/create_offer" element={<CreatePost />} />
+      <Route path="/order_history" element={<OrderHistory />} />
     </Routes>
   </Router>
 );
