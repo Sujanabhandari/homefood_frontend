@@ -13,6 +13,8 @@
   --darkGreen: #48a49f;
   --grey: #545454;
   --orange: #fe955e;
+  --lightGrey: #eee;
+  --purple: #bf7da2;
 
   --xs: 0;
   --sm: 576px;
@@ -59,6 +61,13 @@ h6 {
   border: none !important;
 }
 
+.buttonPurple {
+  background: var(--purple) !important;
+  color: #fff !important;
+  padding: 1rem 3rem;
+  border: none !important;
+}
+
 .btn:hover,
 .buttonGreen:hover {
   background: var(--darkGreen) !important;
@@ -84,7 +93,7 @@ h6 {
 }
 .icon-circle-img{
   border-radius: 20px;
-  
+
 }
 .searchbar{
   max-width: 250px;
@@ -129,7 +138,7 @@ h6 {
 }
 
 .catCard {
-  background: #eee;
+  background: var(--lightGrey);
   border: 1px solid #fff;
   color: var(--green);
   &:hover {
@@ -165,7 +174,7 @@ h6 {
       font-weight: 800;
     }
     & .tag {
-      background: #eee;
+      background: var(--lightGrey);
       padding: 0.2rem;
       border-radius: 10px;
     }
@@ -184,9 +193,19 @@ h6 {
 }
 /* Home Section End */
 
-/* Here starts the codes for footer */
-
-/* Here ends the code for footer */
+/* Order History Start */
+.orderedFood {
+  background: var(--lightGrey);
+  border-radius: 10px;
+  border: 1px solid var(--green);
+  color: var(--grey);
+  & .foodTitle {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--textColor);
+  }
+}
+/* Order History End */
 
 /* Here ends the code starts for Register Form */
 
@@ -195,7 +214,7 @@ h6 {
   content: "";
   flex: 1;
   height: 1px;
-  background: #eee;
+  background: var(--lightGrey);
 }
 
 .left-register {
