@@ -3,8 +3,37 @@
 import React, { Component } from 'react'
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
-export default class Register extends Component {
-  render() {
+import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+import {
+  auth,
+  registerWithEmailAndPassword,
+
+} from "../firebase-config";
+
+const Register = () => {
+
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [username, setUsername] = useState("");
+const [user, loading, error] = useAuthState(auth);
+
+const navigate = useNavigate();
+    const register = () => {
+      if (!username) alert("Please enter username");
+      registerWithEmailAndPassword(username, email, password);
+       navigate("/home");
+      console.log("test");
+    };
+
+    useEffect(() => {
+      if (loading) return;
+    }, [user, loading]);
+
+    console.log(user);
+
     return (
       <div>
         <section className="d-flex mh-100 align-items-center min-vh-100">
@@ -19,40 +48,29 @@ export default class Register extends Component {
                 <div className="text-center mb-3">
                   <h3>Create Account</h3>
                 </div>
-                <form className='w-75 mx-auto'>
+                <div className='w-75 mx-auto'>
                   <div className="text-center">
                     <div className="form-outline mb-4">
-                      <input type="text" id="registerName" className="form-control" placeholder='Full Name' />
+                      <input type="text" id="registerName" className="form-control" placeholder='Full Name' value={username}
+          onChange={(e) => setUsername(e.target.value)}/>
 
                     </div>
                     <div className="form-outline mb-4">
-                      <input type="email" id="registerEmail" className="form-control" placeholder='Email' />
-
-                    </div>
-
-                    <div className="form-outline mb-4">
-                      <input type="password" id="registerPassword" className="form-control" placeholder='Password' />
+                      <input type="email" id="registerEmail" className="form-control" placeholder='Email' value={email}
+          onChange={(e) => setEmail(e.target.value)} />
 
                     </div>
 
                     <div className="form-outline mb-4">
-                      <input type="password" id="registerRepeatPassword" className="form-control" placeholder='Confirm Password' />
+                      <input type="password" id="registerPassword" className="form-control" placeholder='Password' value={password}
+          onChange={(e) => setPassword(e.target.value)} />
 
                     </div>
+
+                  <button className="btn btn-block mb-3 btn-color" onClick={register}>Create Account</button>
                   </div>
+                </div>
 
-
-                  <div className="form-check d-flex justify-content-center mb-4">
-                    <input className="form-check-input p-2 me-2" type="checkbox" value="" id="registerCheck" checked
-                      aria-describedby="registerCheckHelpText" />
-                    <label className="form-check-label" for="registerCheck">
-                      I have read and agree to the terms of services and privacy policy.
-                    </label>
-                  </div>
-
-                  <button type="submit" className="btn btn-block mb-3 btn-color">Create Account</button>
-
-                </form>
                 <p className="text-center">or</p>
                 <div className="row text-center">
                   <div class="col">
@@ -74,5 +92,6 @@ export default class Register extends Component {
         </section>
       </div>
     )
-  }
 }
+
+export default Register;
