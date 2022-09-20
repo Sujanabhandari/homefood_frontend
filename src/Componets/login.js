@@ -12,7 +12,7 @@ class Login extends Component {
 
           <div className="row g-5">
 
-            <div className="col-md-5">
+            <div className="col-md-5 py-2 login rounded-3 shadow border">
               <form>
                 <img className="mb-4 mx-auto d-block" src={logo} width="70px" alt="Logo HomeMade" />
 

@@ -63,6 +63,13 @@ a:hover {
 
 /* Here ends the code for header */
 
+/* Login Section Start */
+.login {
+  margin-right: -30px;
+  padding-right: 25px !important ;
+}
+/* Login Section End */
+
 /* Home Section Start */
 .specialOffer {
   padding: 1rem;
@@ -84,8 +91,21 @@ a:hover {
       color: var(--orange) !important;
     }
   }
+  & .discount {
+    font-size: 3rem;
+  }
   & .desc {
 
+  }
+}
+
+.catCard {
+  background: #eee;
+  border: 1px solid #fff;
+  color: var(--green);
+  &:hover {
+    background: #ccc;
+    border: 1px solid var(--green);
   }
 }
 
@@ -114,6 +134,22 @@ a:hover {
     }
     & .foodTitle {
       font-weight: 800;
+    }
+    & .tag {
+      background: #eee;
+      padding: 0.2rem;
+      border-radius: 10px;
+    }
+    & .tag.sushi::before {
+      content:'';
+      position: relative;
+      background: url('https://e7.pngegg.com/pngimages/760/466/png-clipart-sushi-sashimi-japanese-cuisine-computer-icons-sushi-angle-food.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
     }
   }
 }

@@ -7,20 +7,91 @@ class Home extends Component {
     <main>
 
       <section className="py-5 text-center container">
-        <div className="row py-lg-5">
+        <div className="row">
 
           <div className="col-lg-6 col-md-8 mx-auto specialOffer">
-            <img className="float-start" src="https://w1.pngwing.com/pngs/701/242/png-transparent-cake-american-muffins-bakery-bagel-baking-cornbread-english-muffin-egg.png" />
-            <h3 className="fw-light category mt-3">All deserts</h3>
-            <p className="discount mt-4">20% OFF</p>
-            <p className="desc mt-5">Deserty</p>
+            <div className="row">
+              <div class="col-lg-6">
+                <img src="https://w1.pngwing.com/pngs/701/242/png-transparent-cake-american-muffins-bakery-bagel-baking-cornbread-english-muffin-egg.png" />
+              </div>
+              <div class="col-lg-6">
+                <h3 className="fw-light category mt-3">All deserts</h3>
+                <p className="discount mt-4">20% OFF</p>
+                <p className="desc mt-3">Deserty</p>
+              </div>
+            </div>
           </div>
 
           <div className="col-lg-6 col-md-8 mx-auto specialOffer">
-            <img className="float-start" src="https://cdn.imgbin.com/10/4/8/imgbin-big-king-whopper-hamburger-cheeseburger-veggie-burger-burger-restaurant-wn2WEDtyZcqmF1nNCbSbEmZf4.jpg" />
-            <h3 className="fw-light category mt-3">Big burgers</h3>
-            <p className="discount mt-4">50% OFF</p>
-            <p className="desc mt-5">Foodies</p>
+            <div className="row">
+              <div class="col-lg-6">
+                <img className="float-start" src="https://cdn.imgbin.com/10/4/8/imgbin-big-king-whopper-hamburger-cheeseburger-veggie-burger-burger-restaurant-wn2WEDtyZcqmF1nNCbSbEmZf4.jpg" />
+              </div>
+              <div class="col-lg-6">
+                <h3 className="fw-light category mt-3">Big burgers</h3>
+                <p className="discount mt-4">50% OFF</p>
+                <p className="desc mt-3">Foodies</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section className="text-center container">
+        <div className="row pb-lg-5">
+
+          <div className="col-12 mx-auto d-flex justify-content-between">
+
+            <a href="#">
+              <div className="catCard px-5 py-3 rounded d-inline-block">
+              <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="itlay" />
+              <br />
+              <p className="mt-2">Italy</p>
+              </div>
+            </a>
+
+
+            <a href="#">
+              <div className="catCard px-5 py-3 rounded d-inline-block">
+              <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="german" />
+              <br />
+              <p className="mt-2">german</p>
+            </div>
+            </a>
+
+            <a href="#">
+            <div className="catCard px-5 py-3 rounded d-inline-block">
+              <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="greek" />
+              <br />
+              <p className="mt-2">Greek</p>
+            </div>
+            </a>
+
+            <a href="#">
+            <div className="catCard px-5 py-3 rounded d-inline-block">
+              <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="itlay" />
+              <br />
+              <p className="mt-2">Italy</p>
+            </div>
+            </a>
+
+            <a href="#">
+            <div className="catCard px-5 py-3 rounded d-inline-block">
+              <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="mexican" />
+              <br />
+              <p className="mt-2">Mexican</p>
+            </div>
+            </a>
+
+            <a href="#">
+            <div className="catCard px-5 py-3 rounded d-inline-block">
+              <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="nepali" />
+              <br />
+              <p className="mt-2">Nepali</p>
+            </div>
+            </a>
+
           </div>
 
         </div>
@@ -41,13 +112,17 @@ class Home extends Component {
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                       <div className="col-lg-6 col-md-8">
                         <div className="card-text foodTitle">Text</div>
-                        <div class="foodTime">test date</div><div class="price">5€</div>
+                        <div class="foodTime">test date</div>
+                        <div class="price">5€</div>
                       </div>
                       <div className="col-lg-6 col-md-8 text-end">
                         <button type="button" className="btn btn-sm btn-outline-secondary"><i class="bi bi-bag"></i></button>
-                        <p class="foodAddress">Adresse</p>
+                        <div class="foodAddress">Adresse</div>
+                        <div class="foodCreator">Made by: xy</div>
                       </div>
-                    <div className="tags">test tag 1, test tag 2</div>
+                    </div>
+                    <div className="row">
+                      <div className="col"><span class="tag sushi">test tag 1</span> <span class="tag">test tag 2</span></div>
                     </div>
                 </div>
               </div>
