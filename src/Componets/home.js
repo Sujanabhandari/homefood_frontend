@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 
 class Home extends Component {
@@ -6,7 +7,7 @@ class Home extends Component {
     <>
     <main>
 
-      <section className="py-5 text-center container">
+      <section className="py-5 text-center container" style={{marginTop:"100px"}}>
         <div className="row">
 
           <div className="col-lg-6 col-md-8 mx-auto specialOffer">

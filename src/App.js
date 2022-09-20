@@ -4,11 +4,12 @@ import Navbar from './Componets/Navbar';
 import Login from './Componets/login';
 import Footer from './Componets/Footer';
 import CreatePost from './Componets/CreatePost';
+import Home from './Componets/home';
 function App() {
   return (
     <div>
       <Navbar />
-      <CreatePost />
+      <Home />
       <Footer />
     </div>
   );
