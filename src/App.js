@@ -1,9 +1,15 @@
 import './App.css';
-
+import Register from './Componets/Register';
+import Navbar from './Componets/Navbar';
+import Login from './Componets/login';
+import Footer from './Componets/Footer';
+import CreatePost from './Componets/CreatePost';
 function App() {
   return (
-    <div className="App">
-      <h1>Hello Home Made App</h1>
+    <div>
+      <Navbar />
+      <CreatePost />
+      <Footer />
     </div>
   );
 }
