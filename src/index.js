@@ -13,6 +13,7 @@ import './styles.scss';
 
 import App from './App';
 import Login from './Componets/login.js'
+import Home from './Componets/home.js';
 import Register  from './Componets/Register';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from './Componets/Navbar';
@@ -24,6 +25,7 @@ root.render(
   <Router>
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/create_offer" element={<CreatePost />} />

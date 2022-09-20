@@ -4,7 +4,8 @@
 */
 
 /*********** General Styles Start ***********/
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
   --textColor: #3a3a3a;
@@ -90,6 +91,98 @@ h6 {
   min-width: 200px;
 }
 /* Here ends the code for header */
+
+/* Login Section Start */
+.login {
+  margin-right: -30px;
+  padding-right: 25px !important ;
+}
+/* Login Section End */
+
+/* Home Section Start */
+.specialOffer {
+  padding: 1rem;
+  & img {
+    max-width: 200px;
+  }
+  & .category {
+
+  }
+  &:nth-child(1) {
+    background: #f3f4ff;
+    & .discount {
+      color: var(--green) !important;
+    }
+  }
+  &:nth-child(2) {
+    background: #fef2ec;
+    & .discount {
+      color: var(--orange) !important;
+    }
+  }
+  & .discount {
+    font-size: 3rem;
+  }
+  & .desc {
+
+  }
+}
+
+.catCard {
+  background: #eee;
+  border: 1px solid #fff;
+  color: var(--green);
+  &:hover {
+    background: #ccc;
+    border: 1px solid var(--green);
+  }
+}
+
+.album {
+  & .card {
+    border-radius: 10px !important;
+    & .featured {
+      position: absolute;
+      top:0;
+      right: 0;
+      padding: 5px 10px;
+      background: var(--green);
+      border-radius: 0 10px 0 10px;
+      font-size: 0.8rem;
+      color:  #fff;
+    }
+    & .wrapperImg {
+      display: inline-block;
+      height: 250px;
+      & img {
+        border-radius: 10px 10px 0 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    & .foodTitle {
+      font-weight: 800;
+    }
+    & .tag {
+      background: #eee;
+      padding: 0.2rem;
+      border-radius: 10px;
+    }
+    & .tag.sushi::before {
+      content:'';
+      position: relative;
+      background: url('https://e7.pngegg.com/pngimages/760/466/png-clipart-sushi-sashimi-japanese-cuisine-computer-icons-sushi-angle-food.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+    }
+  }
+}
+/* Home Section End */
 
 /* Here starts the codes for footer */
 
