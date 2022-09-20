@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
 import logo from '../assets/logo.png';
 import hero from '../assets/hero-image.png';
+import { useRef, useState, useEffect } from 'react';
+import { Navigate } from "react-router-dom";
 
+import { auth, logInWithEmailAndPassword
+  // signInWithGoogle
+ } from "../firebase-config";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-class Login extends Component {
-  render() {
+const Login = () => {
+
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [user, loading, error] = useAuthState(auth);
+
+useEffect(() => {
+  console.log("works");
+  if (loading) {
+    // maybe trigger a loading screen
+    return;
+  }
+  if (user) <Navigate to="/home" replace />;
+}, [user, loading]);
+
     return (
     <>
       <main className="login-page">
@@ -20,11 +39,13 @@ class Login extends Component {
                 <p>Sign in with your data that you entered during your registration.</p>
 
                 <div className="form-floating">
-                  <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+                  <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" value={email}
+          onChange={(e) => setEmail(e.target.value)} />
                   <label for="floatingInput">Email address</label>
                 </div>
                 <div className="form-floating mt-2">
-                  <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                  <input type="password" className="form-control" id="floatingPassword" placeholder="Password" value={password}
+          onChange={(e) => setPassword(e.target.value)} />
                   <label for="floatingPassword">Password</label>
                 </div>
 
@@ -37,7 +58,7 @@ class Login extends Component {
                 <p className="mt-5 mb-3 text-center"><a href="#">Forgot password</a></p>
               </form>
 
-              <p className="mt-5 mb-3 text-center">Don’t have an account? <a href="#">Login</a></p>
+              <p className="mt-5 mb-3 text-center">Don’t have an account? <button onClick={() => logInWithEmailAndPassword(email, password)}>Login</button></p>
 
             </div>
 
@@ -58,7 +79,6 @@ class Login extends Component {
       </footer>
     </>
     )
-  }
 }
 
 export default Login;
