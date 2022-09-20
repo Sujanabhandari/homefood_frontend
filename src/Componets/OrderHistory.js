@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
-import ReactStars from "react-rating-stars-component";
+// import ReactStars from "react-rating-stars-component";
 
 class OrderHistory extends Component {
   render() {
