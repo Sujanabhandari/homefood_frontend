@@ -15,7 +15,8 @@ import App from './App';
 import Login from './Componets/login.js'
 import Register  from './Componets/Register';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import Navbar from './Componets/Navbar';
+import CreatePost from './Componets/CreatePost';
 // import './styles/main.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,6 +26,7 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/create_offer" element={<CreatePost />} />
     </Routes>
   </Router>
 );
