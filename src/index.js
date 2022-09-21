@@ -12,19 +12,21 @@ import './_variables.scss';
 import './styles.scss';
 
 import App from './App';
+<<<<<<< HEAD
 import Login from './Componets/login.js'
 import Home from './Componets/home.js';
 import OrderHistory from './Componets/OrderHistory.js';
 import OfferPreview from './Componets/OfferPreview.js';
 import Register  from './Componets/Register';
+=======
+>>>>>>> dc2d27e (Get all offers from backend)
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import Navbar from './Componets/Navbar';
-import CreatePost from './Componets/CreatePost';
 // import './styles/main.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
+<<<<<<< HEAD
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/home" element={<Home />} />
@@ -34,6 +36,9 @@ root.render(
       <Route path="/order_history" element={<OrderHistory />} />
       <Route path="/offer_preview" element={<OfferPreview />} />
     </Routes>
+=======
+    <App />
+>>>>>>> dc2d27e (Get all offers from backend)
   </Router>
 );
 
