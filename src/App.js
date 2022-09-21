@@ -1,8 +1,8 @@
 import './App.css';
-// import Login from './Componets/login.js'
+import Login from './Componets/login.js'
 import Home from './Componets/home.js';
 import OrderHistory from './Componets/OrderHistory.js';
-// import Register from './Componets/Register';
+import Register from './Componets/Register';
 import Navbar from './Componets/Navbar';
 import CreatePost from './Componets/CreatePost';
 import OfferPreview from './Componets/OfferPreview';
@@ -11,9 +11,44 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import GlobalLayout from './Componets/GlobalLayout';
 import { NavLink, Routes, Route, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { getUser } from "./utils/regitsterUser";
+import ProtectedLayout from './Componets/ProtectedLayout';
 
 function App() {
   const [posts, setPosts] = useState([]);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
+
+  //validate Token
+  useEffect(() => {
+    const validateToken = async () => {
+      try {
+        const { data, error } = await getUser(token);
+        if (error) {
+          throw new Error(error.response?.data.error || error.message);
+        }
+        setUser(data);
+        setIsAuthenticated(true);
+      } catch (error) {
+        // toast.error("Invalid session, please login again");
+        console.log(error)
+        // localStorage.removeItem("token");
+        // setToken(null);
+      }
+    };
+    token && validateToken();
+  }, [token]);
+
+  // const logout = () => {
+  //   localStorage.removeItem("token");
+  //   setIsAuthenticated(false);
+  //   setToken(null);
+  //   setUser(null);
+  // };
+
 
   useEffect(() => {
     const getPosts = async () => {
@@ -30,24 +65,36 @@ function App() {
 
   return (
     <div>
-      <Navbar />
-     
-        <Routes>
-          <Route path="/" element={<GlobalLayout />} >
-            <Route index element={<Home posts={posts}/>} />
-            <Route
-            path="login"
-            element={
-              <Navbar
-              />
-            }
-          />
-            <Route path="/create_offer" element={<CreatePost />} />
-            <Route path="/order_history" element={<OrderHistory />} />
-            <Route path="/offer_preview" element={<OfferPreview />} />
+      {/* <ToastContainer /> */}
+      <Navbar isAuthenticated={isAuthenticated}
+            setIsAuthenticated={setIsAuthenticated}
+            setToken={setToken} />
+
+      <Routes>
+        <Route path="/" element={<GlobalLayout />} >
+          <Route index element={<Home posts={posts} />} />
+          <Route path="/create_offer" element={<CreatePost />} />
+          <Route path="/order_history" element={<OrderHistory />} />
+
+          <Route path="/login" element={<Login
+            isAuthenticated={isAuthenticated}
+            setIsAuthenticated={setIsAuthenticated}
+            setToken={setToken} />} />
+
+          <Route path="/register"
+            element={<Register
+              isAuthenticated={isAuthenticated}
+              setIsAuthenticated={setIsAuthenticated}
+              setToken={setToken}
+            />} />
+
+          <Route path='secret' element={<ProtectedLayout isAuthenticated={isAuthenticated} />} >
+
           </Route>
-        </Routes>
-        <Footer />
+          <Route path="/offer_preview" element={<OfferPreview />} />
+        </Route>
+      </Routes>
+      <Footer />
     </div>
   );
 }
