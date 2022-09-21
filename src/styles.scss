@@ -15,6 +15,7 @@
   --orange: #fe955e;
   --lightGrey: #eee;
   --purple: #bf7da2;
+  --darkPurple: #955679;
 
   --xs: 0;
   --sm: 576px;
@@ -59,6 +60,9 @@ h6 {
   color: #fff !important;
   padding: 1rem 3rem;
   border: none !important;
+  &:hover {
+    background: var(--darkGreen) !important;
+  }
 }
 
 .buttonPurple {
@@ -66,13 +70,10 @@ h6 {
   color: #fff !important;
   padding: 1rem 3rem;
   border: none !important;
+  &:hover {
+    background: var(--darkPurple) !important;
+  }
 }
-
-.btn:hover,
-.buttonGreen:hover {
-  background: var(--darkGreen) !important;
-}
-
 /* Here starts the codes for header */
 .main-nav {
   // background-color: var(--green) !important;
@@ -175,7 +176,7 @@ h6 {
     }
     & .tag {
       background: var(--lightGrey);
-      padding: 0.2rem;
+      padding: 0.3rem 1rem;
       border-radius: 10px;
     }
     & .tag.sushi::before {
