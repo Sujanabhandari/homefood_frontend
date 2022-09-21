@@ -79,6 +79,7 @@ const CreatePost = () => {
         } catch (error) {
             console.log(error)
         }
+        
     };
     console.log(title, description, quantity, image, price, timeSlot, specials, categories);
 

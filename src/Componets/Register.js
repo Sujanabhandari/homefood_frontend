@@ -5,39 +5,60 @@ import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
 
-import {
-  auth,
-  registerWithEmailAndPassword,
+import { registerUser } from "../utils/regitsterUser";
+import axios from 'axios';
+import { toast } from "react-toastify";
 
-} from "../firebase-config";
 
-const Register = () => {
+const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const [username, setUsername] = useState("");
-const [user, loading, error] = useAuthState(auth);
+  const [{ userName, email, profilePic, password }, setFormState] = useState({
+    userName: "",
+    email: "",
+    profilePic: "",
+    password: ""
+  });
 
-const navigate = useNavigate();
-    const register = () => {
-      if (!username) alert("Please enter username");
-      registerWithEmailAndPassword(username, email, password);
-       navigate("/home");
-      console.log("test");
-    };
+  const handleChange = (e) =>
+    setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
-    useEffect(() => {
-      if (loading) return;
-    }, [user, loading]);
+  const navigate = useNavigate();
 
-    console.log(user);
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    return (
-      <div>
-        <section className="d-flex mh-100 align-items-center min-vh-100">
-          <div className="container">
+      const formData = new FormData();
+
+      formData.append('userName', userName);
+      formData.append('email', email);
+      formData.append('password', password);
+
+      // if (!user_name || !password || !email )
+      //   return alert("Please fill out all the fields");
+      const response = await registerUser({
+         userName, email, profilePic, password 
+      });
+      console.log(response.headers.token);
+
+      localStorage.setItem("token", response.headers.token);
+      setToken(response.headers.token);
+      setIsAuthenticated(true);
+      navigate('/', {replace:true});
+    } catch (error) {
+      console.log(error)
+      // toast.error(error.message);
+    }
+  };
+  // if (isAuthenticated) return <Navigate to="/" replace />;
+
+
+  return (
+    <div>
+      <section className="d-flex mh-100 align-items-center min-vh-100" style={{ marginTop: "100px" }}>
+        <div className="container">
+          <form onSubmit={handleSubmit}>
             <div className="row justify-content-center bg-primary rounded-3 align-items-center my-5">
               <div className="col-md-5 rounded-3 p-5">
                 <h2 className='text-white'>Healthy Home Made Food Made With Love For You</h2>
@@ -51,23 +72,24 @@ const navigate = useNavigate();
                 <div className='w-75 mx-auto'>
                   <div className="text-center">
                     <div className="form-outline mb-4">
-                      <input type="text" id="registerName" className="form-control" placeholder='Full Name' value={username}
-          onChange={(e) => setUsername(e.target.value)}/>
+
+                      <input type="text" id="userName" className="form-control" placeholder='Full Name' value={userName}
+                        onChange={handleChange} />
 
                     </div>
                     <div className="form-outline mb-4">
-                      <input type="email" id="registerEmail" className="form-control" placeholder='Email' value={email}
-          onChange={(e) => setEmail(e.target.value)} />
+                      <input type="email" id="email" className="form-control" placeholder='Email' value={email}
+                        onChange={handleChange} />
 
                     </div>
 
                     <div className="form-outline mb-4">
-                      <input type="password" id="registerPassword" className="form-control" placeholder='Password' value={password}
-          onChange={(e) => setPassword(e.target.value)} />
+                      <input type="password" id="password" className="form-control" placeholder='Password' value={password}
+                        onChange={handleChange} />
 
                     </div>
 
-                  <button className="btn btn-block mb-3 btn-color" onClick={register}>Create Account</button>
+                    <button className="btn btn-block mb-3 btn-color" type="submit" >Create Account</button>
                   </div>
                 </div>
 
@@ -78,7 +100,7 @@ const navigate = useNavigate();
                     Signup with Google
                   </div>
                   <div className="col">
-                    <i class="bi bi-facebook m-2 icon-face"></i>
+                    <i className="bi bi-facebook m-2 icon-face"></i>
                     Signup with Facebook
                   </div>
                 </div>
@@ -88,10 +110,11 @@ const navigate = useNavigate();
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
-    )
+          </form>
+        </div>
+      </section>
+    </div>
+  )
 }
 
 export default Register;
