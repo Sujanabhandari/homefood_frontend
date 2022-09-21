@@ -120,76 +120,76 @@ const CreatePost = () => {
                             <p className='fs-5 fw-bold mt-3'>Categories</p>
                             <div className='row mb-3'>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="greek" name="categories" value="Greek" onChange={handleChange} />
-                                    <label className="form-check-label" for="greek">
+                                    <input className="form-check-input" type="radio" id="categories" name="categories" value="Greek" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                         Greek
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="indian"  name="categories" value="Indian" onChange={handleChange} />
-                                    <label className="form-check-label" for="indian">
+                                    <input className="form-check-input" type="radio" id="categories"  name="categories" value="Indian" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                         Indian
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio"  id="nepali" name="categories"  value="Nepali" onChange={handleChange} />
-                                    <label className="form-check-label" for="nepali">
+                                    <input className="form-check-input" type="radio"  id="categories" name="categories"  value="Nepali" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                         Nepali
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="romanian" name="categories"  value="Nepali" onChange={handleChange} />
-                                    <label className="form-check-label" for="romanian">
+                                    <input className="form-check-input" type="radio" id="categories" name="categories"  value="Nepali" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                         Romanian
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="german" name="categories"  value="German" onChange={handleChange} />
-                                    <label className="form-check-label" for="german">
+                                    <label className="form-check-label" for="categories">
                                         German
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="italian" name="categories"  value="Italian" onChange={handleChange} />
-                                    <label className="form-check-label" for="italian">
+                                    <input className="form-check-input" type="radio" id="categories" name="categories"  value="Italian" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                         Italian
                                     </label>
                                 </div>
                             </div>
                             <div className='row mb-3'>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="spanish" name="categories"  value="Spanish" onChange={handleChange} />
-                                    <label className="form-check-label" for="spanish">
+                                    <input className="form-check-input" type="radio" id="categories" name="categories"  value="Spanish" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                         Spanish
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="Philippines" name="categories"  value="Philippines" onChange={handleChange} />
-                                    <label className="form-check-label" for="Philippines">
+                                    <input className="form-check-input" type="radio" id="categories" name="categories"  value="Philippines" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                     Philippines
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="Japanese" name="categories"  value="Japanese" onChange={handleChange} />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio" id="categories" name="categories"  value="Japanese" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                     Japanese
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="Chinese" name="categories"  value="Chinese" onChange={handleChange} />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio" id="categories" name="categories"  value="Chinese" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                         Chinese
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="Switzerland" name="categories"  value="Switzerland" onChange={handleChange} />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio" id="categories" name="categories"  value="Switzerland" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                     Switzerland
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio"  id="Korean" name="categories"  value="Korean" onChange={handleChange} />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio"  id="categories" name="categories"  value="Korean" onChange={handleChange} />
+                                    <label className="form-check-label" for="categories">
                                     Korean
                                     </label>
                                 </div>
