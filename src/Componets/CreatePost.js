@@ -9,14 +9,15 @@ const CreatePost = () => {
 
     const [imgsrc, setImgsrc] = useState("");
 
-    const [{ title, description, quantity, image, price, timeSlot, specials }, setFormState] = useState({
+    const [{ title, description, quantity, image, price, timeSlot, specials, categories }, setFormState] = useState({
         title: "",
         description: "",
         quantity: "",
         image: "",
         price: "",
         timeSlot: "",
-        specials: ""
+        specials: "",
+        categories: ""
         // specials: ""
     });
 
@@ -34,7 +35,8 @@ const CreatePost = () => {
 
     const previewUploadedImage = (event) => {
         // handleChange();
-        setImgsrc(event.target.files[0])
+        setFormState((prev) => ({ ...prev, image: event.target.files[0] }));
+      
     }
 
     const imagePreview = imgsrc && URL.createObjectURL(imgsrc);
@@ -54,18 +56,23 @@ const CreatePost = () => {
             e.preventDefault();
             // if (!title || !description || !quantity || !image || !price || !timeSlot || specials)
             //     return alert("Please fill out all the fields");
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('quantity', quantity);
+            formData.append('image', image);
+            formData.append('price', price);
+            formData.append('timeSlot', timeSlot);
+            formData.append('specials', specials);
+            formData.append('categories', categories);
+
+            for (let[key, value] of formData.entries()){
+                console.log(key,value)
+            }
 
             const { data } = await axios.post(
                 `http://localhost:3000/offers`,
-                {
-                    title,
-                    description,
-                    quantity,
-                    image,
-                    price,
-                    timeSlot,
-                    specials
-                },
+                formData
                 // { headers: { Authorization: localStorage.getItem("token") } }
             );
             navigate(`/home`, { replace: true });
@@ -73,6 +80,7 @@ const CreatePost = () => {
             console.log(error)
         }
     };
+    console.log(title, description, quantity, image, price, timeSlot, specials, categories);
 
     return (
         <div className="container">
@@ -112,77 +120,77 @@ const CreatePost = () => {
                             <p className='fs-5 fw-bold mt-3'>Categories</p>
                             <div className='row mb-3'>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" id="flexCheckDefault" onChange={handleChange} />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio" id="greek" name="categories" value="Greek" onChange={handleChange} />
+                                    <label className="form-check-label" for="greek">
                                         Greek
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio" id="indian"  name="categories" value="Indian" onChange={handleChange} />
+                                    <label className="form-check-label" for="indian">
                                         Indian
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio"  id="nepali" name="categories"  value="Nepali" onChange={handleChange} />
+                                    <label className="form-check-label" for="nepali">
                                         Nepali
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio" id="romanian" name="categories"  value="Nepali" onChange={handleChange} />
+                                    <label className="form-check-label" for="romanian">
                                         Romanian
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio" id="german" name="categories"  value="German" onChange={handleChange} />
+                                    <label className="form-check-label" for="german">
                                         German
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input className="form-check-input" type="radio" id="italian" name="categories"  value="Italian" onChange={handleChange} />
+                                    <label className="form-check-label" for="italian">
                                         Italian
                                     </label>
                                 </div>
                             </div>
                             <div className='row mb-3'>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Greek
+                                    <input className="form-check-input" type="radio" id="spanish" name="categories"  value="Spanish" onChange={handleChange} />
+                                    <label className="form-check-label" for="spanish">
+                                        Spanish
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Indian
+                                    <input className="form-check-input" type="radio" id="Philippines" name="categories"  value="Philippines" onChange={handleChange} />
+                                    <label className="form-check-label" for="Philippines">
+                                    Philippines
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="radio" id="Japanese" name="categories"  value="Japanese" onChange={handleChange} />
                                     <label className="form-check-label" for="flexCheckDefault">
-                                        Nepali
+                                    Japanese
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="radio" id="Chinese" name="categories"  value="Chinese" onChange={handleChange} />
                                     <label className="form-check-label" for="flexCheckDefault">
-                                        Romanian
+                                        Chinese
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="radio" id="Switzerland" name="categories"  value="Switzerland" onChange={handleChange} />
                                     <label className="form-check-label" for="flexCheckDefault">
-                                        German
+                                    Switzerland
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="radio"  id="Korean" name="categories"  value="Korean" onChange={handleChange} />
                                     <label className="form-check-label" for="flexCheckDefault">
-                                        Italian
+                                    Korean
                                     </label>
                                 </div>
                             </div>
@@ -192,25 +200,25 @@ const CreatePost = () => {
                         <div>
                             <p className='fw-bolder'>Specials</p>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="specials" value="Vegetarian" onChange={handleChange} />
+                                <input className="form-check-input" type="radio" id="specials" value="Vegetarian" onChange={handleChange} />
                                 <label className="form-check-label" for="specials">
                                     Vegetarian
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="specials" value="Vegan" onChange={handleChange} />
+                                <input className="form-check-input" type="radio" id="specials" value="Vegan" onChange={handleChange} />
                                 <label className="form-check-label" for="specials">
                                     Vegan
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="specials" value="Milk Intolerance" onChange={handleChange} />
+                                <input className="form-check-input" type="radio" id="specials" value="Milk Intolerance" onChange={handleChange} />
                                 <label className="form-check-label" for="specials">
                                     Milk Intolerance
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="specials" value=" Offer Packaging" onChange={handleChange} />
+                                <input className="form-check-input" type="radio" id="specials" value=" Offer Packaging" onChange={handleChange} />
                                 <label className="form-check-label" for="specials">
                                     Offer Packaging
                                 </label>
@@ -225,8 +233,9 @@ const CreatePost = () => {
                                     <input className="form-control mt-3" type="file" ref={formFile}
                                         // onChange={previewUploadedImage} 
                                         id="image"
-                                        onChange={handleChange}
-                                        value={image}/>
+                                        onChange={previewUploadedImage}
+                                        // value={image}
+                                        />
                                     <button onClick={changeImage} className="btn btn-primary mt-3 btn-secondary text-white">Change</button>
                                 </div>
                             </div>
