@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 
-class Home extends Component {
-  render() {
+const Home = ({posts}) =>  {
+  console.log("From Home", posts)
     return (
     <>
     <main>
@@ -281,7 +281,7 @@ class Home extends Component {
     </main>
     </>
     )
-  }
+  
 }
 
 export default Home;
