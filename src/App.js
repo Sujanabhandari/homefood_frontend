@@ -1,8 +1,8 @@
 import './App.css';
-import Login from './Componets/login.js'
+// import Login from './Componets/login.js'
 import Home from './Componets/home.js';
 import OrderHistory from './Componets/OrderHistory.js';
-import Register from './Componets/Register';
+// import Register from './Componets/Register';
 import Navbar from './Componets/Navbar';
 import CreatePost from './Componets/CreatePost';
 import OfferPreview from './Componets/OfferPreview';
@@ -31,17 +31,23 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Home />
-      <Footer />
+     
         <Routes>
           <Route path="/" element={<GlobalLayout />} >
             <Route index element={<Home posts={posts}/>} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route
+            path="login"
+            element={
+              <Navbar
+              />
+            }
+          />
             <Route path="/create_offer" element={<CreatePost />} />
             <Route path="/order_history" element={<OrderHistory />} />
+            <Route path="/offer_preview" element={<OfferPreview />} />
           </Route>
         </Routes>
+        <Footer />
     </div>
   );
 }
