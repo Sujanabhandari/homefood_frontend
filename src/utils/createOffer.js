@@ -2,18 +2,6 @@ import axios from "axios";
 
 const url = "http://localhost:3000/offers"
 
-// export const getUser = async (token) => {
-  
-//   try {
-//     const { data } = await axios.get(`${process.env.BLOG_API}/me`, {
-//       headers: { Authorization: token }
-//     });
-//     return { data };
-//   } catch (error) {
-//     return { error };
-//   }
-// };
-
   export const create_offer = async (formData) => {
     console.log("Create Offer", formData)
     const requestOptions = {
@@ -34,15 +22,3 @@ const url = "http://localhost:3000/offers"
     }
   };
 
-
-// export const loginUser = async (formData) => {
-//   try {
-//     const { data } = await axios.post(
-//       `${url}/signin`,
-//       formData
-//     );
-//     return { data };
-//   } catch (error) {
-//     return { error };
-//   }
-// };

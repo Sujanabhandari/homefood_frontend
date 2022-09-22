@@ -63,12 +63,19 @@ function App() {
   }, []);
   // console.log(posts);
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    setToken(null);
+    setUser(null);
+  };
+
   return (
     <div>
       {/* <ToastContainer /> */}
       <Navbar isAuthenticated={isAuthenticated}
             setIsAuthenticated={setIsAuthenticated}
-            setToken={setToken} />
+            setToken={setToken} logout={logout} />
 
       <Routes>
         <Route path="/" element={<GlobalLayout />} >

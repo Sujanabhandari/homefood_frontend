@@ -73,7 +73,7 @@ const CreatePost = () => {
             const { data } = await axios.post(
                 `http://localhost:3000/offers`,
                 formData
-                // { headers: { Authorization: localStorage.getItem("token") } }
+               
             );
             navigate(`/home`, { replace: true });
         } catch (error) {
@@ -232,15 +232,16 @@ const CreatePost = () => {
                                     <p className='fw-bold'>Upload you Profile Picture</p>
                                     <img ref={imgFrame} className="" style={{ width: "200px" }} src={imagePreview} />
                                     <input className="form-control mt-3" type="file" ref={formFile}
-                                        // onChange={previewUploadedImage} 
+                                       
                                         id="image"
                                         onChange={previewUploadedImage}
-                                        // value={image}
+                                      
                                         />
                                     <button onClick={changeImage} className="btn btn-primary mt-3 btn-secondary text-white">Change</button>
                                 </div>
                             </div>
                         </div>
+                        
                         <div className="form-group">
                             <button type="submit" className="btn btn-secondary text-white">
                                 Publish Your Post
