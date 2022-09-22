@@ -8,22 +8,22 @@ import { Link } from 'react-router-dom';
 import { useHomeContext } from './MainContext';
 
 const CreatePost = () => {
-    const context  = useHomeContext();
-    console.log(context)
-    // myContext.
+    const {formState, setFormState}  = useHomeContext();
+    // console.log(context);
+
     const [imgsrc, setImgsrc] = useState("");
 
-    const [formState, setFormState] = useState({
-        title: "",
-        description: "",
-        quantity: "",
-        image: "",
-        price: "",
-        timeSlot: "",
-        address: "",
-        specials: [],
-        categories: ""
-    });
+    // const [formState, setFormState] = useState({
+    //     title: "",
+    //     description: "",
+    //     quantity: "",
+    //     image: "",
+    //     price: "",
+    //     timeSlot: "",
+    //     address: "",
+    //     specials: [],
+    //     categories: ""
+    // });
 
     let formFile = useRef(null);
     let imgFrame = useRef(null);
@@ -76,7 +76,7 @@ const CreatePost = () => {
                 formData
 
             );
-            navigate(`/home`, { replace: true });
+            navigate(`/`, { replace: true });
         } catch (error) {
             console.log(error)
         }

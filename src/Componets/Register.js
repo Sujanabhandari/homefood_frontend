@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import { registerUser } from "../utils/regitsterUser";
 import axios from 'axios';
-import { toast } from "react-toastify";
+
 
 const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 

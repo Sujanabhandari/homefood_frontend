@@ -4,9 +4,9 @@ import { createContext, useContext, useState } from 'react';
 
 const HomeContext = createContext(null);
 
-export const useHomeContext = () => {
+export const useHomeContext = () => 
     useContext(HomeContext);
-}
+
 
 export default function MainContext({isAuthenticated, setToken,setIsAuthenticated, logout, children}) 
 {
@@ -22,6 +22,7 @@ export default function MainContext({isAuthenticated, setToken,setIsAuthenticate
         specials: [],
         categories: ""
     });
+    
 
   return (
     
