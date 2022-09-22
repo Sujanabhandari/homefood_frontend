@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 
 const GlobalLayout = () => {
-    
+
   return (
-    <div className="container mt-5">
+    <div className="container mainContainer">
       <Outlet />
     </div>
   );

@@ -2,7 +2,7 @@ const SpecialOffer = () => {
 
   return (
 
-  <section className="py-5 text-center container" style={{marginTop:"100px"}}>
+  <section className="text-center container mb-5">
     <div className="row">
 
       <div className="col-lg-6 col-md-8 mx-auto specialOffer">

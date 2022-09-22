@@ -46,6 +46,10 @@ h6 {
   font-weight: 400;
 }
 
+.mainContainer {
+  margin: 10rem auto 5rem auto;
+}
+
 // a {
 //   color: var(--green) !important;
 //   text-decoration: none !important;
@@ -115,9 +119,6 @@ h6 {
   & img {
     max-width: 200px;
   }
-  & .category {
-
-  }
   &:nth-child(1) {
     background: #f3f4ff;
     & .discount {
@@ -132,9 +133,6 @@ h6 {
   }
   & .discount {
     font-size: 3rem;
-  }
-  & .desc {
-
   }
 }
 
@@ -173,25 +171,33 @@ h6 {
     & .foodTitle {
       font-weight: 800;
     }
+    .price::after {
+      content: ("€");
+    }
     & .tag {
       background: var(--lightGrey);
       padding: 0.3rem 1rem;
       border-radius: 10px;
     }
-    & .tag.sushi::before {
-      content:'';
-      position: relative;
-      background: url('https://e7.pngegg.com/pngimages/760/466/png-clipart-sushi-sashimi-japanese-cuisine-computer-icons-sushi-angle-food.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      top: 5px;
-      width: 20px;
-      height: 20px;
-      display: inline-block;
-    }
   }
 }
 /* Home Section End */
+
+
+/* Single Post Start */
+.singlePost {
+  .wrapperImgCreator {
+  width: 200px;
+  height: 200px;
+    & img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+/* Single Post End */
 
 /* Order History Start */
 .orderedFood {

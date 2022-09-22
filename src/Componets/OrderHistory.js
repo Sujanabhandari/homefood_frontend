@@ -8,7 +8,7 @@ class OrderHistory extends Component {
     <>
     <main>
 
-    <section className="py-5 container">
+    <section className="container">
       <h1>My orders</h1>
       <div className="row">
         <div className="col">
