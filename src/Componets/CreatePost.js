@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import { create_offer } from "../utils/createOffer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 const CreatePost = () => {
 
     const [imgsrc, setImgsrc] = useState("");
@@ -41,11 +41,11 @@ console.log(e.target.name)
 
     const previewUploadedImage = (event) => {
         // handleChange();
+        console.log("From OFEER LIST", event.target.files[0]);
         setFormState((prev) => ({ ...prev, image: event.target.files[0] }));
-
     }
 
-    const imagePreview = imgsrc && URL.createObjectURL(imgsrc);
+    const imagePreview = imgsrc && URL.createObjectURL(formState.image);
 
     const changeImage = (event) => {
         console.log(formFile.value)
@@ -238,23 +238,21 @@ console.log(e.target.name)
                                     <p className='fw-bold'>Upload you Profile Picture</p>
                                     <img ref={imgFrame} className="" style={{ width: "200px" }} src={imagePreview} />
                                     <input className="form-control mt-3" type="file" ref={formFile}
-
                                         id="image"
                                         onChange={previewUploadedImage}
-
                                     />
-                                    <button onClick={changeImage} className="btn btn-primary mt-3 btn-secondary text-white">Change</button>
+                                    {/* <button onClick={changeImage} className="btn btn-primary mt-3 btn-secondary text-white">Change</button> */}
                                 </div>
                             </div>
                         </div>
 
                         <div className="form-group">
-                            <button type="submit" className="btn btn-secondary text-white">
+                            <button type="submit" className="btn btn-secondary text-white ">
                                 Publish Your Post
                             </button>
-                            {/* <button type="submit" className="btn btn-secondary text-white">
-                                Publish Your Post
-                            </button> */}
+                            <Link to='/offer_preview' state={{ formState: formState}} className="btn btn-secondary text-white ms-5">
+                                Preview Your Post
+                            </Link>
                         </div>
                     </div>
                 </div>
