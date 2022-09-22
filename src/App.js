@@ -15,6 +15,8 @@ import { NavLink, Routes, Route, Link } from "react-router-dom";
 import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 
+import MainContext from './Componets/MainContext';
+
 function App() {
   const [posts, setPosts] = useState([]);
 
@@ -42,13 +44,6 @@ function App() {
     token && validateToken();
   }, [token]);
 
-  // const logout = () => {
-  //   localStorage.removeItem("token");
-  //   setIsAuthenticated(false);
-  //   setToken(null);
-  //   setUser(null);
-  // };
-
 
   useEffect(() => {
     const getPosts = async () => {
@@ -72,9 +67,12 @@ function App() {
 
   return (
     <div>
+      {/* 
+
+      1.Use context and wrap all the component and each child will all have. */}
+      
       <Navbar isAuthenticated={isAuthenticated}
-            setIsAuthenticated={setIsAuthenticated}
-            setToken={setToken} logout={logout} />
+        setToken={setToken} logout={logout} />
 
       <Routes>
         <Route path="/" element={<GlobalLayout />} >
@@ -92,17 +90,15 @@ function App() {
             element={<Register
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={setIsAuthenticated}
-              setToken={setToken}
-            />} />
-
-          <Route path='secret' element={<ProtectedLayout isAuthenticated={isAuthenticated} />} >
+              setToken={setToken} />} />
+          <Route path='secret' element={<ProtectedLayout isAuthenticated={isAuthenticated} />}>
 
 
-          </Route>
-          <Route path="/offer_preview" element={<OfferPreview />} />
+          </Route><Route path="/offer_preview" element={<OfferPreview />} />
         </Route>
       </Routes>
       <Footer />
+    
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo-white.png';
 import girl from '../assets/girl.png';
 
+//Use context, 
 const Navbar = ({ isAuthenticated, logout }) => {
     return (
         <div>

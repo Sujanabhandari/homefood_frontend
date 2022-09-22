@@ -7,12 +7,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const OfferPreview = () => {
-  console.log(useLocation());
   const location = useLocation();
-  // console.log("Location", location.state.formState.title)
   const offerData = location.state?.formState;
-  console.log(offerData.image);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {

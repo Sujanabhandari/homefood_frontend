@@ -5,54 +5,48 @@ import { create_offer } from "../utils/createOffer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { useHomeContext } from './MainContext';
+
 const CreatePost = () => {
+    const {formState, setFormState}  = useHomeContext();
+    // console.log(context);
 
     const [imgsrc, setImgsrc] = useState("");
 
-    const [formState, setFormState] = useState({
-        title: "",
-        description: "",
-        quantity: "",
-        image: "",
-        price: "",
-        timeSlot: "",
-        address:"",
-        specials: [],
-        categories: ""
-    });
+    // const [formState, setFormState] = useState({
+    //     title: "",
+    //     description: "",
+    //     quantity: "",
+    //     image: "",
+    //     price: "",
+    //     timeSlot: "",
+    //     address: "",
+    //     specials: [],
+    //     categories: ""
+    // });
 
     let formFile = useRef(null);
     let imgFrame = useRef(null);
 
     const handleChange = (e) => {
 
-console.log(e.target.name)
+        console.log(e.target.name)
         if (e.target.name === 'specials') {
-            setFormState((prev) =>
-            {
-                console.log("This is prev", {...prev, });
-                return ({ ...prev, specials: [...prev.specials,e.target.value] })
-        })
+            setFormState((prev) => {
+               
+                return ({ ...prev, specials: [...prev.specials, e.target.value] })
+            })
         }
         else setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
-    console.log(formState);
 
     const previewUploadedImage = (event) => {
-        // handleChange();
         console.log("From OFEER LIST", event.target.files[0]);
         setFormState((prev) => ({ ...prev, image: event.target.files[0] }));
     }
 
     const imagePreview = formState.image && URL.createObjectURL(formState.image);
-
-    const changeImage = (event) => {
-        console.log(formFile.value)
-        formFile.value = "";
-        imgFrame.src = "";
-        setImgsrc("");
-    }
 
 
     const navigate = useNavigate();
@@ -82,7 +76,7 @@ console.log(e.target.name)
                 formData
 
             );
-            navigate(`/home`, { replace: true });
+            navigate(`/`, { replace: true });
         } catch (error) {
             console.log(error)
         }
@@ -250,7 +244,7 @@ console.log(e.target.name)
                             <button type="submit" className="btn btn-secondary text-white ">
                                 Publish Your Post
                             </button>
-                            <Link to='/offer_preview' state={{ formState: formState}} className="btn btn-secondary text-white ms-5">
+                            <Link to='/offer_preview' state={{ formState: formState }} className="btn btn-secondary text-white ms-5">
                                 Preview Your Post
                             </Link>
                         </div>
