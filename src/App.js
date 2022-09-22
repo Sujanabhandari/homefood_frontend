@@ -12,7 +12,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import GlobalLayout from './Componets/GlobalLayout';
 import { NavLink, Routes, Route, Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 
