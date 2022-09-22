@@ -2,20 +2,9 @@ import axios from "axios";
 
 const url = "http://localhost:3000/offers"
 
-// export const getUser = async (token) => {
-  
-//   try {
-//     const { data } = await axios.get(`${process.env.BLOG_API}/me`, {
-//       headers: { Authorization: token }
-//     });
-//     return { data };
-//   } catch (error) {
-//     return { error };
-//   }
-// };
-
   export const create_offer = async (formData) => {
     console.log("Create Offer", formData)
+    //Axios does this automatically
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -23,7 +12,7 @@ const url = "http://localhost:3000/offers"
   };
     try {
       console.log("Hello From Register")
-      axios.post('http://localhost:3000/offers', requestOptions)
+      axios.post('http://localhost:3000/offers', formData)
         .then(response => {
           console.log("here", response);
           return JSON.parse(response);
@@ -34,15 +23,3 @@ const url = "http://localhost:3000/offers"
     }
   };
 
-
-// export const loginUser = async (formData) => {
-//   try {
-//     const { data } = await axios.post(
-//       `${url}/signin`,
-//       formData
-//     );
-//     return { data };
-//   } catch (error) {
-//     return { error };
-//   }
-// };
