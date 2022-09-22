@@ -4,6 +4,7 @@ const url = "http://localhost:3000/offers"
 
   export const create_offer = async (formData) => {
     console.log("Create Offer", formData)
+    //Axios does this automatically
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -11,7 +12,7 @@ const url = "http://localhost:3000/offers"
   };
     try {
       console.log("Hello From Register")
-      axios.post('http://localhost:3000/offers', requestOptions)
+      axios.post('http://localhost:3000/offers', formData)
         .then(response => {
           console.log("here", response);
           return JSON.parse(response);

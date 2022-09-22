@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
-/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React, { Component } from 'react';
 import logo from '../assets/logo.png';
 import hero from '../assets/hero-image.png';
@@ -8,6 +7,7 @@ import { Navigate } from "react-router-dom";
 import { loginUser } from "../utils/regitsterUser";
 import { NavLink, Routes, Route, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
   const [{ email, password }, setFormState] = useState({
@@ -18,6 +18,8 @@ const Login = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
   const handleChange = (e) =>
     setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
+
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -29,12 +31,13 @@ const Login = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
       localStorage.setItem("token", response.headers.token);
       setToken(response.headers.token);
       setIsAuthenticated(true);
+       navigate('/', { replace: true });
     } catch (error) {
       console.log(error)
       // toast.error(error.message);
     }
   };
-  if (isAuthenticated) return <Navigate to="/" replace />;
+  // if (isAuthenticated) return <Navigate to="/" replace />;
 
 
   return (

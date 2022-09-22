@@ -11,17 +11,17 @@ export const getUser = async (token) => {
   }
 };
 
-export const registerUser = async (formData) => {
-    console.log("Create User", formData)
+  export const registerUser = async (formData) => {
+    
     try {
       console.log("Hello From Register")
       const response = await axios.post('http://localhost:3000/signup', formData)
-    return response;
-      
+      return response;
     } catch (error) {
       return { error };
     }
   };
+
 
 
 export const loginUser = async (formData) => {

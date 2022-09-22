@@ -18,7 +18,6 @@ class OfferPreview extends Component {
                 <div className="wrapperImg">
                   <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" />
                 </div>
-
                 <div className="card-body">
                     <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
                       <div className="col-lg-6 col-md-8">
