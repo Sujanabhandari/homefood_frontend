@@ -1,3 +1,4 @@
+
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
@@ -134,3 +135,4 @@ const OfferPreview = () => {
 }
 
 export default OfferPreview;
+
