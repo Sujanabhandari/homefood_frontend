@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 
 import React, { Component } from 'react'
 import logo from '../assets/logo.png';
@@ -26,6 +27,7 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      console.log("THis is state", { userName, email, profilePic, password })
       const formData = new FormData();
 
       formData.append('userName', userName);
@@ -33,19 +35,23 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
       formData.append('password', password);
       formData.append('profilePic', profilePic);
 
+      for (let [key, value] of formData.entries()) {
+        console.log(key, value)
+    }
+
       if (!userName || !password || !email)
         return alert("Please fill out all the fields");
-
-      const response = await registerUser({
-        userName, email, password
-      });
-
-      console.log(response.headers.token);
+        
+      const response = await registerUser(
+        formData
+      );
+      
+      console.log(response);
 
       localStorage.setItem("token", response.headers.token);
       setToken(response.headers.token);
       setIsAuthenticated(true);
-      navigate('/', { replace: true });
+      navigate('/login', { replace: true });
     } catch (error) {
       console.log(error)
 
@@ -57,7 +63,8 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
   const previewUploadedImage = (event) => {
     // handleChange();
-    setFormState((prev) => ({ ...prev, image: event.target.files[0] }));
+    console.log(event.target.files)
+    setFormState((prev) => ({ ...prev, profilePic: event.target.files[0] }));
   }
 
   const imagePreview = profilePic && URL.createObjectURL(profilePic);
