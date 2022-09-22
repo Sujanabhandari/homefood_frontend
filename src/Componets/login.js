@@ -39,7 +39,7 @@ const Login = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
   return (
     <>
-      <main className="login-page" style={{marginTop: "100px"}}>
+      <main className="login-page" style={{marginTop: "200px"}}>
         
           <div className="col-lg-8 mx-auto p-4 py-md-5">
 

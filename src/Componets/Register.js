@@ -1,5 +1,4 @@
-/* eslint-disable react/style-prop-object */
-/* eslint-disable jsx-a11y/img-redundant-alt */
+
 import React, { Component } from 'react'
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
@@ -9,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../utils/regitsterUser";
 import axios from 'axios';
 import { toast } from "react-toastify";
-
 
 const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
@@ -28,35 +26,46 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-
       const formData = new FormData();
 
       formData.append('userName', userName);
       formData.append('email', email);
       formData.append('password', password);
+      formData.append('profilePic', profilePic);
 
-      // if (!user_name || !password || !email )
-      //   return alert("Please fill out all the fields");
+      if (!userName || !password || !email)
+        return alert("Please fill out all the fields");
+
       const response = await registerUser({
-         userName, email, profilePic, password 
+        userName, email, password
       });
+
       console.log(response.headers.token);
 
       localStorage.setItem("token", response.headers.token);
       setToken(response.headers.token);
       setIsAuthenticated(true);
-      navigate('/', {replace:true});
+      navigate('/', { replace: true });
     } catch (error) {
       console.log(error)
-      // toast.error(error.message);
+
     }
   };
-  // if (isAuthenticated) return <Navigate to="/" replace />;
+
+  let formFile = useRef(null);
+  let imgFrame = useRef(null);
+
+  const previewUploadedImage = (event) => {
+    // handleChange();
+    setFormState((prev) => ({ ...prev, image: event.target.files[0] }));
+  }
+
+  const imagePreview = profilePic && URL.createObjectURL(profilePic);
 
 
   return (
     <div>
-      <section className="d-flex mh-100 align-items-center min-vh-100" style={{ marginTop: "100px" }}>
+      <section className="d-flex mh-100 align-items-center min-vh-100">
         <div className="container">
           <form onSubmit={handleSubmit}>
             <div className="row justify-content-center bg-primary rounded-3 align-items-center my-5">
@@ -83,25 +92,19 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
                     </div>
 
-                    <div className="form-outline mb-4">
+                    <div className="form-outline mb-2">
                       <input type="password" id="password" className="form-control" placeholder='Password' value={password}
                         onChange={handleChange} />
-
                     </div>
-
-                    <button className="btn btn-block mb-3 btn-color" type="submit" >Create Account</button>
-                  </div>
-                </div>
-
-                <p className="text-center">or</p>
-                <div className="row text-center">
-                  <div class="col">
-                    <i className="bi bi-google m-2 icon-google"></i>
-                    Signup with Google
-                  </div>
-                  <div className="col">
-                    <i className="bi bi-facebook m-2 icon-face"></i>
-                    Signup with Facebook
+                    <div>
+                      {/* <p className='fw-bold'>Upload you Profile Picture</p> */}
+                      <img ref={imgFrame} className="" style={{ width: "200px" }} src={imagePreview} />
+                      <input className="form-control mb-3" type="file" ref={formFile}
+                        id="profilePic"
+                        onChange={previewUploadedImage}
+                      />
+                    </div>
+                    <button className="btn btn-block mb-3 btn-color mt-2" type="submit">Create Account</button>
                   </div>
                 </div>
                 <div className='mt-4'>

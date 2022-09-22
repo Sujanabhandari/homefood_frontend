@@ -41,12 +41,12 @@ const Navbar = ({ isAuthenticated, logout }) => {
                             {!isAuthenticated ? (
                                 <>
                                     
-                                        <Link to="/login" className="nav-link active">
+                                        <Link to="/login" className="nav-link active text-white">
                                             Login
                                         </Link>
                                     
                                   
-                                        <Link to="/register" className="nav-link active">
+                                        <Link to="/register" className="nav-link active text-white">
                                             Register
                                         </Link>
                                   
@@ -58,6 +58,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
 
                                     <Link className='text-white'>
                                         <img className="icon-circle-img" src={girl} width="50px" alt="Person" />
+                                    </Link>
+
+                                    <Link className='text-white' >
+                                    <i class="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
                                     </Link>
                                 </>
                             )}
