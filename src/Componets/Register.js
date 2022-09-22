@@ -63,7 +63,7 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
   const previewUploadedImage = (event) => {
     // handleChange();
-    console.log(event.target.files)
+    console.log(event.target.files);
     setFormState((prev) => ({ ...prev, profilePic: event.target.files[0] }));
   }
 
