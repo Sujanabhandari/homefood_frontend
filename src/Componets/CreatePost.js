@@ -45,7 +45,7 @@ console.log(e.target.name)
         setFormState((prev) => ({ ...prev, image: event.target.files[0] }));
     }
 
-    const imagePreview = imgsrc && URL.createObjectURL(formState.image);
+    const imagePreview = formState.image && URL.createObjectURL(formState.image);
 
     const changeImage = (event) => {
         console.log(formFile.value)
