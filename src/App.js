@@ -6,6 +6,7 @@ import OrderHistory from './Componets/OrderHistory.js';
 import Navbar from './Componets/Navbar';
 import CreatePost from './Componets/CreatePost';
 import OfferPreview from './Componets/OfferPreview';
+import SinglePost from './Componets/SinglePost';
 import Footer from './Componets/Footer'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -26,15 +27,17 @@ function App() {
     };
     getPosts();
   }, []);
-  // console.log(posts);
+
 
   return (
     <div>
       <Navbar />
-     
+
         <Routes>
           <Route path="/" element={<GlobalLayout />} >
             <Route index element={<Home posts={posts}/>} />
+            <Route path="/:id" element={<SinglePost posts={posts} />}
+          />
             <Route
             path="login"
             element={
