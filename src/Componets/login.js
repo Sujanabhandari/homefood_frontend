@@ -6,7 +6,6 @@ import { useRef, useState, useEffect } from 'react';
 import { Navigate } from "react-router-dom";
 import { loginUser } from "../utils/regitsterUser";
 import { NavLink, Routes, Route, Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
