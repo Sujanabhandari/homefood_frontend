@@ -15,11 +15,14 @@ import App from './App';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 // import './styles/main.css'
-
+import MainContext from './Componets/MainContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <Router>
-    <App />
+    <MainContext>
+      <App />
+    </MainContext>
   </Router>
 );
 
