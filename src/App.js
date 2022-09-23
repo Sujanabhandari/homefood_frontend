@@ -83,20 +83,14 @@ function App() {
           <Route path="/create_offer" element={<CreatePost />} />
           <Route path="/order_history" element={<OrderHistory />} />
 
-          <Route path="/login" element={<Login
-            isAuthenticated={isAuthenticated}
-            setIsAuthenticated={setIsAuthenticated}
-            setToken={setToken} />} />
+          <Route path="/login" element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
 
-          <Route path="/register"
-            element={<Register
-              isAuthenticated={isAuthenticated}
-              setIsAuthenticated={setIsAuthenticated}
-              setToken={setToken} />} />
+          <Route path="/register" element={<Register isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
           <Route path='secret' element={<ProtectedLayout isAuthenticated={isAuthenticated} />}>
 
+          </Route>
 
-          </Route><Route path="/offer_preview" element={<OfferPreview />} />
+          <Route path="/offer_preview" element={<OfferPreview />} />
         </Route>
       </Routes>
       <Footer />
