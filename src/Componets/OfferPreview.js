@@ -12,9 +12,7 @@ const OfferPreview = () => {
   const location = useLocation();
   console.log(location)
   const offerData = location.state?.formState;
-  console.log(offerData);
   const imagePreview = offerData.image && URL.createObjectURL(offerData.image);
-
 
   const navigate = useNavigate();
 
@@ -27,7 +25,6 @@ const OfferPreview = () => {
         `http://localhost:3000/offers`,
         formData
 
-
       );
       navigate(`/`);
     } catch (error) {
@@ -35,7 +32,6 @@ const OfferPreview = () => {
     }
 
   };
-
 
   return (
     <>
@@ -95,11 +91,8 @@ const OfferPreview = () => {
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
-
                   <button type="submit" class="btn buttonPurple mt-3">Publish</button>
                 </div>
-
-
               </div>
             </form>
           </div>

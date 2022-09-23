@@ -4,9 +4,17 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo-white.png';
 import girl from '../assets/girl.png';
+import { useHomeContext } from './MainContext';
 
 //Use context, 
-const Navbar = ({ isAuthenticated, logout }) => {
+const Navbar = ({logout }) => {
+    
+    const {registerFormState, isAuthenticated}  = useHomeContext();
+
+    const imagePreview = registerFormState.profilePic && URL.createObjectURL(registerFormState.profilePic);
+    const { user } = useHomeContext();
+    console.log("From User Information", user);
+
     return (
         <div>
             <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
@@ -34,10 +42,6 @@ const Navbar = ({ isAuthenticated, logout }) => {
 
 
                         <div className="d-flex gap-3 m-3 align-items-center">
-                            {/* <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
-                            <Link className='text-white'>
-                                <img className="icon-circle-img" src={girl} width="50px" alt="Person" />
-                            </Link> */}
 
                             {!isAuthenticated ? (
                                 <>
@@ -58,7 +62,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
                                     <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
 
                                     <Link className='text-white'>
-                                        <img className="icon-circle-img" src={girl} width="50px" alt="Person" />
+                                        <img className="icon-circle-img" src={user.profilePic} width="55px" alt="Person" />
                                     </Link>
 
                                     <Link className='text-white' >

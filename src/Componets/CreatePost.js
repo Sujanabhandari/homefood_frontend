@@ -9,9 +9,8 @@ import { useHomeContext } from './MainContext';
 import {handleFormData} from '../utils/handleFormData';
 
 const CreatePost = () => {
-    // console.log(handleSubmit())
     const {formState, setFormState}  = useHomeContext();
-
+    
     let formFile = useRef(null);
     let imgFrame = useRef(null);
 
