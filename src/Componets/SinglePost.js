@@ -81,7 +81,7 @@ const SinglePost = ({ posts }) => {
 
               <div className="row">
                 <div className="col text-end">
-                  <button type="button" class="btn buttonPurple mt-3"><i className="bi bi-bag"></i> Reserve now</button>
+                  <button type="button" class="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Reserve now</button>
                 </div>
               </div>
 

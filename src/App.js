@@ -7,6 +7,7 @@ import Navbar from './Componets/Navbar';
 import CreatePost from './Componets/CreatePost';
 import OfferPreview from './Componets/OfferPreview';
 import SinglePost from './Componets/SinglePost';
+import OrderFood from './Componets/OrderFood';
 import Footer from './Componets/Footer'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -67,10 +68,10 @@ function App() {
 
   return (
     <div>
-      {/* 
+      {/*
 
       1.Use context and wrap all the component and each child will all have. */}
-      
+
       <Navbar isAuthenticated={isAuthenticated}
         setToken={setToken} logout={logout} />
 
@@ -78,6 +79,7 @@ function App() {
         <Route path="/" element={<GlobalLayout />} >
           <Route index element={<Home posts={posts} />} />
           <Route path="/:id" element={<SinglePost posts={posts} />} />
+          <Route path="/:id/order" element={<OrderFood posts={posts} />} />
           <Route path="/create_offer" element={<CreatePost />} />
           <Route path="/order_history" element={<OrderHistory />} />
 
@@ -98,7 +100,7 @@ function App() {
         </Route>
       </Routes>
       <Footer />
-    
+
     </div>
   );
 }
