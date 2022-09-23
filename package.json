@@ -25,6 +25,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.8",
     "sass": "^1.54.9",
+    "sweetpagination": "^1.0.15",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

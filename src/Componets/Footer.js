@@ -5,18 +5,17 @@ export default class Footer extends Component {
         return (
             <div>
                 <footer className="bg-primary text-center text-white pb-0">
-                   
+
                     <div className="container p-5">
-                        <h4 className='mb-2'>Connect with us</h4>
-                        <div className="row text-center">
-                            <div className="col">
+                        <h4 className='mb-3'>Connect with us</h4>
+                        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3 text-center d-d-flex flex-row">
+                            <div className="col order-last order-md-first">
                                 <div className="text-center" >
-                                    © 2020 Copyright:
-                                    <a className="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                                    © 2022 Copyright: HomemadeFood
                                 </div>
                             </div>
 
-                            <div className="col text-center">
+                            <div className="col text-center order-first">
                                 <div className='row'>
                                     <div className='col'>
                                         <i className="bi bi-envelope" style={{ fontSize: "25px", color: "black" }} ></i>
@@ -34,7 +33,7 @@ export default class Footer extends Component {
 
 
                             </div>
-                            <div className="col">
+                            <div className="col order-md-last  my-3">
                                 <p>Data Protection | Legal Notice</p>
                             </div>
                         </div>
