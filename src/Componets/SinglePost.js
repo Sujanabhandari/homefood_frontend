@@ -1,8 +1,12 @@
 import { useParams, Link, Outlet } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
+import { useHomeContext } from './MainContext';
+import { getUserByID } from "../utils/regitsterUser";
 
 const SinglePost = ({ posts }) => {
-
+  const {formState, setFormState, user}  = useHomeContext();
+  console.log("From Single Post backend", getUserByID);
+  console.log("From Single Post", user);
   const { id } = useParams();
   const clickedPost = posts?.filter((post) => post._id == id);
 
@@ -10,7 +14,6 @@ const SinglePost = ({ posts }) => {
     <>
       {clickedPost?.map((post, index) => (
         <main>
-
           <div className="album singlePost">
             <div className="container">
               <h1>{post.title}</h1>

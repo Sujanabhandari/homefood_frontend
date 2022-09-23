@@ -6,20 +6,21 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useHomeContext } from './MainContext';
-import {handleFormData} from '../utils/handleFormData';
+import { handleFormData } from '../utils/handleFormData';
 
 const CreatePost = () => {
-    const {formState, setFormState}  = useHomeContext();
-    
+    const { formState, setFormState, user } = useHomeContext();
+
     let formFile = useRef(null);
     let imgFrame = useRef(null);
+    console.log("Author", user)
 
     const handleChange = (e) => {
 
         console.log(e.target.name)
         if (e.target.name === 'specials') {
             setFormState((prev) => {
-               
+
                 return ({ ...prev, specials: [...prev.specials, e.target.value] })
             })
         }
@@ -28,7 +29,6 @@ const CreatePost = () => {
 
 
     const previewUploadedImage = (event) => {
-        console.log("From OFEER LIST", event.target.files[0]);
         setFormState((prev) => ({ ...prev, image: event.target.files[0] }));
     }
 
@@ -38,20 +38,22 @@ const CreatePost = () => {
     const navigate = useNavigate();
 
 
-    // navigate(`/`, { replace: true });
-
-     const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         try {
-
+            
+            console.log("From ROKEN", localStorage.getItem("token"))
             const formData = handleFormData(formState)
+            console.log("From ROKEN", localStorage.getItem("token"))
+            const { data } = await axios.post(
+                `http://localhost:3000/offers/create`,
+                formData, 
+                {
+                    headers:{'Authorization': `${localStorage.getItem("token")}`}
+                }
 
-    const { data } = await axios.post(
-        `http://localhost:3000/offers`,
-        formData
-       
+            );
+            navigate(`/`);
 
-    );
-     navigate(`/`);
         } catch (error) {
             console.log(error)
         }

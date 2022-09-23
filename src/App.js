@@ -18,32 +18,11 @@ import ProtectedLayout from './Componets/ProtectedLayout';
 import { useHomeContext } from './Componets/MainContext';
 
 function App() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(2);
 
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const {user, setUser,token, setToken, isAuthenticated, setIsAuthenticated }  = useHomeContext();
-
-  // const [user, setUser] = useState(null);
-  // const [token, setToken] = useState(localStorage.getItem("token") || null);
-
-  //validate Token
-  // useEffect(() => {
-  //   const validateToken = async () => {
-  //     try {
-  //       const { data, error } = await getUser(token);
-  //       if (error) {
-  //         throw new Error(error.response?.data.error || error.message);
-  //       }
-  //       setUser(data);
-  //       setIsAuthenticated(true);
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   };
-  //   token && validateToken();
-  // }, [token]);
-
 
   useEffect(() => {
     const getPosts = async () => {
@@ -76,6 +55,7 @@ function App() {
         <Route path="/" element={<GlobalLayout />} >
           <Route index element={<Home posts={posts} />} />
           <Route path="/:id" element={<SinglePost posts={posts} />} />
+          {/* <Route path="/users/:id" element={<UserInformation posts={posts} />} /> */}
           <Route path="/create_offer" element={<CreatePost />} />
           <Route path="/order_history" element={<OrderHistory />} />
 

@@ -9,10 +9,8 @@ import { useHomeContext } from './MainContext';
 //Use context, 
 const Navbar = ({logout }) => {
     
-    const {registerFormState, isAuthenticated}  = useHomeContext();
-
+    const {registerFormState, isAuthenticated, user}  = useHomeContext();
     const imagePreview = registerFormState.profilePic && URL.createObjectURL(registerFormState.profilePic);
-    const { user } = useHomeContext();
     console.log("From User Information", user);
 
     return (
@@ -62,7 +60,7 @@ const Navbar = ({logout }) => {
                                     <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
 
                                     <Link className='text-white'>
-                                        <img className="icon-circle-img" src={user.profilePic} width="55px" alt="Person" />
+                                        <img className="icon-circle-img" src={imagePreview} width="55px" alt="Person" />
                                     </Link>
 
                                     <Link className='text-white' >

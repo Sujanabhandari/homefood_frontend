@@ -22,6 +22,16 @@ export const getUser = async (token) => {
     }
   };
 
+  export const getUserByID = async () => {
+    try {
+      console.log("Hello From Users")
+      const response = await axios.get(`http://localhost:3000/users/:id`)
+      return response;
+    } catch (error) {
+      return { error };
+    }
+  };
+
 
 
 export const loginUser = async (formData) => {
