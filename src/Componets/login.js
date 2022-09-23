@@ -1,42 +1,66 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { Component } from 'react';
 import logo from '../assets/logo.png';
 import hero from '../assets/hero-image.png';
 import { useRef, useState, useEffect } from 'react';
 import { Navigate } from "react-router-dom";
-import { loginUser } from "../utils/regitsterUser";
+import { loginUser, getUser } from "../utils/regitsterUser";
 import { NavLink, Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useHomeContext } from './MainContext';
 
-const Login = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
-  const [{ email, password }, setFormState] = useState({
+const Login = () => {
+
+  const [{ email, password }, setLoginFormState] = useState({
     email: "",
     password: ""
   });
 
-  const handleChange = (e) =>
-    setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  const {isAuthenticated, setIsAuthenticated, token, setToken}  = useHomeContext();
 
+  const handleChange = (e) =>
+    setLoginFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
   const navigate = useNavigate();
+
+  //handle Submit
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
+      
       if (!email || !password) return alert("Please fill out all the fields");
 
       const response = await loginUser({ email, password });
-      console.log("Fromm Login", response.headers);
 
       localStorage.setItem("token", response.headers.token);
       setToken(response.headers.token);
       setIsAuthenticated(true);
        navigate('/', { replace: true });
+
+
+      // const { headers } = await loginUser({ email, password });
+
+      // const token = headers["x-authorization-token"];
+
+      // if (token) {
+        
+      //   const userContext = await getUser(token);
+      //   console.log(userContext);
+
+      //  localStorage.setItem("token", userContext);
+      // setToken(userContext);
+      // setIsAuthenticated(true);
+      //  navigate('/', { replace: true });
+      // }
+
     } catch (error) {
       console.log(error)
-      // toast.error(error.message);
+      
     }
   };
-  // if (isAuthenticated) return <Navigate to="/" replace />;
+  
 
 
   return (

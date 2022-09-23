@@ -13,9 +13,7 @@ const OfferPreview = () => {
   const location = useLocation();
   console.log(location)
   const offerData = location.state?.formState;
-  console.log(offerData);
   const imagePreview = offerData.image && URL.createObjectURL(offerData.image);
-
 
   const navigate = useNavigate();
 
@@ -27,6 +25,7 @@ const OfferPreview = () => {
 
   const handleSubmit = async (e) => {
     try {
+
 
         e.preventDefault();
         // if (!title || !description || !quantity || !image || !price || !timeSlot || specials)
@@ -59,7 +58,9 @@ const OfferPreview = () => {
   };
 
 
+
     return (
+
     <>
       <main>
 
@@ -98,6 +99,7 @@ const OfferPreview = () => {
                 </div>
               </div>
 
+
               <div className="col-12 col-md-8 mt-3 mt-md-0">
 
                 <Accordion defaultActiveKey="0">
@@ -132,6 +134,7 @@ const OfferPreview = () => {
             <div className="row">
               <div className="col text-end">
                 <button type="submit" class="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Publish</button>
+
               </div>
             </div>
 

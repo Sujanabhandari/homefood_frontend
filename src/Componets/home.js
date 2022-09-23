@@ -9,11 +9,8 @@ const Home = ({posts}) => {
   return (
     <>
       <main>
-
         <SpecialOffer />
-
         <Categories />
-
         <Post posts={posts}/>
 
       </main>

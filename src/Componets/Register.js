@@ -8,53 +8,45 @@ import { useNavigate } from "react-router-dom";
 
 import { registerUser } from "../utils/regitsterUser";
 import axios from 'axios';
-
+import { useHomeContext } from './MainContext';
 
 const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
-  const [{ userName, email, profilePic, password }, setFormState] = useState({
-    userName: "",
-    email: "",
-    profilePic: "",
-    password: ""
-  });
+  const {registerFormState, setRegisterFormState}  = useHomeContext();
+  
+  console.log(registerFormState)
 
   const handleChange = (e) =>
-    setFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setRegisterFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log("THis is state", { userName, email, profilePic, password })
-      const formData = new FormData();
 
-      formData.append('userName', userName);
-      formData.append('email', email);
-      formData.append('password', password);
-      formData.append('profilePic', profilePic);
+      const formData = new FormData();
+      formData.append('userName', registerFormState.userName);
+      formData.append('email', registerFormState.email);
+      formData.append('password', registerFormState.password);
+      formData.append('profilePic', registerFormState.profilePic);
 
       for (let [key, value] of formData.entries()) {
         console.log(key, value)
     }
 
-      if (!userName || !password || !email)
+      if (!registerFormState.userName || !registerFormState.password || !registerFormState.email)
         return alert("Please fill out all the fields");
         
       const response = await registerUser(
         formData
       );
-      
-      console.log(response);
-
       localStorage.setItem("token", response.headers.token);
       setToken(response.headers.token);
       setIsAuthenticated(true);
-      navigate('/login', { replace: true });
+      navigate('/', { replace: true });
     } catch (error) {
       console.log(error)
-
     }
   };
 
@@ -62,13 +54,10 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
   let imgFrame = useRef(null);
 
   const previewUploadedImage = (event) => {
-    // handleChange();
-    console.log(event.target.files);
-    setFormState((prev) => ({ ...prev, profilePic: event.target.files[0] }));
+    setRegisterFormState((prev) => ({ ...prev, profilePic: event.target.files[0] }));
   }
 
-  const imagePreview = profilePic && URL.createObjectURL(profilePic);
-
+  const imagePreview = registerFormState.profilePic && URL.createObjectURL(registerFormState.profilePic);
 
   return (
     <div>
@@ -89,18 +78,18 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
                   <div className="text-center">
                     <div className="form-outline mb-4">
 
-                      <input type="text" id="userName" className="form-control" placeholder='Full Name' value={userName}
+                      <input type="text" id="userName" className="form-control" placeholder='Full Name' value={registerFormState.userName}
                         onChange={handleChange} />
 
                     </div>
                     <div className="form-outline mb-4">
-                      <input type="email" id="email" className="form-control" placeholder='Email' value={email}
+                      <input type="email" id="email" className="form-control" placeholder='Email' value={registerFormState.email}
                         onChange={handleChange} />
 
                     </div>
 
                     <div className="form-outline mb-2">
-                      <input type="password" id="password" className="form-control" placeholder='Password' value={password}
+                      <input type="password" id="password" className="form-control" placeholder='Password' value={registerFormState.password}
                         onChange={handleChange} />
                     </div>
                     <div>
