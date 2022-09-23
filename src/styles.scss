@@ -4,30 +4,11 @@
 */
 
 /*********** General Styles Start ***********/
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-:root {
-  --textColor: #3a3a3a;
-  --green: #5cbfba;
-  --darkGreen: #48a49f;
-  --grey: #545454;
-  --orange: #fe955e;
-  --lightGrey: #eee;
-  --purple: #bf7da2;
-  --darkPurple: #955679;
-
-  --xs: 0;
-  --sm: 576px;
-  --md: 768px;
-  --lg: 992px;
-  --xl: 1200px;
-  --xxl: 1400px;
-}
+@import "variables";
 
 body {
   font-family: "Nunito", Helvetica, sans-serif !important;
-  color: var(--textColor) !important;
+  color: $textColor !important;
 }
 
 /* Fallback */
@@ -47,41 +28,13 @@ h6 {
 }
 
 .mainContainer {
-  margin: 10rem auto 5rem auto;
+  margin: 8rem auto 3rem auto;
 }
 
-// a {
-//   color: var(--green) !important;
-//   text-decoration: none !important;
-// }
-
-// a:hover {
-//   color: var(--darkGreen) !important;
-// }
-// .btn,
-.buttonGreen {
-  background: var(--green) !important;
-  color: #fff !important;
-  padding: 1rem 3rem;
-  border: none !important;
-  &:hover {
-    background: var(--darkGreen) !important;
-  }
-}
-
-.buttonPurple {
-  background: var(--purple) !important;
-  color: #fff !important;
-  padding: 1rem 3rem;
-  border: none !important;
-  &:hover {
-    background: var(--darkPurple) !important;
-  }
-}
 /* Here starts the codes for header */
 .main-nav {
   // background-color: var(--green) !important;
-  color: white;
+  color: #fff;
   line-height: 80px;
   height: 80px;
   padding-top: 0;
@@ -90,9 +43,9 @@ h6 {
 .icon-circle {
   // display: inline-block;
   border-radius: 20px;
-  box-shadow: 0 0 1px white;
-  background-color: white;
-  color: black;
+  box-shadow: 0 0 1px #fff;
+  background-color: #fff;
+  color: #000;
   padding: 1em 1em;
   // margin: 5px;
 }
@@ -122,13 +75,13 @@ h6 {
   &:nth-child(1) {
     background: #f3f4ff;
     & .discount {
-      color: var(--green) !important;
+      color: $green !important;
     }
   }
   &:nth-child(2) {
     background: #fef2ec;
     & .discount {
-      color: var(--orange) !important;
+      color: $orange !important;
     }
   }
   & .discount {
@@ -137,12 +90,12 @@ h6 {
 }
 
 .catCard {
-  background: var(--lightGrey);
+  background: $lightGrey;
   border: 1px solid #fff;
-  color: var(--green);
+  color: $primary;
   &:hover {
     background: #ccc;
-    border: 1px solid var(--green);
+    border: 1px solid $primary;
   }
 }
 
@@ -154,7 +107,7 @@ h6 {
       top:0;
       right: 0;
       padding: 5px 10px;
-      background: var(--green);
+      background: $primary;
       border-radius: 0 10px 0 10px;
       font-size: 0.8rem;
       color:  #fff;
@@ -175,7 +128,7 @@ h6 {
       content: ("€");
     }
     & .tag {
-      background: var(--lightGrey);
+      background: $lightGrey;
       padding: 0.3rem 1rem;
       border-radius: 10px;
     }
@@ -201,60 +154,84 @@ h6 {
 
 /* Order History Start */
 .orderedFood {
-  background: var(--lightGrey);
+  background: $lightGrey;
   border-radius: 10px;
-  border: 1px solid var(--green);
-  color: var(--grey);
+  border: 1px solid $primary;
+  color: $grey;
   & .foodTitle {
     font-weight: 800;
     font-size: 1.2rem;
-    color: var(--textColor);
+    color: $textColor;
   }
 }
 /* Order History End */
 
-/* Here ends the code starts for Register Form */
+/* Order Food Start */
+.orderFood {
+  & .bg-image {
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+ & .card {
+   margin-top: -100px;
+   background: hsla(0, 0%, 100%, 0.8);
+   backdrop-filter: blur(30px);
+   & .selectQuantity {
+     background: $lightGrey;
+     border-radius: 10px;
+   }
+   &:hover {
+     // transform: scale(0.2);
+   }
+ }
+}
+/* Order Food End */
 
+/* Here ends the code starts for Register Form */
 .divider:after,
 .divider:before {
   content: "";
   flex: 1;
   height: 1px;
-  background: var(--lightGrey);
+  background: $lightGrey;
 }
 
 .left-register {
   padding: 1em 2em;
-  border-color: black;
+  border-color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .right-register {
   width: 700px;
   height: 800px;
-  background: #ffffff;
+  background: #fff;
 }
+
 .btn-color {
-  background-color: #5cbfba;
+  background-color: $primary;
 }
 
 .icon-face {
   color: #3b5998;
 }
+
 .icon-google {
   color: #4285f4;
 }
-
 /* Here ends the code for Register */
 
 /* Here start the code for Create_Post */
 .require {
   color: #666;
 }
+
 label small {
   color: #999;
   font-weight: normal;
 }
-
 /* Here ends the code for Create_Post */

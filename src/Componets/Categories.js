@@ -2,7 +2,7 @@ const Categories = () => {
 
   return (
 
-    <section className="text-center container mb-5">
+    <section className="text-center container mb-5 px-0">
       <div className="row">
 
         <div className="d-flex justify-content-between">
