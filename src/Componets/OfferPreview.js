@@ -7,9 +7,16 @@ import { useNavigate } from "react-router-dom";
 import { useHomeContext } from './MainContext';
 import { useRef, useState } from 'react';
 
+import { handleFormData } from '../utils/handleFormData';
+
 const OfferPreview = () => {
   const location = useLocation();
+  console.log(location)
   const offerData = location.state?.formState;
+  console.log(offerData);
+  const imagePreview = offerData.image && URL.createObjectURL(offerData.image);
+
+
   const navigate = useNavigate();
 
   // const {formState, setFormState}  = useHomeContext();
@@ -20,6 +27,7 @@ const OfferPreview = () => {
 
   const handleSubmit = async (e) => {
     try {
+
         e.preventDefault();
         // if (!title || !description || !quantity || !image || !price || !timeSlot || specials)
         //     return alert("Please fill out all the fields");
@@ -43,11 +51,13 @@ const OfferPreview = () => {
             formData
         );
         navigate(`/home`, { replace: true });
+
     } catch (error) {
-        console.log(error)
+      console.log(error)
     }
 
-};
+  };
+
 
     return (
     <>
@@ -67,6 +77,7 @@ const OfferPreview = () => {
                   </div>
 
                   <div className="card-body">
+
                       <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
                         <div className="col-lg-6 col-md-8">
                           <div className="card-text foodTitle">{offerData.title}</div>
@@ -78,6 +89,7 @@ const OfferPreview = () => {
                           <div className="foodAddress"><i class="bi bi-geo-alt-fill"></i> {offerData.address}</div>
                           <div className="foodCreator">Made by: xy</div>
                         </div>
+
                       </div>
                       <div className="row mt-2">
                         <div className="col"><span className="tag"><i class="bi bi-tag-fill"></i>Tag</span></div>
@@ -130,7 +142,9 @@ const OfferPreview = () => {
 
       </main>
     </>
+
     )
+
 
 }
 

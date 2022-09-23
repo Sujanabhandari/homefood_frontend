@@ -6,24 +6,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useHomeContext } from './MainContext';
+import {handleFormData} from '../utils/handleFormData';
 
 const CreatePost = () => {
+    // console.log(handleSubmit())
     const {formState, setFormState}  = useHomeContext();
-    // console.log(context);
-
-    const [imgsrc, setImgsrc] = useState("");
-
-    // const [formState, setFormState] = useState({
-    //     title: "",
-    //     description: "",
-    //     quantity: "",
-    //     image: "",
-    //     price: "",
-    //     timeSlot: "",
-    //     address: "",
-    //     specials: [],
-    //     categories: ""
-    // });
 
     let formFile = useRef(null);
     let imgFrame = useRef(null);
@@ -51,32 +38,21 @@ const CreatePost = () => {
 
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+
+    // navigate(`/`, { replace: true });
+
+     const handleSubmit = async (e) => {
         try {
-            e.preventDefault();
-            // if (!title || !description || !quantity || !image || !price || !timeSlot || specials)
-            //     return alert("Please fill out all the fields");
-            const formData = new FormData();
-            formData.append('title', formState.title);
-            formData.append('description', formState.description);
-            formData.append('quantity', formState.quantity);
-            formData.append('image', formState.image);
-            formData.append('price', formState.price);
-            formData.append('address', formState.address);
-            formData.append('timeSlot', formState.timeSlot);
-            formData.append('specials', JSON.stringify(formState.specials));
-            formData.append('categories', formState.categories);
 
-            for (let [key, value] of formData.entries()) {
-                console.log(key, value)
-            }
+            const formData = handleFormData(formState)
 
-            const { data } = await axios.post(
-                `http://localhost:3000/offers`,
-                formData
+    const { data } = await axios.post(
+        `http://localhost:3000/offers`,
+        formData
+       
 
-            );
-            navigate(`/`, { replace: true });
+    );
+     navigate(`/`);
         } catch (error) {
             console.log(error)
         }
@@ -244,7 +220,7 @@ const CreatePost = () => {
                             <button type="submit" className="btn btn-secondary text-white ">
                                 Publish Your Post
                             </button>
-                            <Link to='/offer_preview' state={{ formState: formState }} className="btn btn-secondary text-white ms-5">
+                            <Link to='/offer_preview' state={{ formState: formState, imagePreview }} className="btn btn-secondary text-white ms-5">
                                 Preview Your Post
                             </Link>
                         </div>
