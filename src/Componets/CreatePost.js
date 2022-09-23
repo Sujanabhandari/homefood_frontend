@@ -13,11 +13,10 @@ const CreatePost = () => {
 
     let formFile = useRef(null);
     let imgFrame = useRef(null);
-    console.log("Author", user)
+
 
     const handleChange = (e) => {
 
-        console.log(e.target.name)
         if (e.target.name === 'specials') {
             setFormState((prev) => {
 
@@ -41,9 +40,9 @@ const CreatePost = () => {
     const handleSubmit = async (e) => {
         try {
             
-            console.log("From ROKEN", localStorage.getItem("token"))
+            e.preventDefault();
             const formData = handleFormData(formState)
-            console.log("From ROKEN", localStorage.getItem("token"))
+     
             const { data } = await axios.post(
                 `http://localhost:3000/offers/create`,
                 formData, 
@@ -52,8 +51,8 @@ const CreatePost = () => {
                 }
 
             );
-            navigate(`/`);
-
+            // setFormState(null);
+            navigate(`/`, { replace: false });
         } catch (error) {
             console.log(error)
         }

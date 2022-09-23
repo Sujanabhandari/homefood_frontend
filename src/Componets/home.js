@@ -12,7 +12,6 @@ const Home = ({posts}) => {
         <SpecialOffer />
         <Categories />
         <Post posts={posts}/>
-
       </main>
     </>
 
