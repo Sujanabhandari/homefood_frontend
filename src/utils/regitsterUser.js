@@ -5,6 +5,7 @@ export const getUser = async (token) => {
     const { data } = await axios.get(`http://localhost:3000/me`, {
       headers: { Authorization: token }
     });
+    console.log("Authorixe", data)
     return { data };
   } catch (error) {
     return { error };

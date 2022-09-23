@@ -12,13 +12,8 @@ import { useHomeContext } from './MainContext';
 
 const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
-  // const [{ userName, email, profilePic, password }, setRegisterFormState] = useState({
-  //   userName: "",
-  //   email: "",
-  //   profilePic: "",
-  //   password: ""
-  // });
   const {registerFormState, setRegisterFormState}  = useHomeContext();
+  
   console.log(registerFormState)
 
   const handleChange = (e) =>

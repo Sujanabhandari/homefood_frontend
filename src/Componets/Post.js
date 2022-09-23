@@ -3,8 +3,7 @@ import * as React from "react";
 import { useState } from "react";
 
 const Post = ({ posts }) => {
-console.log(posts);
-
+console.log(posts.specials);
   return (
     <>
       <div className="album">

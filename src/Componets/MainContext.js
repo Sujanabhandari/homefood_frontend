@@ -34,12 +34,15 @@ export default function MainContext({children})
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
+
       const validateToken = async () => {
+        console.log("test")
         try {
           const { data, error } = await getUser(token);
           if (error) {
             throw new Error(error.response?.data.error || error.message);
           }
+          console.log(data)
           setUser(data);
           setIsAuthenticated(true);
         } catch (error) {  
