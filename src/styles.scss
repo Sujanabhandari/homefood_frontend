@@ -28,7 +28,7 @@ h6 {
 }
 
 .mainContainer {
-  margin: 10rem auto 5rem auto;
+  margin: 8rem auto 3rem auto;
 }
 
 /* Here starts the codes for header */
@@ -181,6 +181,9 @@ h6 {
    & .selectQuantity {
      background: $lightGrey;
      border-radius: 10px;
+   }
+   &:hover {
+     // transform: scale(0.2);
    }
  }
 }

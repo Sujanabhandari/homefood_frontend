@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import * as React from "react";
 import { useState } from "react";
+import SweetPagination from "sweetpagination";
 
 const Post = ({ posts }) => {
-console.log(posts.specials);
+
   return (
     <>
       <div className="album">
@@ -46,6 +47,7 @@ console.log(posts.specials);
           ))}
 
           </div>
+
         </div>
       </div>
     </>
