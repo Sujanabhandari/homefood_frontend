@@ -19,9 +19,7 @@ import ProtectedLayout from './Componets/ProtectedLayout';
 import { useHomeContext } from './Componets/MainContext';
 
 function App() {
-  const [posts, setPosts] = useState(2);
-
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [posts, setPosts] = useState([]);
 
   const {user, setUser,token, setToken, isAuthenticated, setIsAuthenticated }  = useHomeContext();
 

@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { Link } from "react-router-dom";
 import * as React from "react";
 import { useState } from "react";
-import SweetPagination from "sweetpagination";
+// import SweetPagination from "sweetpagination";
 
 const Post = ({ posts }) => {
 
+  console.log("From Post", posts)
   return (
     <>
       <div className="album">

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useParams, Link, Outlet } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
 import { useHomeContext } from './MainContext';
@@ -8,7 +9,9 @@ const SinglePost = ({ posts }) => {
   console.log("From Single Post backend", getUserByID);
   console.log("From Single Post", user);
   const { id } = useParams();
+
   const clickedPost = posts?.filter((post) => post._id == id);
+  console.log("Single Post", clickedPost)
 
   return (
     <>
@@ -78,7 +81,7 @@ const SinglePost = ({ posts }) => {
 
               <div className="row">
                 <div className="col text-end">
-                  <button type="button" class="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Reserve now</button>
+                  <Link type="button" to={`/${post._id}/order`} class="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Reserve now</Link>
                 </div>
               </div>
 
