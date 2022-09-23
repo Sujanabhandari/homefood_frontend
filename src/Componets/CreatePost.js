@@ -39,7 +39,7 @@ const CreatePost = () => {
 
     const handleSubmit = async (e) => {
         try {
-            
+            //Solve error
             e.preventDefault();
             const formData = handleFormData(formState)
      
