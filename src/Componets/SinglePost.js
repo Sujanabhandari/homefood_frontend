@@ -6,8 +6,10 @@ import { getUserByID } from "../utils/regitsterUser";
 
 const SinglePost = ({ posts }) => {
   const {formState, setFormState, user}  = useHomeContext();
+
   console.log("From Single Post backend", getUserByID);
-  console.log("From Single Post", user);
+  console.log("From Single Post", posts);
+  
   const { id } = useParams();
 
   const clickedPost = posts?.filter((post) => post._id == id);
@@ -38,7 +40,7 @@ const SinglePost = ({ posts }) => {
                           <div className="col-lg-6 col-md-8 text-end">
                             <div className="foodQuantity">{post.quantity} meals left</div>
                             <div className="foodAddress"><i class="bi bi-geo-alt-fill"></i> {post.address}</div>
-                            <div className="foodCreator">Made by: xy</div>
+                            <div className="foodCreator">Made by: {post.creatorId.userName}</div>
                           </div>
                         </div>
                         <div className="row mt-2">
@@ -63,11 +65,11 @@ const SinglePost = ({ posts }) => {
                       <div className="row g-3">
                         <div className="col-12 col-md-4">
                           <div className="wrapperImgCreator">
-                            <img src={post.image} />
+                            <img src={post.creatorId.profilePic} />
                           </div>
                         </div>
                         <div className="col-12 col-md-8">
-                          Name XYZ<br />
+                          Name {post.creatorId.userName}<br />
                           Joined at: dd.mm.yyyy<br />
                           Rating 5/5<br />
                         </div>
@@ -81,7 +83,7 @@ const SinglePost = ({ posts }) => {
 
               <div className="row">
                 <div className="col text-end">
-                  <Link type="button" to={`/${post._id}/order`} class="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Reserve now</Link>
+                  <Link type="button" to={`/offers/${post._id}/order`} class="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Reserve now</Link>
                 </div>
               </div>
 

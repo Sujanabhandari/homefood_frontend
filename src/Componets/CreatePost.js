@@ -11,6 +11,7 @@ import { handleFormData } from '../utils/handleFormData';
 const CreatePost = () => {
     const { formState, setFormState, user } = useHomeContext();
 
+    console.log(user);
     let formFile = useRef(null);
     let imgFrame = useRef(null);
 
@@ -68,29 +69,29 @@ const CreatePost = () => {
                     <h4 className='fs-2 mb-4 fw-bolder'>Create post</h4>
                     <div className="col-md-8 col-md-2">
                         <div className="form-group mb-4">
-                            <label for="title" className="form-label fs-5 fw-bold">Title</label>
+                            <label htmlFor="title" className="form-label fs-5 fw-bold">Title</label>
                             {/* <p className=''>Title</p> */}
                             <input type="text" value={formState.title} onChange={handleChange} className="form-control" name="title" id="title" placeholder="Title" />
                         </div>
                         <div className="form-group mb-4">
-                            <label for="description" className="form-label fs-5 fw-bold">Description</label>
+                            <label htmlFor="description" className="form-label fs-5 fw-bold">Description</label>
                             <textarea className="form-control" id="description" rows="3" value={formState.description} name="description" onChange={handleChange}></textarea>
                         </div>
                         <div className="form-group mb-4">
-                            <label for="timeSlot" className="form-label fs-5 fw-bold">Time Slot</label>
+                            <label htmlFor="timeSlot" className="form-label fs-5 fw-bold">Time Slot</label>
                             <input type="text" className="form-control" id="timeSlot" placeholder="Time Slot" name="timeSlot" value={formState.timeSlot} onChange={handleChange} />
                         </div>
                         <div className="form-group mb-4">
-                            <label for="address" className="form-label fs-5 fw-bold">Address</label>
+                            <label htmlFor="address" className="form-label fs-5 fw-bold">Address</label>
                             <input type="text" className="form-control" id="address" placeholder="Address" name="address" value={formState.address} onChange={handleChange} />
                         </div>
                         <div className="form-group mb-4">
-                            <label for="price" className="form-label fs-5 fw-bold">Price</label>
+                            <label htmlFor="price" className="form-label fs-5 fw-bold">Price</label>
                             <input type="text" className="form-control" id="price" placeholder="Price" name="price" value={formState.price} onChange={handleChange} />
                         </div>
 
                         <div className="form-group mb-4">
-                            <label for="quantity" className="form-label fs-5 fw-bold">Total Quanity</label>
+                            <label htmlFor="quantity" className="form-label fs-5 fw-bold">Total Quanity</label>
                             <input type="number" className="form-control" id="quantity" placeholder="Quantity" name="quantity" value={formState.quantity} onChange={handleChange} />
                         </div>
                         <div>
@@ -184,19 +185,19 @@ const CreatePost = () => {
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" id="Vegan" name="specials" value="Vegan" onChange={handleChange} />
-                                <label className="form-check-label" for="Vegan">
+                                <label className="form-check-label" htmlFor="Vegan">
                                     Vegan
                                 </label>
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" id="MilkIntolerance" name="specials" value="Milk Intolerance" onChange={handleChange} />
-                                <label className="form-check-label" for="MilkIntolerance">
+                                <label className="form-check-label" htmlFor="MilkIntolerance">
                                     Milk Intolerance
                                 </label>
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" id="OfferPackaging" name="specials" value="Offer Packaging" onChange={handleChange} />
-                                <label className="form-check-label" for="OfferPackaging">
+                                <label className="form-check-label" htmlFor="OfferPackaging">
                                     Offer Packaging
                                 </label>
                             </div>

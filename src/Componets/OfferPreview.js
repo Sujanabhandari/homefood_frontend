@@ -12,12 +12,10 @@ import { handleFormData } from '../utils/handleFormData';
 const OfferPreview = () => {
 
   const { formState, setFormState, user } = useHomeContext();
-
-  // const location = useLocation();
-  // console.log(location)
-  // const formState = location.state?.formState;
-  // console.log("formState", formState)
   const imagePreview = formState.image && URL.createObjectURL(formState.image);
+
+
+  console.log("From Offer Preview", user)
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -68,9 +66,8 @@ const OfferPreview = () => {
                         <div className="col-lg-6 col-md-8 text-end">
                           <div className="foodQuantity">{formState.quantity} meals left</div>
                           <div className="foodAddress"><i class="bi bi-geo-alt-fill"></i> {formState.address}</div>
-                          <div className="foodCreator">Made by: xy</div>
+                          <div className="foodCreator">Made by: {user.userName}</div>
                         </div>
-
                       </div>
                       <div className="row mt-2">
                         <div className="col"><span className="tag"><i class="bi bi-tag-fill"></i>Tag</span></div>
@@ -95,11 +92,11 @@ const OfferPreview = () => {
                         <div className="row g-3">
                           <div className="col-12 col-md-4">
                             <div className="wrapperImgCreator">
-                              <img src={imagePreview} />
+                              <img src={user.profilePic} />
                             </div>
                           </div>
                           <div className="col-12 col-md-8">
-                            Name XYZ<br />
+                            {user.userName}<br />
                             Joined at: dd.mm.yyyy<br />
                             Rating 5/5<br />
                           </div>
