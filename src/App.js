@@ -52,10 +52,11 @@ function App() {
       <Routes>
         <Route path="/" element={<GlobalLayout />} >
           <Route index element={<Home posts={posts} />} />
-          <Route path="/:id" element={<SinglePost posts={posts} />} />
-          <Route path="/:id/order" element={<OrderFood posts={posts} />} />
+          <Route path="/offers/:id" element={<SinglePost posts={posts} />} />
+          <Route path="/offers/:id/order" element={<OrderFood posts={posts} />} />
 
           <Route path="/create_offer" element={<CreatePost />} />
+
           <Route path="/order_history" element={<OrderHistory />} />
 
           <Route path="/login" element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
