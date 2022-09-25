@@ -7,8 +7,8 @@ import { getUserByID } from "../utils/regitsterUser";
 const SinglePost = ({ posts }) => {
   const {formState, setFormState, user}  = useHomeContext();
 
-  console.log("From Single Post backend", getUserByID);
-  console.log("From Single Post", posts);
+  // console.log("From Single Post backend", getUserByID);
+  // console.log("From Single Post", posts);
   
   const { id } = useParams();
 
@@ -19,7 +19,7 @@ const SinglePost = ({ posts }) => {
     <>
       {clickedPost?.map((post, index) => (
         <main>
-          <div className="album singlePost">
+          <div className="album singlePost" key={index}>
             <div className="container">
               <h1>{post.title}</h1>
               <div className="row">
@@ -34,17 +34,17 @@ const SinglePost = ({ posts }) => {
                         <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
                           <div className="col-lg-6 col-md-8">
                             <div className="card-text foodTitle">{post.title}</div>
-                            <div className="foodTime"><i class="bi bi-clock"></i> Collect: {post.timeSlot}</div>
+                            <div className="foodTime"><i className="bi bi-clock"></i> Collect: {post.timeSlot}</div>
                             <div className="price">{post.price} </div>
                           </div>
                           <div className="col-lg-6 col-md-8 text-end">
                             <div className="foodQuantity">{post.quantity} meals left</div>
-                            <div className="foodAddress"><i class="bi bi-geo-alt-fill"></i> {post.address}</div>
+                            <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
                             <div className="foodCreator">Made by: {post.creatorId.userName}</div>
                           </div>
                         </div>
                         <div className="row mt-2">
-                          <div className="col"><span className="tag"><i class="bi bi-tag-fill"></i>Tag</span></div>
+                          <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i>Tag</span></div>
                         </div>
                     </div>
                   </div>
@@ -83,7 +83,7 @@ const SinglePost = ({ posts }) => {
 
               <div className="row">
                 <div className="col text-end">
-                  <Link type="button" to={`/offers/${post._id}/order`} class="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Reserve now</Link>
+                  <Link type="button" to={`/offers/${post._id}/order`} className="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Reserve now</Link>
                 </div>
               </div>
 

@@ -11,7 +11,7 @@ import { handleFormData } from '../utils/handleFormData';
 const CreatePost = () => {
     const { formState, setFormState, user } = useHomeContext();
 
-    console.log(user);
+    // console.log(user);
     let formFile = useRef(null);
     let imgFrame = useRef(null);
 
@@ -99,37 +99,37 @@ const CreatePost = () => {
                             <div className='row mb-3'>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Greek" name="categories" value="Greek" onChange={handleChange} />
-                                    <label className="form-check-label" for="Greek">
+                                    <label className="form-check-label" htmlFor="Greek">
                                         Greek
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Indian" name="categories" value="Indian" onChange={handleChange} />
-                                    <label className="form-check-label" for="Indian">
+                                    <label className="form-check-label" htmlFor="Indian">
                                         Indian
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Nepali" name="categories" value="Nepali" onChange={handleChange} />
-                                    <label className="form-check-label" for="Nepali">
+                                    <label className="form-check-label" htmlFor="Nepali">
                                         Nepali
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Romanian" name="categories" value="Nepali" onChange={handleChange} />
-                                    <label className="form-check-label" for="Romanian">
+                                    <label className="form-check-label" htmlFor="Romanian">
                                         Romanian
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="German" name="categories" value="German" onChange={handleChange} />
-                                    <label className="form-check-label" for="German">
+                                    <label className="form-check-label" htmlFor="German">
                                         German
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Italian" name="categories" value="Italian" onChange={handleChange} />
-                                    <label className="form-check-label" for="Italian">
+                                    <label className="form-check-label" htmlFor="Italian">
                                         Italian
                                     </label>
                                 </div>
@@ -137,37 +137,37 @@ const CreatePost = () => {
                             <div className='row mb-3'>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Spanish" name="categories" value="Spanish" onChange={handleChange} />
-                                    <label className="form-check-label" for="Spanish">
+                                    <label className="form-check-label" htmlFor="Spanish">
                                         Spanish
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Philippines" name="categories" value="Philippines" onChange={handleChange} />
-                                    <label className="form-check-label" for="Philippines">
+                                    <label className="form-check-label" htmlFor="Philippines">
                                         Philippines
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Japanese" name="categories" value="Japanese" onChange={handleChange} />
-                                    <label className="form-check-label" for="Japanese">
+                                    <label className="form-check-label" htmlFor="Japanese">
                                         Japanese
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Chinese" name="categories" value="Chinese" onChange={handleChange} />
-                                    <label className="form-check-label" for="Chinese">
+                                    <label className="form-check-label" htmlFor="Chinese">
                                         Chinese
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Switzerland" name="categories" value="Switzerland" onChange={handleChange} />
-                                    <label className="form-check-label" for="Switzerland">
+                                    <label className="form-check-label" htmlFor="Switzerland">
                                         Switzerland
                                     </label>
                                 </div>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Korean" name="categories" value="Korean" onChange={handleChange} />
-                                    <label className="form-check-label" for="Korean">
+                                    <label className="form-check-label" htmlFor="Korean">
                                         Korean
                                     </label>
                                 </div>
@@ -179,7 +179,7 @@ const CreatePost = () => {
                             <p className='fw-bolder'>Specials</p>
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" id="specials" name="specials" value="Vegetarian" onChange={handleChange} />
-                                <label className="form-check-label" for="Vegetarian">
+                                <label className="form-check-label" htmlFor="Vegetarian">
                                     Vegetarian
                                 </label>
                             </div>
