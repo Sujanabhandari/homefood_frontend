@@ -10,7 +10,7 @@ import { useHomeContext } from './MainContext';
 const Navbar = ({logout }) => {
     
     const {registerFormState, isAuthenticated, user}  = useHomeContext();
-    console.log("From User Navbar", user);
+    // console.log("From User Navbar", user);
 
     return (
         <div>
@@ -60,7 +60,7 @@ const Navbar = ({logout }) => {
                                         <img className="icon-circle-img" src={user.profilePic} width="55px" alt="Person" />
                                     </Link>
                                     <Link className='text-white' >
-                                    <i class="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
+                                    <i className="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
                                     </Link>
                                 </>
                             )}

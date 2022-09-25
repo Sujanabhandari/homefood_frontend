@@ -15,46 +15,52 @@ const OrderFood = ({ posts }) => {
 
   const clickedPost = posts?.filter((post) => post._id == id);
 
-
   const creatorInformation = clickedPost.map((post) =>  post);
 
-  console.log("Creator", creatorInformation[0].creatorId._id);
+  // console.log("Creator", creatorInformation[0].creatorId._id);
 
-  console.log("Order Info", creatorInformation[0]._id)
+  // console.log("Order Info", creatorInformation[0]._id)
 
 
-  const [pricecounter, setPricecounter] = useState(1);
+  const [quantityCounter, setquantityCounter] = useState(1);
   const [show, setShow] = useState(false);
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const increase = () => {
-    if (pricecounter > -1 && mealsleft > 0)
-      setPricecounter(count => count + 1);
+
+  const increase = (e) => {
+    e.preventDefault();
+    if (quantityCounter > -1 && mealsleft > 0)
+      setquantityCounter(count => count + 1);
   };
-  const decrease = () => {
-    if (pricecounter > 0)
-      setPricecounter(count => count - 1);
+
+  const decrease = (e) => {
+    e.preventDefault();
+    if (quantityCounter > 0)
+      setquantityCounter(count => count - 1);
   }
   const sumfunction = clickedPost.map(post => {
-    return post.price * pricecounter;
+    return post.price * quantityCounter;
   })
   const mealsleft = clickedPost.map(post => {
-    return post.quantity - pricecounter;
+    return post.quantity - quantityCounter;
   })
 
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    console.log("From handle Submit");
+    // console.log("From handle Submit");
     try {
       e.preventDefault();
+      console.log("quantityCounter", quantityCounter)
       const formData = handleFormData(formState);
       const { data } = await axios.post(
         `http://localhost:3000/offers/${id}/order`,
         {
           creatorId:creatorInformation[0].creatorId._id, 
-          offerId: creatorInformation[0]._id
+          offerId: creatorInformation[0]._id,
+          quantity:quantityCounter
         },
         {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }
@@ -73,23 +79,23 @@ const OrderFood = ({ posts }) => {
     <>
       {clickedPost?.map((post, index) => (
 
-        <main>
+        <main key={index}>
           <form onSubmit={handleSubmit}>
-          <section class="text-center orderFood">
-            <div class="p-5 bg-image" style={{ backgroundImage: `url(${post.image})` }}></div>
-            <div class="card mx-4 mx-md-5 shadow-5-strong">
-              <div class="card-body py-5 px-md-5">
+          <section className="text-center orderFood">
+            <div className="p-5 bg-image" style={{ backgroundImage: `url(${post.image})` }}></div>
+            <div className="card mx-4 mx-md-5 shadow-5-strong">
+              <div className="card-body py-5 px-md-5">
 
-                <div class="row d-flex justify-content-center">
-                  <div class="col-lg-8">
-                    <h2 class="fw-bold mb-5">Choose your payment</h2>
+                <div className="row d-flex justify-content-center">
+                  <div className="col-lg-8">
+                    <h2 className="fw-bold mb-5">Choose your payment</h2>
 
 
-                    <div class="row">
-                      <div class="col">
+                    <div className="row">
+                      <div className="col">
 
-                        <h5><i class="bi bi-clock"></i> Collect: {post.timeSlot}</h5>
-                        <h5><i class="bi bi-geo-alt-fill"></i> {post.address}</h5>
+                        <h5><i className="bi bi-clock"></i> Collect: {post.timeSlot}</h5>
+                        <h5><i className="bi bi-geo-alt-fill"></i> {post.address}</h5>
 
                         <div className="selectQuantity my-5 py-5">
 
@@ -98,19 +104,19 @@ const OrderFood = ({ posts }) => {
 
                           <div className="mt-1">
 
-                            <button onClick={decrease} class="btn btn-secondary text-white btn-block mb-4">
-                              <i class="bi bi-dash-circle"></i>
+                            <button onClick={decrease} className="btn btn-secondary text-white btn-block mb-4">
+                              <i className="bi bi-dash-circle"></i>
                             </button>
-                            <button onClick={increase} class="btn btn-secondary text-white btn-block mb-4 mx-1">
-                              <i class="bi bi-plus-circle"></i>
+                            <button onClick={increase} className="btn btn-secondary text-white btn-block mb-4 mx-1">
+                              <i className="bi bi-plus-circle"></i>
                             </button>
-                            <div id="pricecounter">Order: {pricecounter} meals</div>
+                            <div id="quantityCounter">Order: {quantityCounter} meals</div>
 
                           </div>
 
                         </div>
 
-                        <table class="table mt-5">
+                        <table className="table mt-5">
                           <thead>
                             <tr>
                               <th scope="col">Foodname</th>
@@ -122,7 +128,7 @@ const OrderFood = ({ posts }) => {
                           <tbody>
                             <tr>
                               <th scope="row">{post.title}</th>
-                              <td>{pricecounter}</td>
+                              <td>{quantityCounter}</td>
                               <td>{post.price} €</td>
                               <td>{sumfunction} €</td>
                             </tr>
@@ -130,12 +136,12 @@ const OrderFood = ({ posts }) => {
                         </table>
 
                         <div className="mt-5">
-                          <button type="submit" class="btn btn-secondary text-white btn-block mb-4 mx-1" onClick={handleShow}>
-                            <i class="bi bi-cash-coin"></i> Pay in cash
+                          <button type="submit" className="btn btn-secondary text-white btn-block mb-4 mx-1" onClick={handleShow}>
+                            <i className="bi bi-cash-coin"></i> Pay in cash
                           </button>
 
-                          <button type="button" class="btn btn-secondary text-white btn-block mb-4">
-                            <i class="bi bi-paypal"></i> PayPal
+                          <button type="button" className="btn btn-secondary text-white btn-block mb-4">
+                            <i className="bi bi-paypal"></i> PayPal
                           </button>
                         </div>
 
@@ -154,7 +160,6 @@ const OrderFood = ({ posts }) => {
                             </Button>
                           </Modal.Footer>
                         </Modal>
-
 
                       </div>
                     </div>
