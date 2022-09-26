@@ -47,7 +47,7 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <Navbar isAuthenticated={isAuthenticated}
         setToken={setToken} logout={logout} />
 
@@ -73,9 +73,9 @@ function App() {
           <Route path="/offer_preview" element={<OfferPreview />} />
         </Route>
       </Routes>
-      <Footer />
 
-    </div>
+      <Footer />
+    </>
   );
 }
 export default App;

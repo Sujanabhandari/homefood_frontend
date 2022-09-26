@@ -16,8 +16,7 @@ const SinglePost = ({ posts }) => {
   return (
     <>
       {clickedPost?.map((post, index) => (
-        <main>
-          <div className="album singlePost">
+          <section className="album singlePost">
             <div className="container">
               <h1>{post.title}</h1>
               <div className="row">
@@ -86,9 +85,7 @@ const SinglePost = ({ posts }) => {
               </div>
 
             </div>
-          </div>
-
-        </main>
+          </section>
       ))}
     </>
   );

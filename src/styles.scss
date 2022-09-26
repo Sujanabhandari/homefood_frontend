@@ -11,6 +11,10 @@ body {
   color: $textColor !important;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Fallback */
 h1 {
   font-weight: 600;
@@ -27,7 +31,7 @@ h6 {
   font-weight: 400;
 }
 
-.mainContainer {
+main {
   margin: 8rem auto 3rem auto;
 }
 
@@ -173,11 +177,6 @@ h6 {
       object-fit: cover;
     }
   }
-  & .bi-star:hover::before {
-    content: ("\F586");
-    font-family: "bootstrap-icons";
-    color: $orange;
-  }
 }
 /* Order History End */
 
@@ -303,3 +302,7 @@ label small {
   font-weight: normal;
 }
 /* Here ends the code for Create_Post */
+
+/* Here starts the codes for footer */
+
+/* Here end the codes for footer */

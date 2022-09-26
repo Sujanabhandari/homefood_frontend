@@ -29,7 +29,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      
+
       if (!email || !password) return alert("Please fill out all the fields");
 
       const response = await loginUser({ email, password });
@@ -45,7 +45,7 @@ const Login = () => {
       // const token = headers["x-authorization-token"];
 
       // if (token) {
-        
+
       //   const userContext = await getUser(token);
       //   console.log(userContext);
 
@@ -57,17 +57,17 @@ const Login = () => {
 
     } catch (error) {
       console.log(error)
-      
+
     }
   };
-  
+
 
 
   return (
     <>
-      <main className="login-page" style={{marginTop: "200px"}}>
-        
-          <div className="col-lg-8 mx-auto p-4 py-md-5">
+      <section className="login-page">
+
+          <div className="col-lg-8 mx-auto">
 
             <div className="row g-5">
 
@@ -78,15 +78,13 @@ const Login = () => {
                   <h1 className="h3 mb-3 fw-bold mt-5">Login</h1>
                   <p>Sign in with your data that you entered during your registration.</p>
 
-                  <div className="form-floating">
+                  <div className="form-outline mb-4">
                     <input type="email" className="form-control" id="email" placeholder="name@example.com" value={email}
-                      onChange={handleChange} />
-                    <label for="email">Email address</label>
+                      onChange={handleChange} required/>
                   </div>
-                  <div className="form-floating mt-2">
+                  <div className="form-outline mb-4">
                     <input type="password" className="form-control" id="password" placeholder="Password" value={password}
-                      onChange={handleChange} />
-                    <label for="password">Password</label>
+                      onChange={handleChange} required />
                   </div>
 
                   <div className="checkbox mt-2 mb-3">
@@ -94,11 +92,11 @@ const Login = () => {
                       <input type="checkbox" value="remember-me" /> Remember me
                     </label>
                   </div>
-                  <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                  <p className="mt-5 mb-3 text-center"><a href="#">Forgot password</a></p>
+                  <button className="w-100 btn btn-secondary text-white " type="submit">Login</button>
+                  <p className="mt-4 mb-3 text-center"><a href="#">Forgot password</a></p>
                 </form>
 
-                <p className="mt-5 mb-3 text-center">Don’t have an account? <Link to='/register'>Signup</Link></p>
+                <p className="mt-2 mb-3 text-center">Don’t have an account? <Link to='/register'>Signup</Link></p>
 
               </div>
 
@@ -109,15 +107,8 @@ const Login = () => {
             </div>
 
           </div>
-      
-      </main>
-      <footer className="pt-5 my-5 text-muted border-top text-center">
-        <p className="mt-5 mb-3 text-muted">
-          &copy; 2022 HandMade
-          <br />
-          <a href="legal-notice.html">Legal Notice</a> | <a href="data-protection.html">Data Protection</a>
-        </p>
-      </footer>
+
+      </section>
     </>
   )
 }

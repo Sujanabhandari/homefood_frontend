@@ -42,10 +42,10 @@ const CreatePost = () => {
             //Solve error
             e.preventDefault();
             const formData = handleFormData(formState)
-     
+
             const { data } = await axios.post(
                 `http://localhost:3000/offers/create`,
-                formData, 
+                formData,
                 {
                     headers:{'Authorization': `${localStorage.getItem("token")}`}
                 }
@@ -60,7 +60,7 @@ const CreatePost = () => {
     };
 
     return (
-        <div className="container">
+        <section className="container">
             {/* <form method='POST' action='/publish_post' onSubmit={handleSubmit}> */}
             <form onSubmit={handleSubmit}>
                 <div className="row mt-5">
@@ -227,7 +227,7 @@ const CreatePost = () => {
                     </div>
                 </div>
             </form>
-        </div>
+        </section>
     )
 }
 

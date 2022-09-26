@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 
 export default class Footer extends Component {
     render() {
         return (
-            <div>
-                <footer className="bg-primary text-center text-white pb-0">
+                <footer className="bg-primary text-center text-white py-3 mt-auto">
 
-                    <div className="container p-5">
-                        <h4 className='mb-3'>Connect with us</h4>
-                        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3 text-center d-d-flex flex-row">
+                    <div className="container">
+                        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3 text-center d-d-flex flex-row align-items-center">
                             <div className="col order-last order-md-first">
                                 <div className="text-center" >
-                                    © 2022 Copyright: HomemadeFood
+                                    © 2022 Copyright HomemadeFood
                                 </div>
                             </div>
 
@@ -33,13 +32,12 @@ export default class Footer extends Component {
 
 
                             </div>
-                            <div className="col order-md-last  my-3">
-                                <p>Data Protection | Legal Notice</p>
+                            <div className="col order-md-last">
+                                <Link to="#" className="text-white">Data Protection</Link> | <Link to="#" className="text-white">Legal Notice</Link>
                             </div>
                         </div>
                     </div>
                 </footer >
-            </div >
         )
     }
 }

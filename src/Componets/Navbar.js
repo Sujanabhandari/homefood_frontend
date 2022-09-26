@@ -6,15 +6,15 @@ import logo from '../assets/logo-white.png';
 import girl from '../assets/girl.png';
 import { useHomeContext } from './MainContext';
 
-//Use context, 
+//Use context,
 const Navbar = ({logout }) => {
-    
+
     const {registerFormState, isAuthenticated, user}  = useHomeContext();
     const imagePreview = registerFormState.profilePic && URL.createObjectURL(registerFormState.profilePic);
     console.log("From User Information", user);
 
     return (
-        <div>
+        <header>
             <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
                 <div className="container">
                     <a className="navbar-brand" href="/"><img src={logo} width="48px" alt="Logo HomeMade" /></a>
@@ -43,16 +43,16 @@ const Navbar = ({logout }) => {
 
                             {!isAuthenticated ? (
                                 <>
-                                    
+
                                         <Link to="/login" className="nav-link active text-white">
                                             Login
                                         </Link>
-                                    
-                                  
+
+
                                         <Link to="/register" className="nav-link active text-white">
                                             Register
                                         </Link>
-                                  
+
                                 </>
                             ) : (
                                 <>
@@ -76,7 +76,7 @@ const Navbar = ({logout }) => {
                     </div>
                 </div>
             </nav>
-        </div>
+        </header>
     )
 
 }

@@ -44,12 +44,8 @@ const OrderFood = ({ posts }) => {
     <>
       {clickedPost?.map((post, index) => (
 
-        <main>
-
-          <section class="text-center orderFood">
+        <section class="text-center orderFood">
           <div class="p-5 bg-image" style ={{ backgroundImage: `url(${post.image})`}}></div>
-
-
 
           <div class="card mx-4 mx-md-5 shadow-5-strong">
             <div class="card-body py-5 px-md-5">
@@ -137,9 +133,8 @@ const OrderFood = ({ posts }) => {
               </div>
             </div>
           </div>
-          </section>
+        </section>
 
-        </main>
       ))}
     </>
   );
