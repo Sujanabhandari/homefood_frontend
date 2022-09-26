@@ -1,14 +1,20 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
-
+import { useEffect } from 'react';
 const ratingChanged = (newRating) => {
   console.log("Rating", newRating);
 };
 
-class OrderHistory extends Component {
-  render() {
+const OrderHistory = () => {
+  
+  console.log("Form Accoutn",useLocation())
+  const {state:{orders}} = useLocation()
+
+  // const data = state;
+  console.log(orders);
+
     return (
     <>
       <section className="container">
@@ -76,7 +82,7 @@ class OrderHistory extends Component {
       </section>
     </>
     )
-  }
+  
 }
 
 export default OrderHistory;

@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-class OrdersReceived extends Component {
-  render() {
+const OrdersReceived = () => {
+
     return (
     <>
       <section className="container dashboard">
@@ -47,7 +47,7 @@ class OrdersReceived extends Component {
       </section>
     </>
     )
-  }
+
 }
 
 export default OrdersReceived;
