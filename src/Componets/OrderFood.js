@@ -24,7 +24,7 @@ const OrderFood = ({ posts }) => {
 
   const [quantityCounter, setquantityCounter] = useState(1);
   const [show, setShow] = useState(false);
-  
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -60,7 +60,7 @@ const OrderFood = ({ posts }) => {
         {
           creatorId:creatorInformation[0].creatorId._id, 
           offerId: creatorInformation[0]._id,
-          quantity:quantityCounter
+          order_quantity:quantityCounter
         },
         {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }

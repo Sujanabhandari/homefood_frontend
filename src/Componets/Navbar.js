@@ -57,7 +57,7 @@ const Navbar = ({logout }) => {
                                 <>
                                     <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
                                     <Link className='text-white'>
-                                        <img className="icon-circle-img" src={user.profilePic} width="55px" alt="Person" />
+                                        <img className="icon-circle-img" src={user?.profilePic} width="55px" alt="Person" />
                                     </Link>
                                     <Link className='text-white' >
                                     <i className="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
