@@ -62,7 +62,8 @@ function App() {
           <Route path="/order_history" element={<OrderHistory />} />
           <Route path="/orders_received" element={<OrdersReceived />} />
 
-          <Route path="/my_account" element={<MyAccount />} />
+          <Route path="/my_account" element={<MyAccount isAuthenticated={isAuthenticated}
+        setToken={setToken}/>} />
 
           <Route path="/login" element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
 

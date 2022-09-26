@@ -34,7 +34,8 @@ const SinglePost = ({ posts }) => {
                             <div className="price">{post.price} </div>
                           </div>
                           <div className="col-lg-6 col-md-8 text-end">
-                          {post.quantity ? <div className="foodQuantity">{post.quantity} meals left</div> :<div>Sold Out</div>}
+                          {post.quantity ? <div className="foodQuantity">{post.quantity} meals left</div> :
+                          <button type="button" className="btn btn-sm btn-outline-secondary reserve">Sold Out</button>}
                             <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
                             <div className="foodCreator">Made by: {post.creatorId?.userName}</div>
                           </div>

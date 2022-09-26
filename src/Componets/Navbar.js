@@ -56,7 +56,7 @@ const Navbar = ({ logout }) => {
                                 <>
                                      <Link className='nav-link text-white' to="/create_offer">Create Offer</Link>
                                     <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
-                                    <Link className='text-white'>
+                                    <Link className='text-white' to='/my_account'>
                                         <img className="icon-circle-img" src={user?.profilePic} width="55px" alt="Person" />
                                     </Link>
                                     <Link className='text-white' >
