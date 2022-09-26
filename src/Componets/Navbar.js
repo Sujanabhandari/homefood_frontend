@@ -6,12 +6,10 @@ import logo from '../assets/logo-white.png';
 import girl from '../assets/girl.png';
 import { useHomeContext } from './MainContext';
 
-//Use context,
-const Navbar = ({logout }) => {
+ 
+const Navbar = ({ logout }) => {
 
-    const {registerFormState, isAuthenticated, user}  = useHomeContext();
-    const imagePreview = registerFormState.profilePic && URL.createObjectURL(registerFormState.profilePic);
-    console.log("From User Information", user);
+    const { registerFormState, isAuthenticated, user } = useHomeContext();
 
     return (
         <header>
@@ -23,9 +21,9 @@ const Navbar = ({logout }) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className='nav-link text-white' to="/create_offer">Create Offer</Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <Link className='nav-link text-white'>Deals</Link>
                             </li>
@@ -44,28 +42,27 @@ const Navbar = ({logout }) => {
                             {!isAuthenticated ? (
                                 <>
 
-                                        <Link to="/login" className="nav-link active text-white">
-                                            Login
-                                        </Link>
+                                    <Link to="/login" className="nav-link active text-white">
+                                        Login
+                                    </Link>
 
 
-                                        <Link to="/register" className="nav-link active text-white">
-                                            Register
-                                        </Link>
+                                    <Link to="/register" className="nav-link active text-white">
+                                        Register
+                                    </Link>
 
                                 </>
                             ) : (
                                 <>
-
+                                     <Link className='nav-link text-white' to="/create_offer">Create Offer</Link>
                                     <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
-
                                     <Link className='text-white'>
-                                        <img className="icon-circle-img" src={imagePreview} width="55px" alt="Person" />
+                                        <img className="icon-circle-img" src={user?.profilePic} width="55px" alt="Person" />
+                                    </Link>
+                                    <Link className='text-white' >
+                                        <i className="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
                                     </Link>
 
-                                    <Link className='text-white' >
-                                    <i class="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
-                                    </Link>
                                 </>
                             )}
                         </div>
