@@ -13,7 +13,7 @@ import { useHomeContext } from './MainContext';
 const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
   const {registerFormState, setRegisterFormState}  = useHomeContext();
-  
+
   console.log(registerFormState)
 
   const handleChange = (e) =>
@@ -37,7 +37,7 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
       if (!registerFormState.userName || !registerFormState.password || !registerFormState.email)
         return alert("Please fill out all the fields");
-        
+
       const response = await registerUser(
         formData
       );
@@ -60,11 +60,11 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
   const imagePreview = registerFormState.profilePic && URL.createObjectURL(registerFormState.profilePic);
 
   return (
-    <div>
-      <section className="d-flex mh-100 align-items-center min-vh-100">
+    <>
+      <section className="register">
         <div className="container">
           <form onSubmit={handleSubmit}>
-            <div className="row justify-content-center bg-primary rounded-3 align-items-center my-5">
+            <div className="row justify-content-center bg-primary rounded-3 align-items-center">
               <div className="col-md-5 rounded-3 p-5">
                 <h2 className='text-white'>Healthy Home Made Food Made With Love For You</h2>
               </div>
@@ -78,19 +78,19 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
                   <div className="text-center">
                     <div className="form-outline mb-4">
 
-                      <input type="text" id="userName" className="form-control" placeholder='Full Name' value={registerFormState.userName}
-                        onChange={handleChange} />
+                      <input type="text" id="userName" className="form-control" placeholder='Full Name *' value={registerFormState.userName}
+                        onChange={handleChange} required />
 
                     </div>
                     <div className="form-outline mb-4">
-                      <input type="email" id="email" className="form-control" placeholder='Email' value={registerFormState.email}
-                        onChange={handleChange} />
+                      <input type="email" id="email" className="form-control" placeholder='Email *' value={registerFormState.email}
+                        onChange={handleChange} required />
 
                     </div>
 
                     <div className="form-outline mb-2">
-                      <input type="password" id="password" className="form-control" placeholder='Password' value={registerFormState.password}
-                        onChange={handleChange} />
+                      <input type="password" id="password" className="form-control" placeholder='Password *' value={registerFormState.password}
+                        onChange={handleChange} required />
                     </div>
                     <div>
                       {/* <p className='fw-bold'>Upload you Profile Picture</p> */}
@@ -100,19 +100,21 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
                         onChange={previewUploadedImage}
                       />
                     </div>
-                    <button className="btn btn-block mb-3 btn-color mt-2" type="submit">Create Account</button>
+                    <p><small className="text-muted">* required fields</small></p>
+                    <button className="btn btn-secondary text-white" type="submit">Sign up</button>
                   </div>
                 </div>
                 <div className='mt-4'>
                   <p>Already have an account?
-                    <Link to='/login'>Log In</Link> </p>
+                    &nbsp;<Link to='/login'>Log in</Link>
+                  </p>
                 </div>
               </div>
             </div>
           </form>
         </div>
       </section>
-    </div>
+    </>
   )
 }
 

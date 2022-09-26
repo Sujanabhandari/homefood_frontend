@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 const GlobalLayout = () => {
 
   return (
-    <div className="container mainContainer">
+    <main className="d-flex flex-column min-vh-100">
       <Outlet />
-    </div>
+    </main>
   );
 };
 

@@ -40,9 +40,7 @@ const OfferPreview = () => {
   return (
 
     <>
-      <main>
-
-        <div className="album singlePost">
+        <section className="album singlePost">
           <div className="container">
             <h1>Preview</h1>
 
@@ -118,9 +116,7 @@ const OfferPreview = () => {
             </form>
 
           </div>
-        </div>
-
-      </main>
+        </section>
     </>
 
   )

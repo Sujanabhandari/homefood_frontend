@@ -11,6 +11,10 @@ body {
   color: $textColor !important;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Fallback */
 h1 {
   font-weight: 600;
@@ -27,7 +31,7 @@ h6 {
   font-weight: 400;
 }
 
-.mainContainer {
+main {
   margin: 8rem auto 3rem auto;
 }
 
@@ -163,8 +167,71 @@ h6 {
     font-size: 1.2rem;
     color: $textColor;
   }
+  & .wrapperImg {
+  width: 50px;
+  height: 50px;
+    & img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 }
 /* Order History End */
+
+/* Orders Received Start */
+.ordersReceived {
+  background: $lightGrey;
+  border-radius: 10px;
+  border: 1px solid $primary;
+  color: $grey;
+  & .foodTitle {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: $textColor;
+  }
+  & .wrapperImg {
+  width: 50px;
+  height: 50px;
+    & img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+/* Order Received End */
+
+/* My Account Start */
+.dashboardLinks {
+  text-decoration: none;
+}
+
+.dashboardOptions {
+  background: $lightGrey;
+  border-radius: 10px;
+  border: 1px solid $primary;
+  color: $grey;
+  &:hover {
+    background: $darkGrey;
+  }
+  & .btn {
+    pointer-events: none;
+  }
+  & .tagline {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: $textColor;
+  }
+  & .subline {
+    font-weight: 600;
+    font-size: 1rem;
+    color: $textColor;
+  }
+}
+/* My Account End */
 
 /* Order Food Start */
 .orderFood {
@@ -235,3 +302,7 @@ label small {
   font-weight: normal;
 }
 /* Here ends the code for Create_Post */
+
+/* Here starts the codes for footer */
+
+/* Here end the codes for footer */

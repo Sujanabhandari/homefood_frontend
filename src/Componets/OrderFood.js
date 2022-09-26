@@ -52,6 +52,7 @@ const OrderFood = ({ posts }) => {
   })
 
 
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -84,7 +85,7 @@ const OrderFood = ({ posts }) => {
     <>
       {clickedPost?.map((post, index) => (
 
-        <main key={index}>
+        <section key={index}>
           <form onSubmit={handleSubmit}>
           <section className="text-center orderFood">
             <div className="p-5 bg-image" style={{ backgroundImage: `url(${post.image})` }}></div>
@@ -173,9 +174,10 @@ const OrderFood = ({ posts }) => {
                 </div>
               </div>
             </div>
+
           </section>
           </form>
-        </main>
+        </section>
       ))}
     </>
   );
