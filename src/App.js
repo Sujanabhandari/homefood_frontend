@@ -6,6 +6,8 @@ import Register from './Componets/Register';
 import Navbar from './Componets/Navbar';
 import CreatePost from './Componets/CreatePost';
 import OfferPreview from './Componets/OfferPreview';
+import OrdersReceived from './Componets/OrdersReceived';
+import MyAccount from './Componets/MyAccount';
 import SinglePost from './Componets/SinglePost';
 import OrderFood from './Componets/OrderFood';
 import Footer from './Componets/Footer'
@@ -57,6 +59,9 @@ function App() {
 
           <Route path="/create_offer" element={<CreatePost />} />
           <Route path="/order_history" element={<OrderHistory />} />
+          <Route path="/orders_received" element={<OrdersReceived />} />
+
+          <Route path="/my_account" element={<MyAccount />} />
 
           <Route path="/login" element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
 
