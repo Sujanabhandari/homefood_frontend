@@ -3,22 +3,19 @@ import { useParams, Link, Outlet } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
 import { useHomeContext } from './MainContext';
 import { getUserByID } from "../utils/regitsterUser";
+import { useState } from "react";
 
 const SinglePost = ({ posts }) => {
   const {formState, setFormState, user}  = useHomeContext();
 
-  // console.log("From Single Post backend", getUserByID);
-  // console.log("From Single Post", posts);
-  
   const { id } = useParams();
 
   const clickedPost = posts?.filter((post) => post._id == id);
-  console.log("Single Post", clickedPost)
 
   return (
     <>
       {clickedPost?.map((post, index) => (
-        <main>
+        <main key={{index}}>
           <div className="album singlePost" key={index}>
             <div className="container">
               <h1>{post.title}</h1>
@@ -38,9 +35,9 @@ const SinglePost = ({ posts }) => {
                             <div className="price">{post.price} </div>
                           </div>
                           <div className="col-lg-6 col-md-8 text-end">
-                            <div className="foodQuantity">{post.quantity} meals left</div>
+                          {post.quantity ? <div className="foodQuantity">{post.quantity} meals left</div> :<div>Sold Out</div>}
                             <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
-                            <div className="foodCreator">Made by: {post.creatorId.userName}</div>
+                            <div className="foodCreator">Made by: {post.creatorId?.userName}</div>
                           </div>
                         </div>
                         <div className="row mt-2">
@@ -65,11 +62,11 @@ const SinglePost = ({ posts }) => {
                       <div className="row g-3">
                         <div className="col-12 col-md-4">
                           <div className="wrapperImgCreator">
-                            <img src={post.creatorId.profilePic} />
+                            <img src={post.creatorId?.profilePic} />
                           </div>
                         </div>
                         <div className="col-12 col-md-8">
-                          Name {post.creatorId.userName}<br />
+                          Name {post.creatorId?.userName}<br />
                           Joined at: dd.mm.yyyy<br />
                           Rating 5/5<br />
                         </div>
@@ -83,7 +80,12 @@ const SinglePost = ({ posts }) => {
 
               <div className="row">
                 <div className="col text-end">
-                  <Link type="button" to={`/offers/${post._id}/order`} className="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Reserve now</Link>
+                {post.quantity ? <Link type="button" to={`/offers/${post._id}/order`} className="btn btn-secondary text-white mt-3">
+                  <i className="bi bi-bag"></i>Reserve now</Link> :
+                  <div>
+                  <button type="button" className="btn btn-secondary text-white mt-3" disabled>
+                 Sold Out</button>
+                  </div>}
                 </div>
               </div>
 
