@@ -42,7 +42,9 @@ const Post = ({ posts }) => {
                         <div className="price">{post.price} </div>
                       </div>
                       <div className="col-lg-6 col-md-8 text-end">
-                        {post.quantity ? <button type="button" className="btn btn-sm btn-outline-secondary reserve"><i className="bi bi-bag"></i>{post.quantity} meals left</button> : <div>Sold Out</div>}
+                        {post.quantity ? <button type="button" className="btn btn-sm btn-outline-secondary reserve">
+                          <i className="bi bi-bag"></i>{post.quantity} meals left</button> : 
+                          <button type="button" className="btn btn-sm btn-outline-secondary reserve">Sold Out</button>}
 
                         <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
                         <div className="foodCreator">Home Made by: {post.creatorId?.userName}</div>

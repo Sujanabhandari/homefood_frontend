@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 
 const ratingChanged = (newRating) => {
-  console.log(newRating);
+  console.log("Rating", newRating);
 };
 
 class OrderHistory extends Component {
@@ -58,11 +58,16 @@ class OrderHistory extends Component {
               <div className="p-2">Home Made by: Sujana</div>
               <div className="p-2 ratingBar">
                 <span>Rate creator: </span>
-                <Link to='' className="rate_1"><i class="bi bi-star"></i></Link>
-                <Link to='' className="rate_2"><i class="bi bi-star"></i></Link>
-                <Link to='' className="rate_3"><i class="bi bi-star"></i></Link>
-                <Link to='' className="rate_4"><i class="bi bi-star"></i></Link>
-                <Link to='' className="rate_5"><i class="bi bi-star"></i></Link>
+                <ReactStars
+                    count={5}
+                    onChange={ratingChanged}
+                    size={24}
+                    isHalf={true}
+                    emptyIcon={<i className="far fa-star"></i>}
+                    halfIcon={<i className="fa fa-star-half-alt"></i>}
+                    fullIcon={<i className="fa fa-star"></i>}
+                    activeColor="#ffd700"
+                  />
               </div>
             </div>
           </div>
