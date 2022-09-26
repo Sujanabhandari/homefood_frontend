@@ -11,7 +11,7 @@ const OrderFood = ({ posts }) => {
 
   const { formState, setFormState, user } = useHomeContext();
 
-
+  console.log("Form users",user);
   
   const availiableMeals = posts.map((post) =>  post.quantity - post.reserved_quantity);
   console.log("Availiable Meals", availiableMeals[0]);
@@ -77,9 +77,7 @@ const OrderFood = ({ posts }) => {
     } catch (error) {
       console.log(error)
     }
-
   };
-
 
   return (
     <>
