@@ -11,16 +11,21 @@ const OrderFood = ({ posts }) => {
 
   const { formState, setFormState, user } = useHomeContext();
 
+
+  
+  const availiableMeals = posts.map((post) =>  post.quantity - post.reserved_quantity);
+  console.log("Availiable Meals", availiableMeals[0]);
+  
+
   const { id } = useParams();
+
+  
 
   const clickedPost = posts?.filter((post) => post._id == id);
 
   const creatorInformation = clickedPost.map((post) =>  post);
 
-  // console.log("Creator", creatorInformation[0].creatorId._id);
-
-  // console.log("Order Info", creatorInformation[0]._id)
-
+  // console.log("Creator", creatorInformation[0]._id);
 
   const [quantityCounter, setquantityCounter] = useState(1);
   const [show, setShow] = useState(false);
@@ -100,7 +105,7 @@ const OrderFood = ({ posts }) => {
                         <div className="selectQuantity my-5 py-5">
 
                           <h5>Choose your quantity</h5>
-                          <p>{mealsleft} meals available</p>
+                          <p>{post.quantity} meals available</p>
 
                           <div className="mt-1">
 
