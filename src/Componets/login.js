@@ -38,23 +38,6 @@ const Login = () => {
       setToken(response.headers.token);
       setIsAuthenticated(true);
        navigate('/', { replace: true });
-
-
-      // const { headers } = await loginUser({ email, password });
-
-      // const token = headers["x-authorization-token"];
-
-      // if (token) {
-        
-      //   const userContext = await getUser(token);
-      //   console.log(userContext);
-
-      //  localStorage.setItem("token", userContext);
-      // setToken(userContext);
-      // setIsAuthenticated(true);
-      //  navigate('/', { replace: true });
-      // }
-
     } catch (error) {
       console.log(error)
       
@@ -81,12 +64,12 @@ const Login = () => {
                   <div className="form-floating">
                     <input type="email" className="form-control" id="email" placeholder="name@example.com" value={email}
                       onChange={handleChange} />
-                    <label for="email">Email address</label>
+                    <label fhtor="email">Email address</label>
                   </div>
                   <div className="form-floating mt-2">
                     <input type="password" className="form-control" id="password" placeholder="Password" value={password}
                       onChange={handleChange} />
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                   </div>
 
                   <div className="checkbox mt-2 mb-3">
