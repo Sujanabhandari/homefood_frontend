@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 export default class Footer extends Component {
     render() {
         return (
-                <footer className="bg-primary text-center text-white py-3 mt-auto">
+                <footer className="bg-primary text-white py-4 mt-auto">
 
                     <div className="container">
-                        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3 text-center d-d-flex flex-row align-items-center">
-                            <div className="col order-last order-md-first">
-                                <div className="text-center" >
+                        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3 d-d-flex flex-row justify-content-between align-items-center">
+                            <div className="col order-last order-md-first text-center text-md-start">
+                                <div>
                                     © 2022 Copyright HomemadeFood
                                 </div>
                             </div>
 
-                            <div className="col text-center order-first">
+                            <div className="col order-first text-center">
                                 <div className='row'>
                                     <div className='col'>
                                         <i className="bi bi-envelope" style={{ fontSize: "25px", color: "black" }} ></i>
@@ -32,7 +32,7 @@ export default class Footer extends Component {
 
 
                             </div>
-                            <div className="col order-md-last">
+                            <div className="col order-md-last text-center text-md-end">
                                 <Link to="#" className="text-white">Data Protection</Link> | <Link to="#" className="text-white">Legal Notice</Link>
                             </div>
                         </div>

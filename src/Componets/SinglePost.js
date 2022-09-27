@@ -21,7 +21,7 @@ const SinglePost = ({ posts }) => {
               <div className="row">
                 <div className="col-12 col-md-4">
                   <div className="card shadow-sm">
-                    <div className="created">{post.date}</div>
+                    <div className="foodQuantity">{post.quantity} meals left</div>
                     <div className="featured">{post.categories}</div>
                     <div className="wrapperImg">
                       <img src={post.image} />
@@ -35,8 +35,7 @@ const SinglePost = ({ posts }) => {
                             <div className="price">{post.price} </div>
                           </div>
                           <div className="col-lg-6 col-md-8 text-end">
-                          {post.quantity ? <div className="foodQuantity">{post.quantity} meals left</div> :
-                          <button type="button" className="btn btn-sm btn-outline-secondary reserve">Sold Out</button>}
+                            <div>&nbsp;</div>
                             <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
                             <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
                           </div>
