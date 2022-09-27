@@ -10,6 +10,8 @@ const SinglePost = ({ posts }) => {
 
   const { id } = useParams();
 
+  console.log("From users", user);
+
   const clickedPost = posts?.filter((post) => post._id == id);
 
   return (

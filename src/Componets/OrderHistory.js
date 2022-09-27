@@ -2,23 +2,60 @@
 import React, { Component } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useHomeContext } from './MainContext';
+import axios from 'axios';
 
-const ratingChanged = (newRating) => {
-  console.log("Rating", newRating);
-};
 
 const OrderHistory = () => {
   const { user } = useHomeContext();
-  const { state } = useLocation()
+  const { state } = useLocation();
+  const [customerRating, setCustomerRating] = useState(0);
 
-  console.log("From Order History", state.customerId);
-  console.log("From User History", user);
-
+  console.log("From state History", state);
 
   const offerHistory = state?.filter((history) => history.customerId._id == user._id);
-  console.log("Form Comparioson", offerHistory);
+  console.log("Form Comparioson", offerHistory[0].creatorId._id);
+
+  const ratingChanged = async (newRating) => {
+    setCustomerRating(newRating);
+    try {
+      // event.preventDefault();
+      const { data } = await axios.post(
+        `http://localhost:3000/ratings`,
+        {
+          rating: newRating,
+          creatorId: offerHistory[0].creatorId._id, 
+          customerId: user._id,
+        },
+      
+      );
+
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  console.log("Customer Ratings", customerRating);
+
+
+  // const handleSubmit = async (e) => {
+  //   // console.log("From handle Submit");
+  //   try {
+  //     e.preventDefault();
+  //     const { data } = await axios.post(
+  //       `http://localhost:3000/ratings`,
+  //       {
+  //         creatorId: offerHistory[0].creatorId._id, 
+  //         customerId: user._id,
+  //       },
+      
+  //     );
+
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // };
 
 
   return (
