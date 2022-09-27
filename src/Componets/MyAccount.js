@@ -19,8 +19,7 @@ const MyAccount = () => {
     };
     getOrders();
   }, []);
-  console.log("Form Accoutn",orders)
-  console.log("Form Accoutn",useLocation())
+
 
     return (
     <>
@@ -30,7 +29,7 @@ const MyAccount = () => {
           <div className="col">
             <Link className="dashboardLinks" to='/create_offer' state={orders}>
             <div className="d-flex flex-column flex-md-row flex-row align-items-center dashboardOptions p-3">
-              <div className="p-2"><button class="btn btn-primary text-white"><i class="bi bi-house-heart"></i></button></div>
+              <div className="p-2"><button className="btn btn-primary text-white"><i className="bi bi-house-heart"></i></button></div>
               <div className="p-2">
                 <span className="tagline"> My kitchen</span><br/>
                 <span className="subline"> Personal information</span>
@@ -44,7 +43,7 @@ const MyAccount = () => {
         <div className="col">
           <Link className="dashboardLinks" to='/orders_received' state={orders}>
           <div className="d-flex flex-column flex-md-row flex-row align-items-center dashboardOptions p-3">
-            <div className="p-2"><button class="btn btn-primary text-white"><i class="bi bi-calendar2-heart"></i></button></div>
+            <div className="p-2"><button className="btn btn-primary text-white"><i className="bi bi-calendar2-heart"></i></button></div>
             <div className="p-2">
               <span className="tagline"> Order Recieved</span><br/>
               <span className="subline"> Orders received by you</span>
@@ -57,7 +56,7 @@ const MyAccount = () => {
         <div className="col">
           <Link className="dashboardLinks" to='/order_history' state={orders}>
           <div className="d-flex flex-column flex-md-row flex-row align-items-center dashboardOptions p-3">
-            <div className="p-2"><button class="btn btn-primary text-white"><i class="bi bi-calendar2-heart"></i></button></div>
+            <div className="p-2"><button className="btn btn-primary text-white"><i className="bi bi-calendar2-heart"></i></button></div>
             <div className="p-2">
               <span className="tagline"> Order history</span><br/>
               <span className="subline"> My orders</span>

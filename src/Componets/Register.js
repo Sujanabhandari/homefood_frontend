@@ -14,8 +14,6 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
   const {registerFormState, setRegisterFormState}  = useHomeContext();
 
-  console.log(registerFormState)
-
   const handleChange = (e) =>
     setRegisterFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
