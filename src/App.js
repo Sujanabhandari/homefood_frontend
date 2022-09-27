@@ -2,6 +2,7 @@ import './App.css';
 import Login from './Componets/login.js'
 import Home from './Componets/home.js';
 import OrderHistory from './Componets/OrderHistory.js';
+import OfferHistory from './Componets/OfferHistory.js';
 import Register from './Componets/Register';
 import Navbar from './Componets/Navbar';
 import CreatePost from './Componets/CreatePost';
@@ -17,6 +18,7 @@ import GlobalLayout from './Componets/GlobalLayout';
 import { NavLink, Routes, Route, Link } from "react-router-dom";
 import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 import { useHomeContext } from './Componets/MainContext';
 
@@ -62,6 +64,7 @@ function App() {
           <Route path="/create_offer" element={<CreatePost />} />
 
           <Route path="/order_history" element={<OrderHistory />} />
+          <Route path="/offer_history" element={<OfferHistory />} />
           <Route path="/orders_received" element={<OrdersReceived />} />
 
           <Route path="/my_account" element={<MyAccount isAuthenticated={isAuthenticated}

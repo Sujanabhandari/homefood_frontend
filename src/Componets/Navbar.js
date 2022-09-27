@@ -20,24 +20,25 @@ const Navbar = ({ logout }) => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {/* <li className="nav-item">
-                                <Link className='nav-link text-white' to="/create_offer">Create Offer</Link>
-                            </li> */}
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
                             <li className="nav-item">
                                 <Link className='nav-link text-white'>Deals</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <Link className='nav-link text-white'>My Orders</Link>
                             </li>
-                            <form className="d-flex ms-4" role="search">
+                            {!isAuthenticated ? (
+                            <></>
+                            ) : ( <li className="nav-item"><Link className='nav-link text-white' to="/create_offer" title="Create Offer">Create Offer</Link></li> ) 
+                            }
+                            <form className="d-flex ms-0 ms-md-4 order-first order-md-3 d-none d-md-inline-flex search" role="search">
                                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-light text-white" type="submit">Search</button>
+                                <button className="btn btn-outline-light text-white" type="submit"><i class="bi bi-search-heart"></i></button>
                             </form>
                         </ul>
 
 
-                        <div className="d-flex gap-3 m-3 align-items-center">
+                        <div className="d-flex gap-3 m-3 justify-content-between align-items-center">
 
                             {!isAuthenticated ? (
                                 <>
@@ -54,7 +55,6 @@ const Navbar = ({ logout }) => {
                                 </>
                             ) : (
                                 <>
-                                    <Link className='nav-link text-white' to="/create_offer" title="Create Offer">Create Offer</Link>
                                     <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
                                     <Link className='text-white' to='/my_account' title="My Account">
                                     <div className="wrapperImg d-block d-md-inline-block mx-auto">
