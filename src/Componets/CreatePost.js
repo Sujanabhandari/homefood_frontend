@@ -81,8 +81,7 @@ const CreatePost = () => {
                         <div className="form-group mb-4">
                             <label htmlFor="timeSlot" className="form-label fw-bold">Time Slot</label> <small>(example: 12.30-02:00 pm)</small>
                             <br />
-                            {/* <input type="text" className="form-control" id="timeSlot" placeholder="Time Slot *" name="timeSlot" value={formState.timeSlot} onChange={handleChange} required /> */}
-                            <TimeRangePicker />
+                            <input type="text" className="form-control" id="timeSlot" placeholder="Time Slot *" name="timeSlot" value={formState.timeSlot} onChange={handleChange} required />
                         </div>
                         <div className="form-group mb-4">
                             <label htmlFor="address" className="form-label fw-bold">Address</label>

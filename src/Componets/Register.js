@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/alt-text */
 
 import React, { Component } from 'react'
@@ -93,7 +94,8 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
                       {/* <p className='fw-bold'>Upload you Profile Picture</p> */}
                       <input className="form-control mb-3" type="file" ref={formFile} id="profilePic" onChange={previewUploadedImage} />
                       <div className="wrapperImg d-block d-md-inline-block mx-auto">
-                        <img ref={imgFrame} src={imagePreview} />
+                        {imagePreview?<img ref={imgFrame} src={imagePreview}/>: <p></p>}
+                        {/* <img ref={imgFrame} src={imagePreview}/> */}
                       </div>
                     </div>
                     <p className="text-muted text-start"><small>* required fields</small></p>
