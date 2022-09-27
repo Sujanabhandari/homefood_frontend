@@ -54,13 +54,17 @@ const Navbar = ({ logout }) => {
                                 </>
                             ) : (
                                 <>
-                                     <Link className='nav-link text-white' to="/create_offer">Create Offer</Link>
+                                    <Link className='nav-link text-white' to="/create_offer" title="Create Offer">Create Offer</Link>
                                     <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
-                                    <Link className='text-white' to='/my_account'>
-                                        <img className="icon-circle-img" src={user?.profilePic} width="55px" alt="Person" />
+                                    <Link className='text-white' to='/my_account' title="My Account">
+                                    <div className="wrapperImg d-block d-md-inline-block mx-auto">
+                                        <img className="icon-circle-img" src={user?.profilePic} alt="User" />
+                                        <i class="bi bi-person"></i>
+                                    </div>
+                
                                     </Link>
                                     <Link className='text-white' >
-                                        <i className="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
+                                        <i className="bi bi-box-arrow-right icon-circle" onClick={logout} title="Logout"></i>
                                     </Link>
 
                                 </>

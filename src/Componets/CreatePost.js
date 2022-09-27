@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useHomeContext } from './MainContext';
 import { handleFormData } from '../utils/handleFormData';
+import TimeRangePicker from '@wojtekmaj/react-timerange-picker'
 
 const CreatePost = () => {
     const { formState, setFormState, user } = useHomeContext();
@@ -61,44 +62,46 @@ const CreatePost = () => {
     };
 
     return (
-        <section className="container">
+        <section className="container createPost">
             {/* <form method='POST' action='/publish_post' onSubmit={handleSubmit}> */}
             <form onSubmit={handleSubmit}>
                 <div className="row mt-5">
 
-                    <h4 className='fs-2 mb-4 fw-bolder'>Create post</h4>
-                    <div className="col-md-8 col-md-2">
+                    <h4 className="fs-2 mb-4 fw-bolder">Create post</h4>
+                    <div className="col-md-8">
                         <div className="form-group mb-4">
-                            <label htmlFor="title" className="form-label fs-5 fw-bold">Title</label>
+                            <label htmlFor="title" className="form-label fw-bold">Title</label>
                             {/* <p className=''>Title</p> */}
-                            <input type="text" value={formState.title} onChange={handleChange} className="form-control" name="title" id="title" placeholder="Title" />
+                            <input type="text" value={formState.title} onChange={handleChange} className="form-control" name="title" id="title" placeholder="Title *" required />
                         </div>
                         <div className="form-group mb-4">
-                            <label htmlFor="description" className="form-label fs-5 fw-bold">Description</label>
-                            <textarea className="form-control" id="description" rows="3" value={formState.description} name="description" onChange={handleChange}></textarea>
+                            <label htmlFor="description" className="form-label fw-bold">Description</label>
+                            <textarea className="form-control" id="description" rows="3" value={formState.description} name="description" placeholder="Description *" onChange={handleChange} required ></textarea>
                         </div>
                         <div className="form-group mb-4">
-                            <label htmlFor="timeSlot" className="form-label fs-5 fw-bold">Time Slot</label>
-                            <input type="text" className="form-control" id="timeSlot" placeholder="Time Slot" name="timeSlot" value={formState.timeSlot} onChange={handleChange} />
+                            <label htmlFor="timeSlot" className="form-label fw-bold">Time Slot</label> <small>(example: 12.30-02:00 pm)</small>
+                            <br />
+                            {/* <input type="text" className="form-control" id="timeSlot" placeholder="Time Slot *" name="timeSlot" value={formState.timeSlot} onChange={handleChange} required /> */}
+                            <TimeRangePicker />
                         </div>
                         <div className="form-group mb-4">
-                            <label htmlFor="address" className="form-label fs-5 fw-bold">Address</label>
-                            <input type="text" className="form-control" id="address" placeholder="Address" name="address" value={formState.address} onChange={handleChange} />
+                            <label htmlFor="address" className="form-label fw-bold">Address</label>
+                            <input type="text" className="form-control" id="address" placeholder="Address *" name="address" value={formState.address} onChange={handleChange} required />
                         </div>
                         <div className="form-group mb-4">
-                            <label htmlFor="price" className="form-label fs-5 fw-bold">Price</label>
-                            <input type="text" className="form-control" id="price" placeholder="Price" name="price" value={formState.price} onChange={handleChange} />
+                            <label htmlFor="price" className="form-label fw-bold">Price</label> <small>(in €)</small>
+                            <input type="text" className="form-control" id="price" placeholder="Price *" name="price" value={formState.price} onChange={handleChange} required />
                         </div>
 
                         <div className="form-group mb-4">
-                            <label htmlFor="quantity" className="form-label fs-5 fw-bold">Total Quanity</label>
-                            <input type="number" className="form-control" id="quantity" placeholder="Quantity" name="quantity" value={formState.quantity} onChange={handleChange} />
+                            <label htmlFor="quantity" className="form-label fw-bold">Total Quanity</label>
+                            <input type="number" className="form-control" id="quantity" placeholder="Quantity *" name="quantity" value={formState.quantity} onChange={handleChange} required />
                         </div>
-                        <div>
-                            <p className='fs-5 fw-bold mt-3'>Categories</p>
-                            <div className='row mb-3'>
+                        <div className="form-group">
+                            <p className='fw-bold mt-3'>Category *</p>
+                            <div className='row mb-3 mx-0 row-cols-2 row-cols-md-4'>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="Greek" name="categories" value="Greek" onChange={handleChange} />
+                                    <input className="form-check-input" type="radio" id="Greek" name="categories" value="Greek" onChange={handleChange} required />
                                     <label className="form-check-label" htmlFor="Greek">
                                         Greek
                                     </label>
@@ -133,8 +136,6 @@ const CreatePost = () => {
                                         Italian
                                     </label>
                                 </div>
-                            </div>
-                            <div className='row mb-3'>
                                 <div className="col form-check">
                                     <input className="form-check-input" type="radio" id="Spanish" name="categories" value="Spanish" onChange={handleChange} />
                                     <label className="form-check-label" htmlFor="Spanish">
@@ -174,9 +175,9 @@ const CreatePost = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='col-md-4 col-md-2'>
+                    <div className="col-md-4">
                         <div>
-                            <p className='fw-bolder'>Specials</p>
+                            <p className='form-label fw-bold'>Specials</p>
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" id="specials" name="specials" value="Vegetarian" onChange={handleChange} />
                                 <label className="form-check-label" htmlFor="Vegetarian">
@@ -206,12 +207,9 @@ const CreatePost = () => {
                         <div className='mt-5'>
                             <div className="col-md-6">
                                 <div className="mb-5">
-                                    <p className='fw-bold'>Upload you Profile Picture</p>
-                                    <img ref={imgFrame} className="" style={{ width: "200px" }} src={imagePreview} />
-                                    <input className="form-control mt-3" type="file" ref={formFile}
-                                        id="image"
-                                        onChange={previewUploadedImage}
-                                    />
+                                    <p className='form-label fw-bold'>Upload you Profile Picture *</p>
+                                    <input className="form-control mt-3 mb-3" type="file" ref={formFile} id="image" onChange={previewUploadedImage} />
+                                    <img ref={imgFrame} className="imagePreview" src={imagePreview} required />
                                     {/* <button onClick={changeImage} className="btn btn-primary mt-3 btn-secondary text-white">Change</button> */}
                                 </div>
                             </div>

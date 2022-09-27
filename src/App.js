@@ -57,6 +57,8 @@ function App() {
           <Route path="/offers/:id" element={<SinglePost posts={posts} />} />
           <Route path="/offers/:id/order" element={<OrderFood posts={posts} />} />
 
+          <Route path="/offers/:category_name" element={<Home posts={posts} />} />
+
           <Route path="/create_offer" element={<CreatePost />} />
 
           <Route path="/order_history" element={<OrderHistory />} />

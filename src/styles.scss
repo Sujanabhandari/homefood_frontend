@@ -33,41 +33,53 @@ h6 {
 
 main {
   margin: 8rem auto 3rem auto;
+  section {
+  }
 }
 
 /* Here starts the codes for header */
-.main-nav {
-  // background-color: var(--green) !important;
-  color: #fff;
-  line-height: 80px;
-  height: 80px;
-  padding-top: 0;
-}
-
-.icon-circle {
-  // display: inline-block;
-  border-radius: 20px;
-  box-shadow: 0 0 1px #fff;
-  background-color: #fff;
-  color: #000;
-  padding: 1em 1em;
-  // margin: 5px;
-}
-.icon-circle-img{
-  border-radius: 20px;
-
-}
-.searchbar{
-  max-width: 250px;
-  min-width: 200px;
-}
+.navbar {
+  &.searchbar{
+    max-width: 250px;
+    min-width: 200px;
+  }
+  & .icon-circle {
+    border-radius: 50%;
+    box-shadow: 0 0 1px #fff;
+    background-color: #fff;
+    color: $textColor;
+    border: 1px solid $primary;
+    padding: 15px 18px;
+    &:hover {
+      background: $primary;
+      border: 1px solid #fff;
+      color: #fff;
+    }
+  }
+  .wrapperImg {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    & img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      filter: opacity(30%);
+    } 
+    & i {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    color: $textColor;
+    font-size: 1.2rem;  
+    }
+  }
+} 
 /* Here ends the code for header */
 
 /* Login Section Start */
-.login {
-  margin-right: -30px;
-  padding-right: 25px !important ;
-}
+
 /* Login Section End */
 
 /* Home Section Start */
@@ -101,18 +113,71 @@ main {
     background: #ccc;
     border: 1px solid $primary;
   }
+  & img {
+    max-height: 25px;
+  }
 }
 
 .album {
   & .card {
     border-radius: 10px !important;
+    &.soldout {
+      pointer-events: none;
+      overflow: hidden;
+      &::before {
+        content: "soldout";
+        display: block;
+        
+        top: 2em;
+        left: -4em;
+        color: #fff;
+        display: block;
+        position: absolute;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: .06em;
+        background-color: #A00;
+        padding: 0.5em 5em 0.4em 5em;
+        text-shadow: 0 0 0.75em #444;
+        box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
+        font: bold 16px/1.2em Arial, Sans-Serif;
+        -webkit-text-shadow: 0 0 0.75em #444;
+        -webkit-box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
+        -webkit-transform: rotate(-45deg) scale(0.75,1);
+        z-index:10;
+
+      }
+      & .overlay::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.3);
+        z-index: 2;
+        border-radius: 10px
+      }
+    }
+    & .created {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 5px 10px;
+      background: $primary;
+      border-radius: 8px 0px 8px 0px;
+      font-size: 0.8rem;
+      color:  #fff;
+    }
     & .featured {
       position: absolute;
-      top:0;
+      top: 0;
       right: 0;
       padding: 5px 10px;
       background: $primary;
-      border-radius: 0 10px 0 10px;
+      border-radius: 0 8px 0 8px;
       font-size: 0.8rem;
       color:  #fff;
     }
@@ -136,7 +201,7 @@ main {
       padding: 0.3rem 1rem;
       border-radius: 10px;
     }
-  }
+  } 
 }
 /* Home Section End */
 
@@ -235,6 +300,7 @@ main {
 
 /* Order Food Start */
 .orderFood {
+  margin-top: -2rem;
   & .bg-image {
     height: 300px;
     background-size: cover;
@@ -290,16 +356,49 @@ main {
 .icon-google {
   color: #4285f4;
 }
+
+.register .wrapperImg {
+  width: 50px;
+  height: 50px;
+    & img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+}
 /* Here ends the code for Register */
 
 /* Here start the code for Create_Post */
-.require {
-  color: #666;
-}
+.createPost {
 
-label small {
-  color: #999;
-  font-weight: normal;
+  .react-timerange-picker__wrapper {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .react-timerange-picker__inputGroup {
+    min-width: 0;
+  }
+
+  .imagePreview {
+    width: 200px;
+  } 
+  & .require {
+    color: #666;
+  } & label small {
+    color: #999;
+    font-weight: normal; 
+  }
 }
 /* Here ends the code for Create_Post */
 

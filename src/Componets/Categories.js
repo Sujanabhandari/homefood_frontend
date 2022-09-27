@@ -1,3 +1,5 @@
+import Flag from 'react-world-flags'
+
 const Categories = () => {
 
   return (
@@ -7,52 +9,52 @@ const Categories = () => {
 
         <div className="d-flex justify-content-between">
 
-          <a href="#">
+          <a href="/offers?categories=Italy">
             <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
-            <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="itlay" />
+            <Flag code="it" />
             <br />
-            <p className="mt-2">Italy</p>
+            <div className="mt-2">Italy</div>
             </div>
           </a>
 
 
-          <a href="#">
+          <a href="/offers?categories=German">
             <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
-            <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="german" />
+            <Flag code="de" />
             <br />
-            <p className="mt-2">german</p>
+            <div className="mt-2">German</div>
           </div>
           </a>
 
-          <a href="#">
+          <a href="/offers?categories=Greek">
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
-            <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="greek" />
+            <Flag code="gr" />
             <br />
-            <p className="mt-2">Greek</p>
+            <div className="mt-2">Greek</div>
           </div>
           </a>
 
-          <a href="#">
+          <a href="/offers?categories=Spain">
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
-            <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="itlay" />
+          <Flag code="es" />
             <br />
-            <p className="mt-2">Italy</p>
+            <div className="mt-2">Spain</div>
           </div>
           </a>
 
-          <a href="#">
+          <a href="/offers?categories=Mexican">
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
-            <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="mexican" />
+            <Flag code="mx" />
             <br />
-            <p className="mt-2">Mexican</p>
+            <div className="mt-2">Mexican</div>
           </div>
           </a>
 
-          <a href="#">
+          <a href="/offers?categories=Nepali">
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
-            <img src="https://www.pngfind.com/pngs/m/65-656737_germany-flag-icon-png-germany-flag-icon-flat.png" width="50px" alt="nepali" />
+            <Flag code="np" />
             <br />
-            <p className="mt-2">Nepali</p>
+            <div className="mt-2">Nepali</div>
           </div>
           </a>
 

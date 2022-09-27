@@ -83,97 +83,96 @@ const OrderFood = ({ posts }) => {
     <>
       {clickedPost?.map((post, index) => (
 
-        <section key={index}>
+        <section key={index} className="text-center orderFood">
           <form onSubmit={handleSubmit}>
-          <section className="text-center orderFood">
             <div className="p-5 bg-image" style={{ backgroundImage: `url(${post.image})` }}></div>
-            <div className="card mx-4 mx-md-5 shadow-5-strong">
-              <div className="card-body py-5 px-md-5">
+              <div className="container">
+                <div className="card mx-4 mx-md-5 shadow-5-strong">
+                  <div className="card-body py-5 px-md-5">
 
-                <div className="row d-flex justify-content-center">
-                  <div className="col-lg-8">
-                    <h2 className="fw-bold mb-5">Choose your payment</h2>
+                    <div className="row d-flex justify-content-center">
+                      <div className="col-lg-8">
+                        <h2 className="fw-bold mb-5">Choose your payment</h2>
 
 
-                    <div className="row">
-                      <div className="col">
+                        <div className="row">
+                          <div className="col">
 
-                        <h5><i className="bi bi-clock"></i> Collect: {post.timeSlot}</h5>
-                        <h5><i className="bi bi-geo-alt-fill"></i> {post.address}</h5>
+                            <h5><i className="bi bi-clock"></i> Collect: {post.timeSlot}</h5>
+                            <h5><i className="bi bi-geo-alt-fill"></i> {post.address}</h5>
 
-                        <div className="selectQuantity my-5 py-5">
+                            <div className="selectQuantity my-5 py-5">
 
-                          <h5>Choose your quantity</h5>
-                          <p>{post.quantity} meals available</p>
+                              <h5>Choose your quantity of {post.title}</h5>
+                              <p><span className="text-secondary">{post.quantity}</span> meals available</p>
 
-                          <div className="mt-1">
+                              <div className="mt-1">
 
-                            <button onClick={decrease} className="btn btn-secondary text-white btn-block mb-4">
-                              <i className="bi bi-dash-circle"></i>
-                            </button>
-                            <button onClick={increase} className="btn btn-secondary text-white btn-block mb-4 mx-1">
-                              <i className="bi bi-plus-circle"></i>
-                            </button>
-                            <div id="quantityCounter">Order: {quantityCounter} meals</div>
+                                <button onClick={decrease} className="btn btn-secondary text-white btn-block mb-4">
+                                  <i className="bi bi-dash-circle"></i>
+                                </button>
+                                <button onClick={increase} className="btn btn-secondary text-white btn-block mb-4 mx-1">
+                                  <i className="bi bi-plus-circle"></i>
+                                </button>
+                                <div id="quantityCounter">Order: <span className="text-secondary">{quantityCounter}</span> meals</div>
+
+                              </div>
+
+                            </div>
+
+                            <table className="table mt-5">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Foodname</th>
+                                  <th scope="col">Quantity</th>
+                                  <th scope="col">Price</th>
+                                  <th scope="col">Sum</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">{post.title}</th>
+                                  <td>{quantityCounter}</td>
+                                  <td>{post.price} €</td>
+                                  <td>{sumfunction} €</td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <div className="mt-5">
+                              <button type="button" className="btn btn-secondary text-white btn-block mb-4 mx-1" onClick={handleShow}>
+                                <i className="bi bi-cash-coin"></i> Pay in cash
+                              </button>
+
+                              {/* <button type="button" className="btn btn-secondary text-white btn-block mb-4">
+                                <i className="bi bi-paypal"></i> PayPal
+                              </button> */}
+                            </div>
+
+                            <Modal show={show} onHide={handleClose}>
+                              <Modal.Header closeButton>
+                                <Modal.Title>Pay in cash</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                                Woohoo, thanks for ordering!
+                                Please bring your money with you exactly and perhaps remember bringing packaging for your food.
+
+                              </Modal.Body>
+                              <Modal.Footer>
+                                <Button variant="secondary text-white" onClick={handleSubmit}>
+                                  Thank you, got it
+                                </Button>
+                              </Modal.Footer>
+                            </Modal>
 
                           </div>
-
                         </div>
-
-                        <table className="table mt-5">
-                          <thead>
-                            <tr>
-                              <th scope="col">Foodname</th>
-                              <th scope="col">Quantity</th>
-                              <th scope="col">Price</th>
-                              <th scope="col">Sum</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">{post.title}</th>
-                              <td>{quantityCounter}</td>
-                              <td>{post.price} €</td>
-                              <td>{sumfunction} €</td>
-                            </tr>
-                          </tbody>
-                        </table>
-
-                        <div className="mt-5">
-                          <button type="submit" className="btn btn-secondary text-white btn-block mb-4 mx-1" onClick={handleShow}>
-                            <i className="bi bi-cash-coin"></i> Pay in cash
-                          </button>
-
-                          <button type="button" className="btn btn-secondary text-white btn-block mb-4">
-                            <i className="bi bi-paypal"></i> PayPal
-                          </button>
-                        </div>
-
-                        <Modal show={show} onHide={handleClose}>
-                          <Modal.Header closeButton>
-                            <Modal.Title>Pay in cash</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body>
-                            Woohoo, thanks for ordering!
-                            Please bring your money with you exactly and perhaps remember bringing packaging for your food.
-
-                          </Modal.Body>
-                          <Modal.Footer>
-                            <Button variant="secondary text-white" onClick={handleClose}>
-                              Thank you, got it
-                            </Button>
-                          </Modal.Footer>
-                        </Modal>
 
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
-            </div>
-
-          </section>
           </form>
         </section>
       ))}

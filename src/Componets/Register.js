@@ -59,11 +59,10 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
   return (
     <>
-      <section className="register">
-        <div className="container">
+      <section className="register col-lg-8 mx-auto">
           <form onSubmit={handleSubmit}>
             <div className="row justify-content-center bg-primary rounded-3 align-items-center">
-              <div className="col-md-5 rounded-3 p-5">
+              <div className="col-md-5 rounded-3 p-5 text-center">
                 <h2 className='text-white'>Healthy Home Made Food Made With Love For You</h2>
               </div>
 
@@ -86,19 +85,18 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
                     </div>
 
-                    <div className="form-outline mb-2">
+                    <div className="form-outline mb-4">
                       <input type="password" id="password" className="form-control" placeholder='Password *' value={registerFormState.password}
                         onChange={handleChange} required />
                     </div>
                     <div>
                       {/* <p className='fw-bold'>Upload you Profile Picture</p> */}
-                      <img ref={imgFrame} className="" style={{ width: "200px" }} src={imagePreview} />
-                      <input className="form-control mb-3" type="file" ref={formFile}
-                        id="profilePic"
-                        onChange={previewUploadedImage}
-                      />
+                      <input className="form-control mb-3" type="file" ref={formFile} id="profilePic" onChange={previewUploadedImage} />
+                      <div className="wrapperImg d-block d-md-inline-block mx-auto">
+                        <img ref={imgFrame} src={imagePreview} />
+                      </div>
                     </div>
-                    <p><small className="text-muted">* required fields</small></p>
+                    <p className="text-muted text-start"><small>* required fields</small></p>
                     <button className="btn btn-secondary text-white" type="submit">Sign up</button>
                   </div>
                 </div>
@@ -110,7 +108,6 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
               </div>
             </div>
           </form>
-        </div>
       </section>
     </>
   )
