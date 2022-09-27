@@ -66,13 +66,15 @@ const Login = () => {
 
   return (
     <>
-      <section className="login-page">
+      <section className="login col-lg-8 mx-auto">
 
-          <div className="col-lg-8 mx-auto">
+            <div className="row justify-content-center bg-primary rounded-3 align-items-center">
 
-            <div className="row g-5">
+              <div className="col-md-5 rounded-3 p-5">
+                <img src={hero} className="img-fluid" width="100%" alt="Image Hero" />
+              </div>
 
-              <div className="col-md-5 py-2 login rounded-3 shadow border">
+              <div className="col-md-7 bg-white rounded-3 shadow border p-5 text-center-7">
                 <form onSubmit={handleSubmit}>
                   <img className="mb-4 mx-auto d-block" src={logo} width="70px" alt="Logo HomeMade" />
 
@@ -98,16 +100,9 @@ const Login = () => {
                 </form>
 
                 <p className="mt-2 mb-3 text-center">Don’t have an account? <Link to='/register'>Signup</Link></p>
-
-              </div>
-
-              <div className="col-md-7">
-                <img src={hero} className="img-fluid" width="100%" alt="Image Hero" />
               </div>
 
             </div>
-
-          </div>
 
       </section>
     </>

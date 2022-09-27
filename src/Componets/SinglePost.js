@@ -21,6 +21,7 @@ const SinglePost = ({ posts }) => {
               <div className="row">
                 <div className="col-12 col-md-4">
                   <div className="card shadow-sm">
+                    <div className="created">{post.date}</div>
                     <div className="featured">{post.categories}</div>
                     <div className="wrapperImg">
                       <img src={post.image} />
@@ -37,7 +38,7 @@ const SinglePost = ({ posts }) => {
                           {post.quantity ? <div className="foodQuantity">{post.quantity} meals left</div> :
                           <button type="button" className="btn btn-sm btn-outline-secondary reserve">Sold Out</button>}
                             <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
-                            <div className="foodCreator">Made by: {post.creatorId?.userName}</div>
+                            <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
                           </div>
                         </div>
                         <div className="row mt-2">
@@ -81,7 +82,7 @@ const SinglePost = ({ posts }) => {
               <div className="row">
                 <div className="col text-end">
                 {post.quantity ? <Link type="button" to={`/offers/${post._id}/order`} className="btn btn-secondary text-white mt-3">
-                  <i className="bi bi-bag"></i>Reserve now</Link> :
+                  <i className="bi bi-bag"></i> Reserve now</Link> :
                   <div>
                   <button type="button" className="btn btn-secondary text-white mt-3" disabled>
                  Sold Out</button>
