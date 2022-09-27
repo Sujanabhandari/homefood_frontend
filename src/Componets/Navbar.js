@@ -59,7 +59,6 @@ const Navbar = ({ logout }) => {
                                     <Link className='text-white' to='/my_account' title="My Account">
                                     <div className="wrapperImg d-block d-md-inline-block mx-auto">
                                         <img className="icon-circle-img" src={user?.profilePic} alt="User" />
-                                        <i class="bi bi-person"></i>
                                     </div>
                 
                                     </Link>
