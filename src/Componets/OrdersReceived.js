@@ -6,11 +6,13 @@ import { useHomeContext } from './MainContext';
 
 const OrdersReceived = () => {
 
-  const { user } = useHomeContext();
+  const { user, orders } = useHomeContext();
+  console.log("From Context orders", orders)
   const { state } = useLocation()
 
   console.log("From Order Recieved", state);
   console.log("From User Recieved", user);
+  const data = state;
 
 
   const offerHistory = state?.filter((history) => history.creatorId._id == user._id);

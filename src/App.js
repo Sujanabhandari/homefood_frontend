@@ -20,6 +20,8 @@ import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
+import RatingCreator from './Componets/RatingCreator';
+
 import { useHomeContext } from './Componets/MainContext';
 
 function App() {
@@ -66,6 +68,8 @@ function App() {
           <Route path="/order_history" element={<OrderHistory />} />
           <Route path="/offer_history" element={<OfferHistory />} />
           <Route path="/orders_received" element={<OrdersReceived />} />
+          <Route path="/order_history/rating_creator" element={<RatingCreator />} />
+          <Route path="/order_history/rating_creator/:id" element={<RatingCreator />} />
 
           <Route path="/my_account" element={<MyAccount isAuthenticated={isAuthenticated}
         setToken={setToken}/>} />
@@ -78,6 +82,7 @@ function App() {
           </Route>
 
           <Route path="/offer_preview" element={<OfferPreview />} />
+          
         </Route>
       </Routes>
 
