@@ -16,8 +16,7 @@ const OrdersReceived = () => {
 
 
   const offerHistory = orders?.filter((history) => history.creatorId._id == user._id);
-  // console.log("Form Comparioson", offerHistory);
-  
+
     return (
     <>
       <section className="container dashboard">

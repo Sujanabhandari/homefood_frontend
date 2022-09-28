@@ -12,11 +12,7 @@ const OrderHistory = () => {
   console.log(customerRating);
   const { state } = useLocation();
 
-console.log("Orders", orders);
   const orderHistory = orders?.filter((history) => history.customerId._id == user._id);
-  console.log("Order History", orderHistory);
-
-  console.log("Customer Ratings", customerRating);
 
   return (
     <>

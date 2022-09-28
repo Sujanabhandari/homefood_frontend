@@ -9,7 +9,7 @@ const SinglePost = ({ posts }) => {
 
   const { id } = useParams();
 
-
+  console.log("From Offer Preview", user)
   const clickedPost = posts?.filter((post) => post._id == id);
 
   return (
