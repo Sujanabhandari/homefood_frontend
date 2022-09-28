@@ -2,6 +2,7 @@ import React, { Children } from 'react'
 import { createContext, useContext, useState, useEffect } from 'react';
 import { Navigate, Outlet } from "react-router-dom";
 import { getUser } from '../utils/regitsterUser';
+import axios from 'axios';
 const HomeContext = createContext(null);
 
 export const useHomeContext = () => 
@@ -32,6 +33,8 @@ export default function MainContext({children})
     const [token, setToken] = useState(localStorage.getItem("token") || null);
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [orders, setOrders] = useState();
+    const [customerRating, setCustomerRating] = useState(0);
 
     useEffect(() => {
 
@@ -52,13 +55,25 @@ export default function MainContext({children})
       token && validateToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
+
+    useEffect(() => {
+      const getOrders = async () => {
+        try {
+          const { data } = await axios.get(`http://localhost:3000/orders`);
+          setOrders(data);
+        } catch (error) {
+          console.log(error)
+        }
+      };
+      getOrders();
+    }, []);
     
 
   return (
     
      <HomeContext.Provider value={{
         isAuthenticated, setIsAuthenticated, setFormState, formState, registerFormState,
-        setRegisterFormState, token, setToken, user, setUser
+        setRegisterFormState, token, setToken, user, setUser, orders,setOrders, customerRating, setCustomerRating
      }}>
         {children}
     </HomeContext.Provider>

@@ -3,22 +3,25 @@ import React, { Component } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useHomeContext } from './MainContext';
 
 const MyAccount = () => {
+  
+  const { orders, setOrders } = useHomeContext();
 
-  const [orders, setOrders] = useState();
+  // const [orders, setOrders] = useState();
 
-  useEffect(() => {
-    const getOrders = async () => {
-      try {
-        const { data } = await axios.get(`http://localhost:3000/orders`);
-        setOrders(data);
-      } catch (error) {
-        console.log(error)
-      }
-    };
-    getOrders();
-  }, []);
+  // useEffect(() => {
+  //   const getOrders = async () => {
+  //     try {
+  //       const { data } = await axios.get(`http://localhost:3000/orders`);
+  //       setOrders(data);
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   };
+  //   getOrders();
+  // }, []);
 
 
     return (

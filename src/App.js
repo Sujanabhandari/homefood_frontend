@@ -18,6 +18,8 @@ import { NavLink, Routes, Route, Link } from "react-router-dom";
 import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 
+import RatingCreator from './Componets/RatingCreator';
+
 import { useHomeContext } from './Componets/MainContext';
 
 function App() {
@@ -63,6 +65,8 @@ function App() {
 
           <Route path="/order_history" element={<OrderHistory />} />
           <Route path="/orders_received" element={<OrdersReceived />} />
+          <Route path="/order_history/rating_creator" element={<RatingCreator />} />
+          <Route path="/order_history/rating_creator/:id" element={<RatingCreator />} />
 
           <Route path="/my_account" element={<MyAccount isAuthenticated={isAuthenticated}
         setToken={setToken}/>} />
@@ -75,6 +79,7 @@ function App() {
           </Route>
 
           <Route path="/offer_preview" element={<OfferPreview />} />
+          
         </Route>
       </Routes>
 
