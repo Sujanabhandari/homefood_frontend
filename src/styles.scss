@@ -7,7 +7,7 @@
 @import "variables";
 body {
   font-family: "Nunito", Helvetica, sans-serif !important;
-  color: $textColor !important;
+  color: $text !important;
 }
 
 #root {
@@ -43,6 +43,10 @@ main {
   width: 100%;
 }
 
+.accordion .accordion-body {
+  background: $light;
+}
+
 /* Here starts the codes for header */
 .navbar {
   & .search button:hover {
@@ -53,7 +57,7 @@ main {
     border-radius: 50%;
     box-shadow: 0 0 1px #fff;
     background-color: #fff;
-    color: $textColor;
+    color: $text;
     border: 1px solid $primary;
     padding: 12px 16px;
     &:hover {
@@ -80,7 +84,7 @@ main {
     position: absolute;
     top: 12px;
     left: 16px;
-    color: $textColor;
+    color: $text;
     font-size: 1.2rem;  
     }
   }
@@ -116,11 +120,11 @@ main {
 }
 
 .catCard {
-  background: $lightGrey;
+  background: $light;
   border: 1px solid #fff;
   color: $primary;
   &:hover {
-    background: #ccc;
+    background: $dark;
     border: 1px solid $primary;
   }
   & img {
@@ -212,7 +216,7 @@ main {
       content: ("€");
     }
     & .tag {
-      background: $lightGrey;
+      background: $light;
       padding: 0.3rem 1rem;
       border-radius: 10px;
     }
@@ -238,14 +242,14 @@ main {
 
 /* Order History Start */
 .orderedFood {
-  background: $lightGrey;
+  background: $light;
   border-radius: 10px;
   border: 1px solid $primary;
-  color: $grey;
+  color: $text;
   & .foodTitle {
     font-weight: 800;
     font-size: 1.2rem;
-    color: $textColor;
+    color: $text;
   }
   & .wrapperImg {
   width: 50px;
@@ -262,14 +266,14 @@ main {
 
 /* Orders Received Start */
 .ordersReceived {
-  background: $lightGrey;
+  background: $light;
   border-radius: 10px;
   border: 1px solid $primary;
-  color: $grey;
+  color: $text;
   & .foodTitle {
     font-weight: 800;
     font-size: 1.2rem;
-    color: $textColor;
+    color: $text;
   }
   & .wrapperImg {
   width: 50px;
@@ -290,12 +294,12 @@ main {
 }
 
 .dashboardOptions {
-  background: $lightGrey;
+  background: $light;
   border-radius: 10px;
   border: 1px solid $primary;
-  color: $grey;
+  color: $text;
   &:hover {
-    background: $darkGrey;
+    background: $dark;
   }
   & .btn {
     pointer-events: none;
@@ -303,12 +307,12 @@ main {
   & .tagline {
     font-weight: 800;
     font-size: 1.2rem;
-    color: $textColor;
+    color: $text;
   }
   & .subline {
     font-weight: 600;
     font-size: 1rem;
-    color: $textColor;
+    color: $text;
   }
 }
 /* My Account End */
@@ -327,7 +331,7 @@ main {
    background: hsla(0, 0%, 100%, 0.8);
    backdrop-filter: blur(30px);
    & .selectQuantity {
-     background: $lightGrey;
+     background: $light;
      border-radius: 10px;
    }
    &:hover {
@@ -343,7 +347,7 @@ main {
   content: "";
   flex: 1;
   height: 1px;
-  background: $lightGrey;
+  background: $light;
 }
 
 .left-register {
