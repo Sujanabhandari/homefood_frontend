@@ -9,15 +9,14 @@ const ratingChanged = (newRating) => {
   console.log("Rating", newRating);
 };
 
-const OfferHistory = () => {
-  const { user } = useHomeContext();
+const OfferHistory = ({posts}) => {
+  const { user, orders } = useHomeContext();
   const { state } = useLocation()
 
-  console.log("From Offer History", state.customerId);
-  console.log("From User History", user);
+  // console.log("From Offer History", state.customerId);
+  console.log("From Offer History", posts);
 
-
-  const offerHistory = state?.filter((history) => history.customerId._id == user._id);
+  const offerHistory = posts?.filter((history) => history.creatorId._id == user._id);
   console.log("Form Comparioson", offerHistory);
 
 
@@ -27,33 +26,21 @@ const OfferHistory = () => {
         <h1 className="mb-3">My offer history</h1>
         {offerHistory?.map((offerHistory, index) => (
           <>
-            <div className="row">
+            <div className="row" key={index}>
               <div className="col">
-                <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3">
-                  <Link to="">
+                <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3 mb-2">
+                  <Link to={`/my_account/offer_history/${offerHistory._id}`}>
                     <div className="p-2">
                       <div className="wrapperImg d-block d-md-inline-block mx-auto">
                         <img src="https://web-assets.bcg.com/3c/3d/794ddde7481695d246407d66e179/food-for-thought-the-untapped-climate-opportunity-in-alternative-proteins-rectangle.jpg" />
                       </div>
-                      <span className="foodTitle"> {offerHistory.offerId.title}</span>
+                      <span className="foodTitle"> {offerHistory.title}</span>
                     </div>
                   </Link>
                   <div className="p-2">Quantity:{offerHistory.order_quantity}</div>
                   {/* <div className="p-2">Total price: 15€</div> */}
                   <div className="p-2">Order date: 14.9.2022</div>
-                  <div className="p-2">Home Made by: {offerHistory.creatorId.userName}</div>
-                  <div className="p-2 ratingBar">
-                    <span>Rate creator: </span>
-                    <ReactStars
-                      count={5}
-                      onChange={ratingChanged}
-                      size={24}
-                      isHalf={true}
-                      emptyIcon={<i className="far fa-star"></i>}
-                      halfIcon={<i className="fa fa-star-half-alt"></i>}
-                      fullIcon={<i className="fa fa-star"></i>}
-                      activeColor="#ffd700" />
-                  </div>
+                  {/* <div className="p-2">Home Made by: {offerHistory.creatorId.userName}</div> */}
                 </div>
               </div>
             </div>

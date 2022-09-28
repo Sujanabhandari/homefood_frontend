@@ -8,22 +8,6 @@ import { useHomeContext } from './MainContext';
 const MyAccount = () => {
   
   const { orders, setOrders } = useHomeContext();
-
-  // const [orders, setOrders] = useState();
-
-  // useEffect(() => {
-  //   const getOrders = async () => {
-  //     try {
-  //       const { data } = await axios.get(`http://localhost:3000/orders`);
-  //       setOrders(data);
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   };
-  //   getOrders();
-  // }, []);
-
-
     return (
     <>
       <section className="container">
@@ -31,7 +15,7 @@ const MyAccount = () => {
 
         <div className="row">
           <div className="col">
-            <Link className="dashboardLinks" to='/create_offer' state={orders}>
+            <Link className="dashboardLinks" to='/create_offer'>
               <div className="d-flex flex-column flex-md-row flex-row align-items-center dashboardOptions p-3">
                 <div className="p-2"><button className="btn btn-primary text-white"><i className="bi bi-house-heart"></i></button></div>
                 <div className="p-2">
@@ -45,7 +29,7 @@ const MyAccount = () => {
 
         <div className="row mt-2">
           <div className="col">
-            <Link className="dashboardLinks" to='/order_history' state={orders}>
+            <Link className="dashboardLinks" to='/my_account/order_history' state={orders}>
               <div className="d-flex flex-column flex-md-row flex-row align-items-center dashboardOptions p-3">
                 <div className="p-2"><button className="btn btn-primary text-white"><i class="bi bi-receipt"></i></button></div>
                 <div className="p-2">
@@ -59,7 +43,7 @@ const MyAccount = () => {
 
         <div className="row mt-2">
           <div className="col">
-            <Link className="dashboardLinks" to='/orders_received' state={orders}>
+            <Link className="dashboardLinks" to='/my_account/orders_received' state={orders}>
               <div className="d-flex flex-column flex-md-row flex-row align-items-center dashboardOptions p-3">
                 <div className="p-2"><button className="btn btn-primary text-white"><i class="bi bi-bag-heart"></i></button></div>
                 <div className="p-2">
@@ -73,12 +57,12 @@ const MyAccount = () => {
 
         <div className="row mt-2">
           <div className="col">
-            <Link className="dashboardLinks" to="/offer_history" state={orders}>
+            <Link className="dashboardLinks" to="/my_account/offer_history">
               <div className="d-flex flex-column flex-md-row flex-row align-items-center dashboardOptions p-3">
                 <div className="p-2"><button className="btn btn-primary text-white"><i class="bi bi-clock-history"></i></button></div>
                 <div className="p-2">
-                  <span className="tagline">Offer history</span><br/>
-                  <span className="subline">Show my last offers</span>
+                  <span className="tagline">My Offers</span><br/>
+                  <span className="subline">Offers that you created</span>
                 </div>
               </div>
             </Link>

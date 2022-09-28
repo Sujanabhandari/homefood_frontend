@@ -2,8 +2,7 @@
 import { useParams, Link, Outlet } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
 import { useHomeContext } from './MainContext';
-import { getUserByID } from "../utils/regitsterUser";
-import { useState } from "react";
+
 
 const SinglePost = ({ posts }) => {
   const {formState, setFormState, user}  = useHomeContext();

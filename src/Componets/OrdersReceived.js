@@ -15,9 +15,8 @@ const OrdersReceived = () => {
   const data = state;
 
 
-  const offerHistory = state?.filter((history) => history.creatorId._id == user._id);
+  const offerHistory = orders?.filter((history) => history.creatorId._id == user._id);
   // console.log("Form Comparioson", offerHistory);
-
   
     return (
     <>

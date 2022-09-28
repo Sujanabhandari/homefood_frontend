@@ -19,6 +19,7 @@ import { NavLink, Routes, Route, Link } from "react-router-dom";
 import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 import 'bootstrap/dist/js/bootstrap.bundle';
+import OffferHistoryDetails from './Componets/OfferHistoryDetails';
 
 import RatingCreator from './Componets/RatingCreator';
 
@@ -27,7 +28,7 @@ import { useHomeContext } from './Componets/MainContext';
 function App() {
   const [posts, setPosts] = useState([]);
 
-  const {user, setUser,token, setToken, isAuthenticated, setIsAuthenticated }  = useHomeContext();
+  const { user, setUser, token, setToken, isAuthenticated, setIsAuthenticated } = useHomeContext();
 
   useEffect(() => {
     const getPosts = async () => {
@@ -65,14 +66,15 @@ function App() {
 
           <Route path="/create_offer" element={<CreatePost />} />
 
-          <Route path="/order_history" element={<OrderHistory />} />
-          <Route path="/offer_history" element={<OfferHistory />} />
-          <Route path="/orders_received" element={<OrdersReceived />} />
+          <Route path="/my_account" element={<MyAccount isAuthenticated={isAuthenticated}
+            setToken={setToken} />} />
+
+          <Route path="/my_account/order_history" element={<OrderHistory />} />
+          <Route path="/my_account/offer_history" element={<OfferHistory posts={posts}/>} />
+          <Route path="/my_account/orders_received" element={<OrdersReceived />} />
+
           <Route path="/order_history/rating_creator" element={<RatingCreator />} />
           <Route path="/order_history/rating_creator/:id" element={<RatingCreator />} />
-
-          <Route path="/my_account" element={<MyAccount isAuthenticated={isAuthenticated}
-        setToken={setToken}/>} />
 
           <Route path="/login" element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
 
@@ -82,7 +84,8 @@ function App() {
           </Route>
 
           <Route path="/offer_preview" element={<OfferPreview />} />
-          
+          <Route path="/my_account/offer_history/:id" element={<OffferHistoryDetails posts={posts}/>} />
+
         </Route>
       </Routes>
 

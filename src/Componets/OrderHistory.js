@@ -13,50 +13,31 @@ const OrderHistory = () => {
   const { state } = useLocation();
 
 console.log("Orders", orders);
-  const offerHistory = orders?.filter((history) => history.customerId._id == user._id);
-  console.log("Order History", offerHistory);
+  const orderHistory = orders?.filter((history) => history.customerId._id == user._id);
+  console.log("Order History", orderHistory);
 
-
-  // const ratingChanged = async (newRating) => {
-  //   setCustomerRating(newRating);
-  //   try {
-  //     // event.preventDefault();
-  //     const { data } = await axios.post(
-  //       `http://localhost:3000/ratings`,
-  //       {
-  //         rating: newRating,
-  //         creatorId: offerMaped, 
-  //         customerId: user._id,
-  //       },
-  //     );
-
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // };
-  // console.log("CreatorId",offerHistory.creatorId);
   console.log("Customer Ratings", customerRating);
 
   return (
     <>
       <section className="container">
         <h1 className="mb-3">My order history</h1>
-        {offerHistory?.map((offerHistory, index) => (
-          <div className="row" id={offerHistory.offerId._id}>
+        {orderHistory?.map((orderHistory, index) => (
+          <div className="row" id={orderHistory.offerId._id}>
             <div className="col">
               <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3">
                 <div className="p-2">
                   <div className="wrapperImg d-block d-md-inline-block mx-auto">
                     <img src="https://web-assets.bcg.com/3c/3d/794ddde7481695d246407d66e179/food-for-thought-the-untapped-climate-opportunity-in-alternative-proteins-rectangle.jpg" />
                   </div>
-                  <span className="foodTitle"> {offerHistory.offerId.title}</span>
+                  <span className="foodTitle"> {orderHistory.offerId.title}</span>
                 </div>
-                <div className="p-2">Quantity:{offerHistory.order_quantity}</div>
+                <div className="p-2">Quantity:{orderHistory.order_quantity}</div>
                 {/* <div className="p-2">Total price: 15€</div> */}
                 <div className="p-2">Order date: 14.9.2022</div>
-                <div className="p-2">Home Made by: {offerHistory.creatorId.userName}</div>
+                <div className="p-2">Home Made by: {orderHistory.creatorId.userName}</div>
                 <div className="p-2 ratingBar">
-                  <Link to={`/order_history/rating_creator/${offerHistory.offerId._id}`}>Rate creator </Link>
+                  <Link to={`/order_history/rating_creator/${orderHistory._id}`}>Rate creator </Link>
                   {/* <ReactStars
                     count={5}
                     onChange={customerRating}
