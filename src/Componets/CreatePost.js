@@ -65,7 +65,7 @@ const CreatePost = () => {
         <section className="container createPost">
             {/* <form method='POST' action='/publish_post' onSubmit={handleSubmit}> */}
             <form onSubmit={handleSubmit}>
-                <div className="row mt-5">
+                <div className="row">
 
                     <h4 className="fs-2 mb-4 fw-bolder">Create post</h4>
                     <div className="col-md-8">

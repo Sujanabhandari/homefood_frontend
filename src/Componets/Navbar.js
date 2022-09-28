@@ -14,65 +14,90 @@ const Navbar = ({ logout }) => {
     return (
         <header>
             <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-                <div className="container">
+                <div className="container px-md-2">
                     <a className="navbar-brand" href="/"><img src={logo} width="48px" alt="Logo HomeMade" /></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+                     
+                        <form className="d-flex mx-0 mx-md-auto d-noned-md-inline-flex search col col-md-6 order-1 order-md-2" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-outline-light text-white d-none d-md-inline-block" type="submit"><i class="bi bi-search-heart"></i></button>
+                        </form>
+
+                        <ul className="navbar-nav mb-2 mb-lg-0 d-flex order-2 order-md-1">
                             <li className="nav-item">
                                 <Link className='nav-link text-white'>Deals</Link>
                             </li>
-                            <li className="nav-item dropdown">
+                            <li className="nav-item">
                                 <Link className='nav-link text-white'>My Orders</Link>
                             </li>
                             {!isAuthenticated ? (
                             <></>
                             ) : ( <li className="nav-item"><Link className='nav-link text-white' to="/create_offer" title="Create Offer">Create Offer</Link></li> ) 
                             }
-                            <form className="d-flex ms-0 ms-md-4 order-first order-md-3 d-none d-md-inline-flex search" role="search">
-                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-light text-white" type="submit"><i class="bi bi-search-heart"></i></button>
-                            </form>
                         </ul>
 
+                        <ul className="navbar-nav mb-2 mb-lg-0 d-none d-md-flex gap-3 justify-content-between align-items-center order-3">
+                            {!isAuthenticated ? (
+                            <>
+                                <li className="nav-item">
+                                   <Link to="/login" className="nav-link text-white">Login</Link>
+                                </li>
 
-                        <div className="d-flex gap-3 m-3 justify-content-between align-items-center">
+                                <li className="nav-item">
+                                    <Link to="/register" className="nav-link text-white">Register</Link>
+                                </li>
+                            </>
+                            ) : (
+                            <>
+                                <li className="nav-item">
+                                    <Link className='text-white'><i className="bi bi-cart icon-circle"></i></Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className='text-white' to='/my_account' title="My Account">
+                                        <div className="wrapperImg d-block d-md-inline-block mx-auto">
+                                            <img className="icon-circle-img" src={user?.profilePic} alt="User" />
+                                        </div>
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className='text-white' title="Logout">
+                                        <i className="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
+                                    </Link>
+                                </li>    
+                            </>
+                            )}
+                        </ul>
+
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex d-md-none gap-3 justify-content-between align-items-start w-100 order-3">
 
                             {!isAuthenticated ? (
-                                <>
+                            <>
+                                <li className="nav-item">
+                                   <Link to="/login" className="nav-link text-white">Login</Link>
+                                </li>
 
-                                    <Link to="/login" className="nav-link active text-white">
-                                        Login
-                                    </Link>
-
-
-                                    <Link to="/register" className="nav-link active text-white">
-                                        Register
-                                    </Link>
-
-                                </>
+                                <li className="nav-item">
+                                    <Link to="/register" className="nav-link text-white">Register</Link>
+                                </li>
+                            </>
                             ) : (
-                                <>
-                                    <Link className='text-white'><i className="bi bi-cart icon-circle" /></Link>
-                                    <Link className='text-white' to='/my_account' title="My Account">
-                                    <div className="wrapperImg d-block d-md-inline-block mx-auto">
-                                        <img className="icon-circle-img" src={user?.profilePic} alt="User" />
-                                    </div>
-                
-                                    </Link>
-                                    <Link className='text-white' >
-                                        <i className="bi bi-box-arrow-right icon-circle" onClick={logout} title="Logout"></i>
-                                    </Link>
-
-                                </>
+                            <>
+                                <li className="nav-item">
+                                    <Link className='text-white'><i className="bi bi-cart"></i> Cart</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className='text-white' to='/my_account' title="My Account"><i class="bi bi-person"></i> My Account</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className='text-white' title="Logout" onClick={logout} ><i className="bi bi-box-arrow-right"></i> Logout</Link>
+                                </li>    
+                            </>    
                             )}
-                        </div>
+                        </ul>
 
-
-                        <li className=" d-flex nav-item">
-                        </li>
                     </div>
                 </div>
             </nav>
