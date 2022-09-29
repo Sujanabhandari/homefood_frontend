@@ -40,9 +40,13 @@ const SinglePost = ({ posts }) => {
                             <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
                           </div>
                         </div>
+                        { post.specials ?
                         <div className="row mt-2">
-                          <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i>Tag</span></div>
+                          <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i> {post.specials}</span></div>
                         </div>
+                        :
+                        <div></div>
+                        }
                     </div>
                   </div>
                 </div>
@@ -66,9 +70,10 @@ const SinglePost = ({ posts }) => {
                           </div>
                         </div>
                         <div className="col-12 col-md-8">
-                          Name {post.creatorId?.userName}<br />
-                          Joined at: dd.mm.yyyy<br />
-                          Rating 5/5<br />
+                          <div>{post.creatorId?.userName}</div>
+                          <div>Joined at:</div>
+                          <div>Meals cooked at: </div>
+                          <div>Average Rating: 4,6 frated by x users</div>
                         </div>
                       </div>
                       </Accordion.Body>

@@ -28,18 +28,18 @@ const OfferHistory = ({posts}) => {
           <>
             <div className="row" key={index}>
               <div className="col">
-                <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3 mb-2">
+                <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center offeredFood p-3 mb-2">
                   <Link to={`/my_account/offer_history/${offerHistory._id}`}>
                     <div className="p-2">
-                      <div className="wrapperImg d-block d-md-inline-block mx-auto">
+                      <div className="wrapperImg d-block d-md-inline-block mx-auto float-md-start">
                         <img src="https://web-assets.bcg.com/3c/3d/794ddde7481695d246407d66e179/food-for-thought-the-untapped-climate-opportunity-in-alternative-proteins-rectangle.jpg" />
                       </div>
                       <span className="foodTitle"> {offerHistory.title}</span>
                     </div>
                   </Link>
-                  <div className="p-2">Quantity:{offerHistory.order_quantity}</div>
-                  {/* <div className="p-2">Total price: 15€</div> */}
-                  <div className="p-2">Order date: 14.9.2022</div>
+                  <div className="p-2">Quantity:{offerHistory.quantity}</div>
+                  <div className="p-2">Total price: {offerHistory.price}</div>
+                  <div className="p-2">Order date: {offerHistory.date}</div>
                   {/* <div className="p-2">Home Made by: {offerHistory.creatorId.userName}</div> */}
                 </div>
               </div>

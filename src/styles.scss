@@ -25,10 +25,12 @@ a {
 /* Fallback */
 h1 {
   font-weight: 600;
+  font-size: 1.8rem;
 }
 
 h2 {
   font-weight: 500;
+  font-size: 1.6rem;
 }
 
 h3,
@@ -36,15 +38,33 @@ h4,
 h5,
 h6 {
   font-weight: 400;
+  font-size: 1.4rem;
 }
 
 main {
-  margin: 8rem auto 3rem auto;
+  margin: 6rem auto 3rem auto;
   width: 100%;
 }
 
 .accordion .accordion-body {
   background: $light;
+}
+
+
+/* Debug Wrapper IMG - "Order History" and "Orders received" */
+@media only screen and (max-width: 767px) {
+  .ordersReceived .wrapperImg,
+  .offeredFood .wrapperImg,
+  .orderedFood .wrapperImg {
+    width: 100% !important;
+    height: 100% !important;
+    & img {
+      border-radius: 10px !important;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      }
+  }
 }
 
 /* Here starts the codes for header */
@@ -240,16 +260,66 @@ main {
 }
 /* Single Post End */
 
+/* Offer History Start */
+.offeredFood {
+  background: $light;
+  border-radius: 10px;
+  border: 1px solid $primary;
+  color: $text;
+  & a:first-child {
+    min-width: 0;
+    flex-basis: 20%;
+    & .foodTitle {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: $text;
+
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+
+      position: relative;
+      top: 10px;
+      left: 10px;
+    }
+  }
+  & .wrapperImg {
+  width: 50px;
+  height: 50px;
+    & img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+/* Offer History End */
+
 /* Order History Start */
 .orderedFood {
   background: $light;
   border-radius: 10px;
   border: 1px solid $primary;
   color: $text;
-  & .foodTitle {
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: $text;
+  & .p-2:first-child {
+    min-width: 0;
+    flex-basis: 20%;
+    & .foodTitle {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: $text;
+
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+
+      position: relative;
+      top: 10px;
+      left: 10px;
+    }
   }
   & .wrapperImg {
   width: 50px;
@@ -270,23 +340,47 @@ main {
   border-radius: 10px;
   border: 1px solid $primary;
   color: $text;
-  & .foodTitle {
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: $text;
-  }
-  & .wrapperImg {
-  width: 50px;
-  height: 50px;
-    & img {
-      border-radius: 50%;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
+  & .p-2:first-child {
+    min-width: 0;
+    flex-basis: 20%;
+    & .foodTitle {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: $text;
+
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+
+      position: relative;
+      top: 10px;
+      left: 10px;
+    }
+    & .wrapperImg {
+    width: 50px;
+    height: 50px;
+      & img {
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 }
 /* Order Received End */
+
+/* Rate Creator Start */
+.rateCreator {
+  & .creatorName {
+    font-weight: 800;
+  }
+  & .react-stars {
+    margin: 0 auto;
+  }
+} 
+/* Rate Creator End */
 
 /* My Account Start */
 .dashboardLinks {
