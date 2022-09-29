@@ -15,6 +15,7 @@
     "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.9.1",
     "firebase": "^9.10.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-bootstrap-icons": "^1.8.4",
@@ -28,6 +29,7 @@
     "react-toastify": "^9.0.8",
     "react-world-flags": "^1.5.1",
     "sass": "^1.54.9",
+    "save": "^2.9.0",
     "sweetpagination": "^1.0.15",
     "web-vitals": "^2.1.4"
   },

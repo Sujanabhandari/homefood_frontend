@@ -1,62 +1,83 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Flag from 'react-world-flags'
+import { useState, useEffect, useRef } from 'react';
+import { useSearchParams, useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+import { useHomeContext, prevPosts } from '../Componets/MainContext';
 
 const Categories = () => {
+  const { posts, setPosts, prevPosts, setPrevPosts, categoryPosts, setCategoryPosts, searchCategory, setsearchCategory } = useHomeContext();
+  
+  let searchRef = useRef(null)
+
+  const handleLinkClick = event => {
+    return setsearchCategory(event.target.innerText);
+  };
+  console.log(searchCategory);
+
+  useEffect(() => {
+    const getCategoryPost = async () => {
+      try {
+        if (searchCategory) {
+          const { data } = await axios.get(`http://localhost:3000/offers?categories=${searchCategory}`);
+          console.log("Fetched Data", data);
+          if (data) {
+            setPrevPosts(data);
+            setPosts(data);
+          }
+          else setPosts([]);
+        }
+
+      } catch (error) {
+        setPosts([]);
+        console.error(error);
+      }
+    };
+    getCategoryPost();
+  }, [searchCategory]);
 
   return (
-
     <section className="text-center container mb-5 px-0">
       <div className="row">
 
         <div className="d-flex justify-content-between">
 
-          <a href="/offers?categories=Italy">
-            <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="it" />
-            <br />
-            <div className="mt-2">Italy</div>
-            </div>
-          </a>
 
+            <div className="mt-2">Italian</div>
+          </div>
 
-          <a href="/offers?categories=German">
-            <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="de" />
-            <br />
+
             <div className="mt-2">German</div>
           </div>
-          </a>
 
-          <a href="/offers?categories=Greek">
-          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="gr" />
-            <br />
+
             <div className="mt-2">Greek</div>
           </div>
-          </a>
 
-          <a href="/offers?categories=Spain">
-          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
-          <Flag code="es" />
-            <br />
-            <div className="mt-2">Spain</div>
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
+            <Flag code="es" />
+
+            <div className="mt-2">Spanish</div>
           </div>
-          </a>
 
-          <a href="/offers?categories=Mexican">
-          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="mx" />
-            <br />
+
             <div className="mt-2">Mexican</div>
           </div>
-          </a>
 
-          <a href="/offers?categories=Nepali">
-          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block">
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="np" />
-            <br />
+
             <div className="mt-2">Nepali</div>
           </div>
-          </a>
+
 
         </div>
 

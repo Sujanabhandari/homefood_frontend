@@ -20,7 +20,6 @@ const OrderFood = ({ posts }) => {
   const { id } = useParams();
 
   
-
   const clickedPost = posts?.filter((post) => post._id == id);
 
   const creatorInformation = clickedPost.map((post) =>  post);
@@ -72,6 +71,7 @@ const OrderFood = ({ posts }) => {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }
       }
       );
+
       navigate(`/`, { replace: false });
 
     } catch (error) {

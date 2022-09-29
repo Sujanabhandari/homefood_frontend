@@ -123,6 +123,7 @@ main {
   background: $light;
   border: 1px solid #fff;
   color: $primary;
+  cursor: pointer;
   &:hover {
     background: $dark;
     border: 1px solid $primary;

@@ -1,20 +1,20 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Link } from "react-router-dom";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Post = ({ posts }) => {
-  console.log(posts);
+
   const { availableQuanity, setAvailiableQuanity } = useState();
+  const[productList, setProductList]= useState();
 
 
   const availiableMeals = posts.map((post) => {
     return post.quantity - post.reserved_quantity
   });
-  // console.log("Availiable Meals", availiableMeals[0]);
 
-  if (availiableMeals[0] === 0) return console.log("Sold Out");
-
+  if (availiableMeals[0] === 0) console.log("Sold Out");
 
   return (
     <>
