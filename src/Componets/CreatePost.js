@@ -11,11 +11,8 @@ import TimeRangePicker from '@wojtekmaj/react-timerange-picker'
 
 const CreatePost = () => {
     const { formState, setFormState, user } = useHomeContext();
-
-    // console.log(user);
     let formFile = useRef(null);
     let imgFrame = useRef(null);
-
 
     const handleChange = (e) => {
 
@@ -28,16 +25,13 @@ const CreatePost = () => {
         else setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
-
     const previewUploadedImage = (event) => {
         setFormState((prev) => ({ ...prev, image: event.target.files[0] }));
     }
 
     const imagePreview = formState.image && URL.createObjectURL(formState.image);
 
-
     const navigate = useNavigate();
-
 
     const handleSubmit = async (e) => {
         try {
@@ -63,7 +57,6 @@ const CreatePost = () => {
 
     return (
         <section className="container createPost">
-            {/* <form method='POST' action='/publish_post' onSubmit={handleSubmit}> */}
             <form onSubmit={handleSubmit}>
                 <div className="row">
 
@@ -71,7 +64,6 @@ const CreatePost = () => {
                     <div className="col-md-8">
                         <div className="form-group mb-4">
                             <label htmlFor="title" className="form-label fw-bold">Title</label>
-                            {/* <p className=''>Title</p> */}
                             <input type="text" value={formState.title} onChange={handleChange} className="form-control" name="title" id="title" placeholder="Title *" required />
                         </div>
                         <div className="form-group mb-4">
@@ -209,7 +201,6 @@ const CreatePost = () => {
                                     <p className='form-label fw-bold'>Upload you Profile Picture *</p>
                                     <input className="form-control mt-3 mb-3" type="file" ref={formFile} id="image" onChange={previewUploadedImage} />
                                     <img ref={imgFrame} className="imagePreview" src={imagePreview} required />
-                                    {/* <button onClick={changeImage} className="btn btn-primary mt-3 btn-secondary text-white">Change</button> */}
                                 </div>
                             </div>
                         </div>

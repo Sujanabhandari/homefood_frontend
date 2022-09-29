@@ -1,13 +1,19 @@
+/* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import Flag from 'react-world-flags'
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHomeContext, prevPosts } from '../Componets/MainContext';
+import ButtonGroup from './ButtonGroup';
+
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
 
 const Categories = () => {
-  const { posts, setPosts, prevPosts, setPrevPosts, categoryPosts, setCategoryPosts, searchCategory, setsearchCategory } = useHomeContext();
-  
+  const { posts, setPosts, prevPosts, setPrevPosts, searchCategory, setsearchCategory } = useHomeContext();
+
   let searchRef = useRef(null)
 
   const handleLinkClick = event => {
@@ -22,7 +28,9 @@ const Categories = () => {
           const { data } = await axios.get(`http://localhost:3000/offers?categories=${searchCategory}`);
           console.log("Fetched Data", data);
           if (data) {
+            //stores the previous post and shows the data based on that category
             setPrevPosts(data);
+            console.log("From category", data)
             setPosts(data);
           }
           else setPosts([]);
@@ -36,12 +44,32 @@ const Categories = () => {
     getCategoryPost();
   }, [searchCategory]);
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 2
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 4
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
+
   return (
-    <section className="text-center container mb-5 px-0">
+    <section className="container mb-5 px-0">
+      {/* <ButtonGroup /> */}
       <div className="row">
 
-        <div className="d-flex justify-content-between">
-
+        <Carousel responsive={responsive} arrows={false} customButtonGroup={<ButtonGroup />} >
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="it" />
 
@@ -76,12 +104,10 @@ const Categories = () => {
             <Flag code="np" />
 
             <div className="mt-2">Nepali</div>
-          </div>
-
-
-        </div>
-
+          </div>  
+          </Carousel>
       </div>
+      
     </section>
 
   );

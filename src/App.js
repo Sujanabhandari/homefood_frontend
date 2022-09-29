@@ -31,19 +31,6 @@ function App() {
 
   const { user, setUser, token, setToken, isAuthenticated, setIsAuthenticated, posts, setPosts } = useHomeContext();
 
-  // useEffect(() => {
-  //   const getPosts = async () => {
-  //     try {
-  //       const { data } = await axios.get(`http://localhost:3000/offers`);
-  //       setPosts(data);
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   };
-  //   getPosts();
-  // }, []);
-
-
   const logout = () => {
     localStorage.removeItem("token");
     setIsAuthenticated(false);
