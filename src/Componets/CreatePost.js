@@ -67,7 +67,7 @@ const CreatePost = () => {
             <form onSubmit={handleSubmit}>
                 <div className="row">
 
-                    <h4 className="fs-2 mb-4 fw-bolder">Create post</h4>
+                    <h1 className="mb-3">Create post</h1>
                     <div className="col-md-8">
                         <div className="form-group mb-4">
                             <label htmlFor="title" className="form-label fw-bold">Title</label>
@@ -178,7 +178,7 @@ const CreatePost = () => {
                         <div>
                             <p className='form-label fw-bold'>Specials</p>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="specials" name="specials" value="Vegetarian" onChange={handleChange} />
+                                <input className="form-check-input" type="checkbox" id="Vegetarian" name="specials" value="Vegetarian" onChange={handleChange} />
                                 <label className="form-check-label" htmlFor="Vegetarian">
                                     Vegetarian
                                 </label>

@@ -46,16 +46,20 @@ const Post = ({ posts }) => {
                           <div className="price">{post.price} </div>
                         </div>
                         <div className="col-lg-6 col-md-8 text-end">
-                          <button type="button" className="btn btn-sm btn-outline-secondary reserve">
+                          <Link className="btn btn-sm btn-outline-secondary reserve" to={`/offers/${post._id}`}>
                             <i className="bi bi-bag"></i> Reserve meal
-                          </button>  
+                          </Link>  
                           <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
                           <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i>Tag</span></div>
+                      { post.specials ?
+                      <div className="row mt-2">
+                        <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i> {post.specials}</span></div>
                       </div>
+                      : 
+                      <div>test</div>
+                      }
                     </div>
 
                   </div>  
@@ -85,9 +89,13 @@ const Post = ({ posts }) => {
                         <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i>Tag</span></div>
+                    { post.specials ? (
+                    <div className="row mt-2">
+                        <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i> {post.specials}</span></div>
                     </div>
+                    ) : (
+                      <div></div>
+                    )}
                   </div>
 
                 </div>  
