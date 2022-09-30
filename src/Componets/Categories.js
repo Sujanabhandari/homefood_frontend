@@ -48,11 +48,11 @@ const Categories = () => {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 2
+      items: 6
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3
+      items: 7
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -101,10 +101,30 @@ const Categories = () => {
           </div>
 
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
+            <Flag code="kr" />
+
+            <div className="mt-2">Korean</div>
+          </div>  
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="np" />
 
-            <div className="mt-2">Nepali</div>
-          </div>  
+            <div className="mt-2">Philippines</div>
+          </div> 
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
+            <Flag code="ph" />
+
+            <div className="mt-2">Romanian</div>
+          </div> 
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
+            <Flag code="ch" />
+
+            <div className="mt-2">Switzerland</div>
+          </div> 
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
+            <Flag code="cn" />
+
+            <div className="mt-2">Chinese</div>
+          </div> 
           </Carousel>
       </div>
       
