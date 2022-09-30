@@ -56,12 +56,6 @@ const Navbar = ({ logout }) => {
                         </form>
 
                         <ul className="navbar-nav mb-2 mb-lg-0 d-flex order-2 order-md-1">
-                            {/* <li className="nav-item">
-                                <Link className='nav-link text-white'>Deals</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className='nav-link text-white'>My Orders</Link>
-                            </li> */}
                             {!isAuthenticated ? (
                                 <></>
                             ) : (<li className="nav-item"><Link className='nav-link text-white' to="/create_offer" title="Create Offer">Create Offer</Link></li>)
@@ -114,9 +108,9 @@ const Navbar = ({ logout }) => {
                                 </>
                             ) : (
                                 <>
-                                    <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <Link className='text-white'><i className="bi bi-cart"></i> Cart</Link>
-                                    </li>
+                                    </li> */}
                                     <li className="nav-item">
                                         <Link className='text-white' to='/my_account' title="My Account"><i class="bi bi-person"></i> My Account</Link>
                                     </li>

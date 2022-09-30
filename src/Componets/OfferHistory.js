@@ -39,8 +39,7 @@ const OfferHistory = ({posts}) => {
                   </Link>
                   <div className="p-2">Quantity:{offerHistory.quantity}</div>
                   <div className="p-2">Total price: {offerHistory.price}</div>
-                  <div className="p-2">Order date: {offerHistory.date}</div>
-                  {/* <div className="p-2">Home Made by: {offerHistory.creatorId.userName}</div> */}
+                  <div className="p-2">Ordered date: {new Date(offerHistory.date).toLocaleDateString()} </div>
                 </div>
               </div>
             </div>

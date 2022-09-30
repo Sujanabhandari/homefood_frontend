@@ -15,13 +15,19 @@ const Post = ({ posts }) => {
   });
 
   if (availiableMeals[0] === 0) console.log("Sold Out");
+  console.log(posts);
+
+  const sorryMessage = () => {
+    if(!posts.length)
+      return <div className="text-center"><h2>Sorry there is no dish in this category.</h2></div>
+  }
 
   return (
     <>
       <section className="album">
         <div className="container px-0">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
+          
             {posts?.map((post, index) => (
 
               <div className="col" key={index}>
@@ -53,13 +59,18 @@ const Post = ({ posts }) => {
                           <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
                         </div>
                       </div>
-                      { post.specials ?
+                      {/* { post.specials ?
                       <div className="row mt-2">
+                        {console.log(post.specials)}
                         <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i> {post.specials}</span></div>
                       </div>
                       : 
-                      <div>test</div>
-                      }
+                      <div>No Specials</div>
+                      } */}
+                      {post.specials?.map(special => (
+                        <i className="bi bi-tag-fill"> {special}</i> 
+                      )) }
+                      
                     </div>
 
                   </div>  
@@ -105,6 +116,7 @@ const Post = ({ posts }) => {
               </div>
 
             ))}
+            {sorryMessage()}
 
           </div>
 

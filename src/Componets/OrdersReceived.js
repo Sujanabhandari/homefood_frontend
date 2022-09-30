@@ -22,7 +22,7 @@ const OrdersReceived = () => {
       <section className="container dashboard">
         <h1 className="mb-3">Orders Received</h1>
         {offerHistory?.map((offerHistory, index) => (
-        <div className="row mt-2">
+        <div className="row mt-2" key={index}>
           <div className="col">
             <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center ordersReceived p-3">
               <div className="p-2">
@@ -32,9 +32,7 @@ const OrdersReceived = () => {
                 <span className="foodTitle"> {offerHistory.offerId.title}</span>
               </div>
               <div className="p-2">Quantity: {offerHistory.order_quantity}</div>
-              {/* <div className="p-2">Total price: 15€</div> */}
-              <div className="p-2">Order date: {offerHistory.offerId.date}</div>
-              {/* <div className="p-2">Pay method: cash</div> */}
+              <div className="p-2">Order date:  {new Date(offerHistory.offerId.date).toLocaleDateString()}</div>
               <div className="p-2">Ordered by: {offerHistory.customerId.userName}</div>
             </div>
           </div>
