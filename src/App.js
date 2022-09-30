@@ -21,28 +21,16 @@ import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import OffferHistoryDetails from './Componets/OfferHistoryDetails';
+// import Categories from './Componets/Categories';
 
 import RatingCreator from './Componets/RatingCreator';
 
 import { useHomeContext } from './Componets/MainContext';
 
 function App() {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
 
-  const { user, setUser, token, setToken, isAuthenticated, setIsAuthenticated } = useHomeContext();
-
-  useEffect(() => {
-    const getPosts = async () => {
-      try {
-        const { data } = await axios.get(`http://localhost:3000/offers`);
-        setPosts(data);
-      } catch (error) {
-        console.log(error)
-      }
-    };
-    getPosts();
-  }, []);
-
+  const { user, setUser, token, setToken, isAuthenticated, setIsAuthenticated, posts, setPosts } = useHomeContext();
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -63,7 +51,7 @@ function App() {
           <Route path="/offers/:id" element={<SinglePost posts={posts} />} />
           <Route path="/offers/:id/order" element={<OrderFood posts={posts} />} />
 
-          <Route path="/offers/:category_name" element={<Home posts={posts} />} />
+          {/* <Route path="/offers/category_name" element={<Home posts={posts} />} /> */}
 
           <Route path="/create_offer" element={<CreatePost />} />
 

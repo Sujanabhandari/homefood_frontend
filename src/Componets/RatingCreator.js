@@ -13,7 +13,7 @@ export default function RatingCreator() {
 
     const { id } = useParams();
 
-    const filteredOrders = orders.filter((order) => order._id == id);
+    const filteredOrders = orders?.filter((order) => order._id == id);
     
 
     console.log("final creator", filteredOrders)

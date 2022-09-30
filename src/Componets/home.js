@@ -8,7 +8,7 @@ const Home = ({posts}) => {
   return (
     <>
       <SpecialOffer />
-      <Categories />
+      <Categories posts={posts}/>
       <Post posts={posts}/>
     </>
   );

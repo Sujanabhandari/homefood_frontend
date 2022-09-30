@@ -15,7 +15,7 @@ const OfferPreview = () => {
   const imagePreview = formState.image && URL.createObjectURL(formState.image);
 
 
-  // console.log("From Offer Preview", user)
+ 
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {

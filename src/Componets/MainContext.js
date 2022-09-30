@@ -3,11 +3,11 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { Navigate, Outlet } from "react-router-dom";
 import { getUser } from '../utils/regitsterUser';
 import axios from 'axios';
+
 const HomeContext = createContext(null);
 
 export const useHomeContext = () => 
     useContext(HomeContext);
-
 
 export default function MainContext({children}) 
 {
@@ -35,7 +35,12 @@ export default function MainContext({children})
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [orders, setOrders] = useState();
     const [customerRating, setCustomerRating] = useState(0);
-
+    const [posts, setPosts] = useState([]);
+    const [prevPosts, setPrevPosts] = useState([]);
+    const [categoryPosts, setCategoryPosts] = useState([]);
+    const [searchCategory, setsearchCategory] = useState("");
+    
+   
     useEffect(() => {
 
       const validateToken = async () => {
@@ -54,7 +59,20 @@ export default function MainContext({children})
       };
       token && validateToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [token]);
+    }, [token]); 
+
+    useEffect(() => {
+      const getPosts = async () => {
+        try {
+          const { data } = await axios.get(`http://localhost:3000/offers`);
+          setPrevPosts(data);
+          setPosts(data);
+        } catch (error) {
+          console.log(error)
+        }
+      };
+      getPosts();
+    }, []);
 
     useEffect(() => {
       const getOrders = async () => {
@@ -67,13 +85,15 @@ export default function MainContext({children})
       };
       getOrders();
     }, []);
-    
 
   return (
     
      <HomeContext.Provider value={{
         isAuthenticated, setIsAuthenticated, setFormState, formState, registerFormState,
-        setRegisterFormState, token, setToken, user, setUser, orders,setOrders, customerRating, setCustomerRating
+        setRegisterFormState, token, setToken, user, setUser, orders,setOrders, customerRating, setCustomerRating, posts, setPosts, prevPosts, setPrevPosts,
+        searchCategory, setsearchCategory, categoryPosts, setCategoryPosts
+
+        
      }}>
         {children}
     </HomeContext.Provider>
