@@ -58,12 +58,12 @@ const Navbar = ({ logout }) => {
                         </form>
 
                         <ul className="navbar-nav mb-2 mb-lg-0 d-flex order-2 order-md-1">
-                            {/* <li className="nav-item">
-                                <Link className='nav-link text-white'>Deals</Link>
+                            <li className="nav-item">
+                                <Link to="/" className='nav-link text-white'>Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className='nav-link text-white'>My Orders</Link>
-                            </li> */}
+                                <Link to="/my_account/order_history" className='nav-link text-white'>My Orders</Link>
+                            </li>
                             {!isAuthenticated ? (
                                 <></>
                             ) : (<li className="nav-item"><Link className='nav-link text-white' to="/create_offer" title="Create Offer">Create Offer</Link></li>)
@@ -82,23 +82,21 @@ const Navbar = ({ logout }) => {
                                     </li>
                                 </>
                             ) : (
-                                <>
-                                    <li className="nav-item">
-                                        <Link className='text-white'><i className="bi bi-cart icon-circle"></i></Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className='text-white' to='/my_account' title="My Account">
-                                            <div className="wrapperImg d-block d-md-inline-block mx-auto">
-                                                <img className="icon-circle-img" src={user?.profilePic} alt="User" />
-                                            </div>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className='text-white' title="Logout">
-                                            <i className="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
-                                        </Link>
-                                    </li>
-                                </>
+
+                            <>
+                                <li className="nav-item">
+                                    <Link className='text-white' to='/my_account' title="My Account">
+                                        <div className="wrapperImg d-block d-md-inline-block mx-auto">
+                                            <img className="icon-circle-img" src={user?.profilePic} alt="User" />
+                                        </div>
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className='text-white' title="Logout">
+                                        <i className="bi bi-box-arrow-right icon-circle" onClick={logout}></i>
+                                    </Link>
+                                </li>    
+                            </>
                             )}
                         </ul>
 
@@ -115,17 +113,15 @@ const Navbar = ({ logout }) => {
                                     </li>
                                 </>
                             ) : (
-                                <>
-                                    <li className="nav-item">
-                                        <Link className='text-white'><i className="bi bi-cart"></i> Cart</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className='text-white' to='/my_account' title="My Account"><i class="bi bi-person"></i> My Account</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className='text-white' title="Logout" onClick={logout} ><i className="bi bi-box-arrow-right"></i> Logout</Link>
-                                    </li>
-                                </>
+
+                            <>
+                                <li className="nav-item">
+                                    <Link className='text-white' to='/my_account' title="My Account"><i class="bi bi-person"></i> My Account</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className='text-white' title="Logout" onClick={logout} ><i className="bi bi-box-arrow-right"></i> Logout</Link>
+                                </li>    
+                            </>    
                             )}
                         </ul>
 

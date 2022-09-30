@@ -4,7 +4,6 @@ import SpecialOffer from './SpecialOffer.js';
 import Categories from './Categories.js';
 import Post from './Post.js';
 
-
 const Home = ({posts}) => {
   return (
     <>
@@ -12,7 +11,6 @@ const Home = ({posts}) => {
       <Categories posts={posts}/>
       <Post posts={posts}/>
     </>
-
   );
 };
 

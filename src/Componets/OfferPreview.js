@@ -45,7 +45,7 @@ const OfferPreview = () => {
             <h1>Preview</h1>
 
             <form onSubmit={handleSubmit}>
-              <div className="row">
+            <div className="row">
                 <div className="col-12 col-md-4">
                   <div className="card shadow-sm">
                     <div className="foodQuantity">{formState.quantity} meals left</div>
@@ -55,26 +55,29 @@ const OfferPreview = () => {
                     </div>
 
                     <div className="card-body">
+                        <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
+                          <div className="col-lg-6 col-md-8">
+                            <div className="card-text foodTitle">{formState.title}</div>
+                            <div className="foodTime"><i className="bi bi-clock"></i> Collect: {formState.timeSlot}</div>
+                            <div className="price">{formState.price} </div>
+                          </div>
+                          <div className="col-lg-6 col-md-8 text-end">
+                            <div>&nbsp;</div>
+                            <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {formState.address}</div>
+                            <div className="foodCreator"><i class="bi bi-person"></i> {user.userName}</div>
+                          </div>
+                        </div>
+                        { formState.specials ? (
+                          <div className="row mt-2">
+                            <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i> {formState.specials}</span></div>
+                          </div>
+                        ) : (
+                          <div></div>
+                        )}
 
-                      <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div className="col-lg-6 col-md-8">
-                          <div className="card-text foodTitle">{formState.title}</div>
-                          <div className="foodTime"><i class="bi bi-clock"></i> Collect: {formState.timeSlot}</div>
-                          <div className="price">{formState.price} </div>
-                        </div>
-                        <div className="col-lg-6 col-md-8 text-end">
-                          <div>&nbsp;</div>
-                          <div className="foodAddress"><i class="bi bi-geo-alt-fill"></i> {formState.address}</div>
-                          <div className="foodCreator"><i class="bi bi-person"></i> {user.userName}</div>
-                        </div>
-                      </div>
-                      <div className="row mt-2">
-                        <div className="col"><span className="tag"><i class="bi bi-tag-fill"></i>Tag</span></div>
-                      </div>
                     </div>
                   </div>
                 </div>
-
 
                 <div className="col-12 col-md-8 mt-3 mt-md-0">
 
@@ -88,18 +91,19 @@ const OfferPreview = () => {
                     <Accordion.Item eventKey="1">
                       <Accordion.Header>About Food Creator</Accordion.Header>
                       <Accordion.Body>
-                        <div className="row g-3">
-                          <div className="col-12 col-md-4">
-                            <div className="wrapperImgCreator">
-                              <img src={user.profilePic} />
-                            </div>
-                          </div>
-                          <div className="col-12 col-md-8">
-                            {user.userName}<br />
-                            Joined at: dd.mm.yyyy<br />
-                            Rating 5/5<br />
+                      <div className="row g-3">
+                        <div className="col-12 col-md-4">
+                          <div className="wrapperImgCreator">
+                            <img src={user.profilePic} />
                           </div>
                         </div>
+                        <div className="col-12 col-md-8">
+                          <div>{user.userName}</div>
+                          <div>Joined at:</div>
+                          <div>Meals cooked at: </div>
+                          <div>Average Rating: 4,6 frated by x users</div>
+                        </div>
+                      </div>
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
@@ -109,7 +113,7 @@ const OfferPreview = () => {
 
               <div className="row">
                 <div className="col text-end">
-                  <button type="submit" class="btn btn-secondary text-white mt-3"><i className="bi bi-bag"></i> Publish</button>
+                  <button type="submit" class="btn btn-secondary text-white mt-3"><i class="bi bi-box-arrow-in-up"></i> Publish</button>
 
                 </div>
               </div>

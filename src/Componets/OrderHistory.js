@@ -21,19 +21,19 @@ const OrderHistory = () => {
         {orderHistory?.map((orderHistory, index) => (
           <div className="row" id={orderHistory.offerId._id}>
             <div className="col">
-              <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3">
+              <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3 mb-2">
                 <div className="p-2">
-                  <div className="wrapperImg d-block d-md-inline-block mx-auto">
+                  <div className="wrapperImg d-block d-md-inline-block mx-auto float-md-start">
                     <img src="https://web-assets.bcg.com/3c/3d/794ddde7481695d246407d66e179/food-for-thought-the-untapped-climate-opportunity-in-alternative-proteins-rectangle.jpg" />
                   </div>
                   <span className="foodTitle"> {orderHistory.offerId.title}</span>
                 </div>
                 <div className="p-2">Quantity:{orderHistory.order_quantity}</div>
                 {/* <div className="p-2">Total price: 15€</div> */}
-                <div className="p-2">Order date: 14.9.2022</div>
+                <div className="p-2">Order date: {orderHistory.date}</div>
                 <div className="p-2">Home Made by: {orderHistory.creatorId.userName}</div>
                 <div className="p-2 ratingBar">
-                  <Link to={`/order_history/rating_creator/${orderHistory._id}`}>Rate creator </Link>
+                  <Link className="btn btn-sm btn-outline-secondary" to={`/order_history/rating_creator/${orderHistory._id}`}>Rate creator <i class="bi bi-star-fill"></i></Link>
                   {/* <ReactStars
                     count={5}
                     onChange={customerRating}
