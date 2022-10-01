@@ -3,12 +3,6 @@ import React, { Component } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useHomeContext } from './MainContext';
-import { useRef, useState } from 'react';
-
-import { handleFormData } from '../utils/handleFormData';
-import { click } from '@testing-library/user-event/dist/click';
 
 const OffferHistoryDetails = ({posts}) => {
 
@@ -16,8 +10,26 @@ const OffferHistoryDetails = ({posts}) => {
   console.log(id)
 
   const clickedPost = posts?.filter((post) => post._id == id);
-  const result = clickedPost[0];
-  console.log("From Clicked Post", clickedPost[0])
+  
+  const result = clickedPost[0]._id;
+
+  console.log("From Clicked Post", result)
+
+  const handleSubmit = async (e) => {
+    try {
+        e.preventDefault();
+        const { data } = await axios.delete(
+            `http://localhost:3000/offers/delete/${result}`,
+            {
+                headers:{'Authorization': `${localStorage.getItem("token")}`}
+            }
+        );
+        console.log(data);
+    } catch (error) {
+        console.log(error)
+    }
+
+};
 
   return (
     <>
@@ -76,8 +88,10 @@ const OffferHistoryDetails = ({posts}) => {
               
           <div className="row">
             <div className="col text-end">
-              <button type="submit" class="btn btn-secondary text-white mt-3"><i class="bi bi-pencil-square"></i> Update Post</button>
-              <button type="submit" class="btn btn-secondary text-white ms-1 mt-3"><i className="bi bi-bag"></i> Delete Post</button>
+              {/* <button type="submit" class="btn btn-secondary text-white mt-3"><i class="bi bi-pencil-square"></i> Update Post</button> */}
+              <button type="submit" onClick={handleSubmit}
+              class="btn btn-secondary text-white ms-1 mt-3">
+                <i className="bi bi-bag"></i> Delete Post</button>
             </div>
           </div>
 

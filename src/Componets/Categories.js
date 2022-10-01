@@ -14,8 +14,6 @@ import 'react-multi-carousel/lib/styles.css';
 const Categories = () => {
   const { posts, setPosts, prevPosts, setPrevPosts, searchCategory, setsearchCategory } = useHomeContext();
 
-  let searchRef = useRef(null)
-
   const handleLinkClick = event => {
     return setsearchCategory(event.target.innerText);
   };
@@ -30,14 +28,16 @@ const Categories = () => {
           if (data) {
             //stores the previous post and shows the data based on that category
             setPrevPosts(data);
-            console.log("From category", data)
             setPosts(data);
           }
-          else setPosts([]);
+          else {
+            setPosts([]);
+          };
         }
 
       } catch (error) {
         setPosts([]);
+        console.log("Sorry")
         console.error(error);
       }
     };

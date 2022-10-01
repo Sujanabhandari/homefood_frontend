@@ -40,7 +40,7 @@ export default function MainContext({children})
     const [categoryPosts, setCategoryPosts] = useState([]);
     const [searchCategory, setsearchCategory] = useState("");
     
-   
+  
     useEffect(() => {
 
       const validateToken = async () => {

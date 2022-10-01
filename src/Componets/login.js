@@ -31,38 +31,17 @@ const Login = () => {
     try {
 
       if (!email || !password) return alert("Please fill out all the fields");
-
       const response = await loginUser({ email, password });
-
       localStorage.setItem("token", response.headers.token);
       setToken(response.headers.token);
       setIsAuthenticated(true);
        navigate('/', { replace: true });
-
-
-
-      // const { headers } = await loginUser({ email, password });
-
-      // const token = headers["x-authorization-token"];
-
-      // if (token) {
-
-      //   const userContext = await getUser(token);
-      //   console.log(userContext);
-
-      //  localStorage.setItem("token", userContext);
-      // setToken(userContext);
-      // setIsAuthenticated(true);
-      //  navigate('/', { replace: true });
-      // }
 
     } catch (error) {
       console.log(error)
 
     }
   };
-
-
 
   return (
     <>
