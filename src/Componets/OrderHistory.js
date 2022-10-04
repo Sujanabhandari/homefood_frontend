@@ -1,29 +1,36 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useHomeContext } from './MainContext';
-
-
+import OfferHistory from './OfferHistory';
 
 const OrderHistory = () => {
-  const { user, orders, customerRating, setCustomerRating } = useHomeContext();
-  console.log(customerRating);
-  console.log(user);
-
+  const { user, orders} = useHomeContext();
   const orderHistory = orders?.filter((history) => history.customerId._id == user._id);
-  console.log("Order history", orderHistory)
+  console.log(orderHistory)
+
+  const sorryMessage = () => {
+    if(!orderHistory.length)
+      return <div className="text-center">
+        <h2>Your Order history is clear. Please order a Home made food</h2>
+        <Link className='text-secondary mt-5' to='/'>
+          <h3>Order Food</h3>
+        </Link>
+        </div>
+  }
 
   return (
     <>
       <section className="container">
         <h1 className="mb-3">My order history</h1>
+        {sorryMessage()}
         {orderHistory?.map((orderHistory, index) => (
-          <div className="row">
+          <div className="row" key={index}>
             <div className="col">
               <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3 mb-2">
                 <div className="p-2">
                   <div className="wrapperImg d-block d-md-inline-block mx-auto float-md-start">
-                    <img src="https://web-assets.bcg.com/3c/3d/794ddde7481695d246407d66e179/food-for-thought-the-untapped-climate-opportunity-in-alternative-proteins-rectangle.jpg" />
+                    <img src={orderHistory.offerId.image} />
                   </div>
                   <span className="foodTitle"> {orderHistory.offerId?.title}</span>
                 </div>

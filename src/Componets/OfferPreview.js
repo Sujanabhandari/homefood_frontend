@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useHomeContext } from './MainContext';
-import { useRef, useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 
 import { handleFormData } from '../utils/handleFormData';

@@ -1,102 +1,124 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
-const OffferHistoryDetails = ({posts}) => {
+
+const OffferHistoryDetails = ({ posts }) => {
 
   const { id } = useParams();
-  console.log(id)
-
   const clickedPost = posts?.filter((post) => post._id == id);
-  
   const result = clickedPost[0]._id;
+  const [show, setShow] = useState(false);
 
-  console.log("From Clicked Post", result)
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     try {
-        e.preventDefault();
-        const { data } = await axios.delete(
-            `http://localhost:3000/offers/delete/${result}`,
-            {
-                headers:{'Authorization': `${localStorage.getItem("token")}`}
-            }
-        );
-        console.log(data);
+      e.preventDefault();
+      const { data } = await axios.delete(
+        `http://localhost:3000/offers/delete/${result}`,
+        {
+          headers: { 'Authorization': `${localStorage.getItem("token")}` }
+        }
+      );
+      navigate('/my_account/offer_history', { replace: true });
     } catch (error) {
-        console.log(error)
+      console.log(error)
     }
 
-};
+  };
 
   return (
     <>
       <section className="album singlePost">
         <div className="container">
-          <h1>Preview</h1>
+          <h1>My Offer</h1>
           {clickedPost?.map((post, index) => (
-          <div className="row">
-          <div className="col-12 col-md-4">
-            <div className="card shadow-sm">
-              <div className="foodQuantity">{post.quantity} meals left</div>
-              <div className="featured">{post.categories}</div>
-              <div className="wrapperImg">
-                <img src={post.image} />
-              </div>
+            <div className="row" key={index}>
+              <div className="col-12 col-md-4">
+                <div className="card shadow-sm">
+                  <div className="foodQuantity">{post.quantity} meals left</div>
+                  <div className="featured">{post.categories}</div>
+                  <div className="wrapperImg">
+                    <img src={post.image} />
+                  </div>
 
-              <div className="card-body">
-                <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
-                  <div className="col-lg-6 col-md-8">
-                    <div className="card-text foodTitle">{post.title}</div>
-                      <div className="foodTime"><i className="bi bi-clock"></i> Collect: {post.timeSlot}</div>
+                  <div className="card-body">
+                    <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
+                      <div className="col-lg-6 col-md-8">
+                        <div className="card-text foodTitle">{post.title}</div>
+                        <div className="foodTime"><i className="bi bi-clock"></i> Collect: {post.timeSlot}</div>
                         <div className="price">{post.price} </div>
-                  </div>
-                  <div className="col-lg-6 col-md-8 text-end">
-                    <div>&nbsp;</div>
-                      <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
-                      <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
+                      </div>
+                      <div className="col-lg-6 col-md-8 text-end">
+                        <div>&nbsp;</div>
+                        <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
+                        <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
+                      </div>
+                    </div>
+                    {post.specials ?
+                      <div className="row mt-2">
+                        <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i> {post.specials}</span></div>
+                      </div>
+                      :
+                      <div></div>
+                    }
                   </div>
                 </div>
-                { post.specials ?
-                <div className="row mt-2">
-                  <div className="col"><span className="tag"><i className="bi bi-tag-fill"></i> {post.specials}</span></div>
-                </div>
-                :
-                <div></div>
-                }
+              </div>
+
+              <div className="col-12 col-md-8 mt-3 mt-md-0">
+
+                <Accordion defaultActiveKey="0" alwaysOpen>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>Description</Accordion.Header>
+                    <Accordion.Body>
+                      {post.description}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+
               </div>
             </div>
-          </div>
-
-          <div className="col-12 col-md-8 mt-3 mt-md-0">
-
-            <Accordion defaultActiveKey="0" alwaysOpen>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>Description</Accordion.Header>
-                <Accordion.Body>
-                  {post.description}
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-
-            </div>
-          </div>  
 
           ))}
-              
+
           <div className="row">
             <div className="col text-end">
               {/* <button type="submit" class="btn btn-secondary text-white mt-3"><i class="bi bi-pencil-square"></i> Update Post</button> */}
-              <button type="submit" onClick={handleSubmit}
-              class="btn btn-secondary text-white ms-1 mt-3">
+              <button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                class="btn btn-secondary text-white ms-1 mt-3">
                 <i className="bi bi-bag"></i> Delete Post</button>
             </div>
           </div>
 
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Delete Offer</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Do you want to delete this offer?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={handleSubmit}>Confirm and Close</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
+
+        </div>
+      </section>
     </>
 
   )
