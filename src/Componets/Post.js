@@ -6,10 +6,6 @@ import axios from "axios";
 
 const Post = ({ posts }) => {
 
-  const { availableQuanity, setAvailiableQuanity } = useState();
-  const[productList, setProductList]= useState();
-
-
   const availiableMeals = posts.map((post) => {
     return post.quantity - post.reserved_quantity
   });
@@ -31,8 +27,6 @@ const Post = ({ posts }) => {
             {posts?.map((post, index) => (
 
               <div className="col" key={index}>
-
-               
                 {post.quantity ? 
                 <div className="card shadow-sm soldOut">
                   <div className="overlay">
@@ -56,7 +50,7 @@ const Post = ({ posts }) => {
                             <i className="bi bi-bag"></i> Reserve meal
                           </Link>  
                           <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
-                          <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
+                          <div className="foodCreator"><i className="bi bi-person"></i> {post.creatorId?.userName}</div>
                         </div>
                       </div>
                       {/* { post.specials ?

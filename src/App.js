@@ -21,23 +21,23 @@ import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import OffferHistoryDetails from './Componets/OfferHistoryDetails';
-// import Categories from './Componets/Categories';
+import { useNavigate } from "react-router-dom";
 
 import RatingCreator from './Componets/RatingCreator';
-
 import { useHomeContext } from './Componets/MainContext';
 
 function App() {
-  // const [posts, setPosts] = useState([]);
 
   const { user, setUser, token, setToken, isAuthenticated, setIsAuthenticated, posts, setPosts } = useHomeContext();
+
+  const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("token");
     setIsAuthenticated(false);
     setToken(null);
     setUser(null);
-    // setRegisterFormState(null);
+    navigate('/', { replace: true });
   };
 
   return (
@@ -50,8 +50,6 @@ function App() {
           <Route index element={<Home posts={posts} />} />
           <Route path="/offers/:id" element={<SinglePost posts={posts} />} />
           <Route path="/offers/:id/order" element={<OrderFood posts={posts} />} />
-
-          {/* <Route path="/offers/category_name" element={<Home posts={posts} />} /> */}
 
           <Route path="/create_offer" element={<CreatePost />} />
 

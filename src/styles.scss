@@ -536,3 +536,16 @@ footer {
 }
 /* Here end the codes for footer */
 
+.carousel .carousel-item {
+  height: 500px !important;
+}
+
+.carousel-item .carousle-img{
+  position: absolute;
+    object-fit: cover !important;
+    object-position: center !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 50vh !important;
+    min-height: 500px !important;
+}

@@ -10,10 +10,13 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../utils/regitsterUser";
 import axios from 'axios';
 import { useHomeContext } from './MainContext';
+import AlertMessage from '../utils/AlertMessage'
 
-const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
+const Register = ({ setIsAuthenticated, setToken }) => {
 
-  const {registerFormState, setRegisterFormState}  = useHomeContext();
+  const { registerFormState, setRegisterFormState } = useHomeContext();
+
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) =>
     setRegisterFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -32,7 +35,7 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
       for (let [key, value] of formData.entries()) {
         console.log(key, value)
-    }
+      }
 
       if (!registerFormState.userName || !registerFormState.password || !registerFormState.email)
         return alert("Please fill out all the fields");
@@ -40,14 +43,25 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
       const response = await registerUser(
         formData
       );
+      console.log("Resposne sujana", response);
       localStorage.setItem("token", response.headers.token);
       setToken(response.headers.token);
       setIsAuthenticated(true);
       navigate('/', { replace: true });
-    } catch (error) {
-      console.log(error)
+    }
+    catch (error) {
+      console.log(error);
+      setIsError(true);
     }
   };
+
+  useEffect(() => {
+    if (isError) {
+      const errorTimerID = setTimeout(() => setIsError(false), 5000);
+      return () => clearTimeout(errorTimerID);
+    }
+  }, [isError]);
+
 
   let formFile = useRef(null);
   let imgFrame = useRef(null);
@@ -61,55 +75,57 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
   return (
     <>
       <section className="register col-lg-8 mx-auto">
-          <form onSubmit={handleSubmit}>
-            <div className="row justify-content-center bg-primary rounded-3 align-items-center">
-              <div className="col-md-5 rounded-3 p-5 text-center">
-                <h2 className='text-white'>Healthy Home Made Food Made With Love For You</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="row justify-content-center bg-primary rounded-3 align-items-center">
+            <div className="col-md-5 rounded-3 p-5 text-center">
+              <h2 className='text-white'>Healthy Home Made Food Made With Love For You</h2>
+            </div>
+
+            <div className="col-md-7 bg-white rounded-3 shadow border p-5 text-center">
+              <img className="mb-4 mx-auto d-block" src={logo} width="70px" alt="Logo HomeMade" />
+              <div className="text-center mb-3">
+                <h3>Create Account</h3>
               </div>
+              <div className='w-75 mx-auto'>
+                <div className="text-center">
+                  <div className="form-outline mb-4">
 
-              <div className="col-md-7 bg-white rounded-3 shadow border p-5 text-center">
-                <img className="mb-4 mx-auto d-block" src={logo} width="70px" alt="Logo HomeMade" />
-                <div className="text-center mb-3">
-                  <h3>Create Account</h3>
-                </div>
-                <div className='w-75 mx-auto'>
-                  <div className="text-center">
-                    <div className="form-outline mb-4">
+                    <input type="text" id="userName" className="form-control" placeholder='Full Name *' value={registerFormState.userName}
+                      onChange={handleChange} required />
 
-                      <input type="text" id="userName" className="form-control" placeholder='Full Name *' value={registerFormState.userName}
-                        onChange={handleChange} required />
+                  </div>
+                  <div className="form-outline mb-4">
+                    <input type="email" id="email" className="form-control" placeholder='Email *' value={registerFormState.email}
+                      onChange={handleChange} required />
 
+                  </div>
+
+                  <div className="form-outline mb-4">
+                    <input type="password" id="password" className="form-control" placeholder='Password *' value={registerFormState.password}
+                      onChange={handleChange} required />
+                  </div>
+                  <div>
+                    <input className="form-control mb-3" type="file" ref={formFile} id="profilePic" onChange={previewUploadedImage} />
+                    <div className="wrapperImg d-block d-md-inline-block mx-auto">
+                      {imagePreview ? <img ref={imgFrame} src={imagePreview} /> : <p></p>}
                     </div>
-                    <div className="form-outline mb-4">
-                      <input type="email" id="email" className="form-control" placeholder='Email *' value={registerFormState.email}
-                        onChange={handleChange} required />
-
-                    </div>
-
-                    <div className="form-outline mb-4">
-                      <input type="password" id="password" className="form-control" placeholder='Password *' value={registerFormState.password}
-                        onChange={handleChange} required />
-                    </div>
-                    <div>
-                      {/* <p className='fw-bold'>Upload you Profile Picture</p> */}
-                      <input className="form-control mb-3" type="file" ref={formFile} id="profilePic" onChange={previewUploadedImage} />
-                      <div className="wrapperImg d-block d-md-inline-block mx-auto">
-                        {imagePreview?<img ref={imgFrame} src={imagePreview}/>: <p></p>}
-                        {/* <img ref={imgFrame} src={imagePreview}/> */}
-                      </div>
-                    </div>
+                  </div>
+                  {isError && (
+              <span className="text-rose-600 text-danger">
+                Invalid credentials - please double check email/password
+              </span> )}
                     <p className="text-muted text-start"><small>* required fields</small></p>
                     <button className="btn btn-secondary text-white" type="submit">Sign up</button>
                   </div>
-                </div>
-                <div className='mt-4'>
-                  <p>Already have an account?
-                    &nbsp;<Link to='/login'>Log in</Link>
-                  </p>
-                </div>
+              </div>
+              <div className='mt-4'>
+                <p>Already have an account?
+                  &nbsp;<Link to='/login'>Log in</Link>
+                </p>
               </div>
             </div>
-          </form>
+          </div>
+        </form>
       </section>
     </>
   )

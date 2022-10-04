@@ -7,15 +7,9 @@ import { useHomeContext } from './MainContext';
 const OrdersReceived = () => {
 
   const { user, orders } = useHomeContext();
-  console.log("From Context orders", orders)
-  const { state } = useLocation()
-
-  console.log("From Order Recieved", state);
-  console.log("From User Recieved", user);
-  const data = state;
-
 
   const offerHistory = orders?.filter((history) => history.creatorId._id == user._id);
+  console.log(offerHistory)
 
     return (
     <>
@@ -29,10 +23,10 @@ const OrdersReceived = () => {
                 <div className="wrapperImg d-block d-md-inline-block mx-auto float-md-start">
                   <img src="https://web-assets.bcg.com/3c/3d/794ddde7481695d246407d66e179/food-for-thought-the-untapped-climate-opportunity-in-alternative-proteins-rectangle.jpg" />
                 </div>
-                <span className="foodTitle"> {offerHistory.offerId.title}</span>
+                <span className="foodTitle"> {offerHistory.offerId?.title}</span>
               </div>
               <div className="p-2">Quantity: {offerHistory.order_quantity}</div>
-              <div className="p-2">Order date:  {new Date(offerHistory.offerId.date).toLocaleDateString()}</div>
+              <div className="p-2">Order date:  {new Date(offerHistory.offerId?.date).toLocaleDateString()}</div>
               <div className="p-2">Ordered by: {offerHistory.customerId.userName}</div>
             </div>
           </div>

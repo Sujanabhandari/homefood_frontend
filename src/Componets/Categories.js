@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import Flag from 'react-world-flags'
@@ -17,7 +18,7 @@ const Categories = () => {
   const handleLinkClick = event => {
     return setsearchCategory(event.target.innerText);
   };
-  console.log(searchCategory);
+
 
   useEffect(() => {
     const getCategoryPost = async () => {
@@ -26,7 +27,6 @@ const Categories = () => {
           const { data } = await axios.get(`http://localhost:3000/offers?categories=${searchCategory}`);
           console.log("Fetched Data", data);
           if (data) {
-            //stores the previous post and shows the data based on that category
             setPrevPosts(data);
             setPosts(data);
           }
@@ -43,6 +43,7 @@ const Categories = () => {
     };
     getCategoryPost();
   }, [searchCategory]);
+
 
   const responsive = {
     superLargeDesktop: {
@@ -68,7 +69,6 @@ const Categories = () => {
     <section className="container mb-5 px-0">
       {/* <ButtonGroup /> */}
       <div className="row">
-
         <Carousel responsive={responsive} arrows={false} customButtonGroup={<ButtonGroup />} >
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="it" />
@@ -104,30 +104,30 @@ const Categories = () => {
             <Flag code="kr" />
 
             <div className="mt-2">Korean</div>
-          </div>  
+          </div>
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="np" />
 
             <div className="mt-2">Philippines</div>
-          </div> 
+          </div>
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="ph" />
 
             <div className="mt-2">Romanian</div>
-          </div> 
+          </div>
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="ch" />
 
             <div className="mt-2">Switzerland</div>
-          </div> 
+          </div>
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="cn" />
 
             <div className="mt-2">Chinese</div>
-          </div> 
-          </Carousel>
+          </div>
+        </Carousel>
       </div>
-      
+
     </section>
 
   );

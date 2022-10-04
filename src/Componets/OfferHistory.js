@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
-import { useEffect } from 'react';
+
 import { useHomeContext } from './MainContext';
 
 const ratingChanged = (newRating) => {
@@ -11,19 +10,23 @@ const ratingChanged = (newRating) => {
 
 const OfferHistory = ({posts}) => {
   const { user, orders } = useHomeContext();
-  const { state } = useLocation()
-
-  // console.log("From Offer History", state.customerId);
-  console.log("From Offer History", posts);
-
   const offerHistory = posts?.filter((history) => history.creatorId._id == user._id);
-  console.log("Form Comparioson", offerHistory);
+  console.log(offerHistory);
 
-
+  const sorryMessage = () => {
+    if(!posts.length)
+      return <div className="text-center">
+        <h2>Your Offer history is clear. Please create a new Offer</h2>
+        <Link className='text-secondary mt-5' to='/create_offer'>
+          <h3>Create New Offer</h3>
+        </Link>
+        </div>
+  }
   return (
     <>
       <section className="container">
         <h1 className="mb-3">My offer history</h1>
+        {sorryMessage()}
         {offerHistory?.map((offerHistory, index) => (
           <>
             <div className="row" key={index}>

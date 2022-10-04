@@ -3,17 +3,12 @@ import { useParams, Link, Outlet } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
 import { useHomeContext } from './MainContext';
 import ReactStars from "react-rating-stars-component";
-import formatDistance from 'date-fns/formatDistance'
+
 
 const SinglePost = ({ posts }) => {
-  const { formState, setFormState, user } = useHomeContext();
 
   const { id } = useParams();
-
-  console.log("From Single Page", user)
   const clickedPost = posts?.filter((post) => post._id == id);
-  console.log("From Single clicked", clickedPost)
-
 
   const dateStr = "2021-10-26T12:24:33.433+00:00";
  const results =  new Date(dateStr).toLocaleDateString()

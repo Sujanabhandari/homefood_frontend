@@ -8,9 +8,7 @@ import girl from '../assets/girl.png';
 import { useHomeContext } from './MainContext';
 import { debounce, result } from 'lodash';
 
-
 import { useState, useEffect, useRef } from 'react';
-
 
 const Navbar = ({ logout }) => {
     const input_field = useRef(null);
@@ -54,6 +52,8 @@ const Navbar = ({ logout }) => {
                                 ref={input_field}
                             />
                         </form>
+                        
+                    
 
                         <ul className="navbar-nav mb-2 mb-lg-0 d-flex order-2 order-md-1">
                             {!isAuthenticated ? (
@@ -61,10 +61,12 @@ const Navbar = ({ logout }) => {
                             ) : (<li className="nav-item"><Link className='nav-link text-white' to="/create_offer" title="Create Offer">Create Offer</Link></li>)
                             }
                         </ul>
+                 
 
                         <ul className="navbar-nav mb-2 mb-lg-0 d-none d-md-flex gap-3 justify-content-between align-items-center order-3">
                             {!isAuthenticated ? (
                                 <>
+
                                     <li className="nav-item">
                                         <Link to="/login" className="nav-link text-white">Login</Link>
                                     </li>
@@ -76,8 +78,9 @@ const Navbar = ({ logout }) => {
                             ) : (
                                 <>
                                     <li className="nav-item">
-                                        <Link className='text-white'><i className="bi bi-cart icon-circle"></i></Link>
+                                        <p className='text-white mt-2'>Hello {user?.userName}</p>
                                     </li>
+
                                     <li className="nav-item">
                                         <Link className='text-white' to='/my_account' title="My Account">
                                             <div className="wrapperImg d-block d-md-inline-block mx-auto">
@@ -93,6 +96,7 @@ const Navbar = ({ logout }) => {
                                 </>
                             )}
                         </ul>
+                  
 
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex d-md-none gap-3 justify-content-between align-items-start w-100 order-3">
 
@@ -108,9 +112,6 @@ const Navbar = ({ logout }) => {
                                 </>
                             ) : (
                                 <>
-                                    {/* <li className="nav-item">
-                                        <Link className='text-white'><i className="bi bi-cart"></i> Cart</Link>
-                                    </li> */}
                                     <li className="nav-item">
                                         <Link className='text-white' to='/my_account' title="My Account"><i class="bi bi-person"></i> My Account</Link>
                                     </li>
