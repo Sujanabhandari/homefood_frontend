@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
-import { useHomeContext } from './MainContext';
 import ReactStars from "react-rating-stars-component";
 
 
@@ -75,15 +74,15 @@ const SinglePost = ({ posts }) => {
                           <div>Name: {post.creatorId?.userName}</div>
                           <div>Joined at: {new Date(post.creatorId?.date).toLocaleDateString()}</div>
                           <div>Rating: {Math.round(post.creatorId.averageRating * 10) / 10} / 5</div>
+
                           <ReactStars
-                            count={5}
+                            // count={5}
                             value={Math.round(post.creatorId.averageRating * 10) / 10}
                             size={24}
                             isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                            activeColor="#ffd700" />
+                            edit={false}
+                            />
+                          
                         </div>
                       </div>
                     </Accordion.Body>

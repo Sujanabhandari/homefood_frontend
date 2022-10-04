@@ -7,10 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useHomeContext } from './MainContext';
 import { handleFormData } from '../utils/handleFormData';
-import TimeRangePicker from '@wojtekmaj/react-timerange-picker'
 
 const CreatePost = () => {
-    const { formState, setFormState, user } = useHomeContext();
+    const { formState, setFormState} = useHomeContext();
     let formFile = useRef(null);
     let imgFrame = useRef(null);
 
@@ -40,7 +39,7 @@ const CreatePost = () => {
             const formData = handleFormData(formState)
 
             const { data } = await axios.post(
-                `http://localhost:3000/offers/create`,
+                `https://home-made.onrender.com/offers/create`,
                 formData,
                 {
                     headers:{'Authorization': `${localStorage.getItem("token")}`}

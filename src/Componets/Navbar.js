@@ -17,22 +17,21 @@ const Navbar = ({ logout }) => {
 
     const [query, setQuery] = useState("");
 
-
     const handleChange = debounce(e => {
         setQuery(e.target.value);
-        console.log("Called");
     }, 150);
 
     useEffect(() => {
         if (query) {
             const result = prevPosts.filter(post =>
-                post.title.toLowerCase().includes(query.toLowerCase()) || post.address.toLowerCase().includes(query.toLowerCase()));
+                post.title.toLowerCase().includes(query.toLowerCase()) || post.categories.toLowerCase().includes(query.toLowerCase()) ||
+                post.address.toLowerCase().includes(query.toLowerCase()));
             setPosts(result);
         }
         else {
-            console.log("post from elde", prevPosts);
             setPosts(prevPosts);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query]);
 
     return (
@@ -52,8 +51,6 @@ const Navbar = ({ logout }) => {
                                 ref={input_field}
                             />
                         </form>
-                        
-                    
 
                         <ul className="navbar-nav mb-2 mb-lg-0 d-flex order-2 order-md-1">
                             {!isAuthenticated ? (
@@ -61,7 +58,6 @@ const Navbar = ({ logout }) => {
                             ) : (<li className="nav-item"><Link className='nav-link text-white' to="/create_offer" title="Create Offer">Create Offer</Link></li>)
                             }
                         </ul>
-                 
 
                         <ul className="navbar-nav mb-2 mb-lg-0 d-none d-md-flex gap-3 justify-content-between align-items-center order-3">
                             {!isAuthenticated ? (
@@ -96,8 +92,6 @@ const Navbar = ({ logout }) => {
                                 </>
                             )}
                         </ul>
-                  
-
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex d-md-none gap-3 justify-content-between align-items-start w-100 order-3">
 
                             {!isAuthenticated ? (
@@ -113,7 +107,7 @@ const Navbar = ({ logout }) => {
                             ) : (
                                 <>
                                     <li className="nav-item">
-                                        <Link className='text-white' to='/my_account' title="My Account"><i class="bi bi-person"></i> My Account</Link>
+                                        <Link className='text-white' to='/my_account' title="My Account"><i className="bi bi-person"></i> My Account</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className='text-white' title="Logout" onClick={logout} ><i className="bi bi-box-arrow-right"></i> Logout</Link>

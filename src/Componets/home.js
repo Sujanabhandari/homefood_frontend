@@ -4,7 +4,6 @@ import SpecialOffer from './SpecialOffer.js';
 import Categories from './Categories.js';
 import Post from './Post.js';
 import MyCarousel from '../utils/MyCarousel.js';
-import TopCarousel from '../utils/TopCarousel.js';
 const Home = ({posts}) => {
   return (
     <>

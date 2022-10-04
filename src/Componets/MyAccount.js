@@ -20,7 +20,7 @@ const MyAccount = () => {
                 <div className="p-2"><button className="btn btn-primary text-white"><i className="bi bi-house-heart"></i></button></div>
                 <div className="p-2">
                   <span className="tagline">My kitchen</span><br/>
-                  <span className="subline">Create new offer</span>
+                  <span className="subline">Create new home made food.</span>
                 </div>
               </div>
             </Link>
@@ -34,13 +34,13 @@ const MyAccount = () => {
                 <div className="p-2"><button className="btn btn-primary text-white"><i className="bi bi-receipt"></i></button></div>
                 <div className="p-2">
                   <span className="tagline">My Orders</span><br/>
-                  <span className="subline">Show my last orders</span>
+                  <span className="subline">Foods that you ordered.</span>
                 </div>
               </div>
             </Link>
           </div>
         </div>
-
+        
         <div className="row mt-2">
           <div className="col">
             <Link className="dashboardLinks" to='/my_account/orders_received' state={orders}>
@@ -48,7 +48,7 @@ const MyAccount = () => {
                 <div className="p-2"><button className="btn btn-primary text-white"><i className="bi bi-bag-heart"></i></button></div>
                 <div className="p-2">
                   <span className="tagline">Order Received</span><br/>
-                  <span className="subline">Orders received by you</span>
+                  <span className="subline">Orders received for your home made food.</span>
                 </div>
               </div>
             </Link>
@@ -62,7 +62,7 @@ const MyAccount = () => {
                 <div className="p-2"><button className="btn btn-primary text-white"><i className="bi bi-clock-history"></i></button></div>
                 <div className="p-2">
                   <span className="tagline">My Offers</span><br/>
-                  <span className="subline">Offers that you created</span>
+                  <span className="subline">Home made food that you created.</span>
                 </div>
               </div>
             </Link>

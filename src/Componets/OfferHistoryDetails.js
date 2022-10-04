@@ -24,7 +24,7 @@ const OffferHistoryDetails = ({ posts }) => {
     try {
       e.preventDefault();
       const { data } = await axios.delete(
-        `http://localhost:3000/offers/delete/${result}`,
+        `https://home-made.onrender.com/offers/delete/${result}`,
         {
           headers: { 'Authorization': `${localStorage.getItem("token")}` }
         }

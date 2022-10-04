@@ -28,7 +28,7 @@ import { useHomeContext } from './Componets/MainContext';
 
 function App() {
 
-  const { user, setUser, token, setToken, isAuthenticated, setIsAuthenticated, posts, setPosts } = useHomeContext();
+  const { setUser, setToken, isAuthenticated, setIsAuthenticated, posts } = useHomeContext();
 
   const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ function App() {
             setToken={setToken} />} />
 
           <Route path="/my_account/order_history" element={<OrderHistory />} />
-          <Route path="/my_account/offer_history" element={<OfferHistory posts={posts}/>} />
+          <Route path="/my_account/offer_history" element={<OfferHistory posts={posts} />} />
           <Route path="/my_account/orders_received" element={<OrdersReceived />} />
 
           <Route path="/order_history/rating_creator" element={<RatingCreator />} />
@@ -71,7 +71,7 @@ function App() {
           </Route>
 
           <Route path="/offer_preview" element={<OfferPreview />} />
-          <Route path="/my_account/offer_history/:id" element={<OffferHistoryDetails posts={posts}/>} />
+          <Route path="/my_account/offer_history/:id" element={<OffferHistoryDetails posts={posts} />} />
 
         </Route>
       </Routes>
