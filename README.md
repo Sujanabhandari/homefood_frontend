@@ -2,6 +2,6 @@
 # Home Made Food
 ## WBS Coding School Final Project to create a Node Express API server, and a React App to access and display Pokemon data.
 
-View Home Made API server hosted on Render.  https://pokemon-fight-app.onrender.com/
+View Home Made API server hosted on Render.  
 
-View  Home Made API React App hosted on Netlify. https://gopokemonfight.netlify.app/ 
+View  Home Made API React App hosted on Netlify.  
