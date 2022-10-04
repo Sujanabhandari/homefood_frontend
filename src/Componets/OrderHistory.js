@@ -6,11 +6,11 @@ import OfferHistory from './OfferHistory';
 
 const OrderHistory = () => {
   const { user, orders} = useHomeContext();
-  const orderHistory = orders?.filter((history) => history.customerId._id == user._id);
-  console.log(orderHistory)
+  const orderHistory = orders?.filter((history) => history.customerId._id == user?._id);
+ 
 
   const sorryMessage = () => {
-    if(!orderHistory.length)
+    if(!orders?.length)
       return <div className="text-center">
         <h2>Your Order history is clear. Please order a Home made food</h2>
         <Link className='text-secondary mt-5' to='/'>
@@ -38,7 +38,7 @@ const OrderHistory = () => {
                 <div className="p-2">Order date: {new Date(orderHistory.date).toLocaleDateString()}</div>
                 <div className="p-2">Home Made by: {orderHistory.creatorId.userName}</div>
                 <div className="p-2 ratingBar">
-                  <Link className="btn btn-sm btn-outline-secondary" to={`/order_history/rating_creator/${orderHistory._id}`}>Rate creator <i class="bi bi-star-fill"></i></Link>
+                  <Link className="btn btn-sm btn-outline-secondary" to={`/order_history/rating_creator/${orderHistory._id}`}>Rate creator <i className="bi bi-star-fill"></i></Link>
                 </div>
               </div>
             </div>

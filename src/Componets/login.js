@@ -17,9 +17,8 @@ const Login = () => {
     password: ""
   });
 
-  const { setIsAuthenticated, setToken, user, setUser } = useHomeContext();
+  const { setIsAuthenticated, setToken} = useHomeContext();
   const [isError, setIsError] = useState(false);
-  console.log(user);
 
   const handleChange = (e) =>
     setLoginFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));

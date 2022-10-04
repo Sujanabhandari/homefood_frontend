@@ -4,13 +4,11 @@
 import React, { Component } from 'react'
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { registerUser } from "../utils/regitsterUser";
-import axios from 'axios';
 import { useHomeContext } from './MainContext';
-import AlertMessage from '../utils/AlertMessage'
 
 const Register = ({ setIsAuthenticated, setToken }) => {
 
@@ -43,7 +41,6 @@ const Register = ({ setIsAuthenticated, setToken }) => {
       const response = await registerUser(
         formData
       );
-      console.log("Resposne sujana", response);
       localStorage.setItem("token", response.headers.token);
       setToken(response.headers.token);
       setIsAuthenticated(true);
@@ -54,13 +51,6 @@ const Register = ({ setIsAuthenticated, setToken }) => {
       setIsError(true);
     }
   };
-
-  useEffect(() => {
-    if (isError) {
-      const errorTimerID = setTimeout(() => setIsError(false), 5000);
-      return () => clearTimeout(errorTimerID);
-    }
-  }, [isError]);
 
 
   let formFile = useRef(null);
@@ -86,6 +76,12 @@ const Register = ({ setIsAuthenticated, setToken }) => {
               <div className="text-center mb-3">
                 <h3>Create Account</h3>
               </div>
+
+              {isError && (
+              <span className="text-rose-600 text-danger">
+                User already exists , Register using another email address
+              </span> )}
+
               <div className='w-75 mx-auto'>
                 <div className="text-center">
                   <div className="form-outline mb-4">
@@ -110,10 +106,6 @@ const Register = ({ setIsAuthenticated, setToken }) => {
                       {imagePreview ? <img ref={imgFrame} src={imagePreview} /> : <p></p>}
                     </div>
                   </div>
-                  {isError && (
-              <span className="text-rose-600 text-danger">
-                Invalid credentials - please double check email/password
-              </span> )}
                     <p className="text-muted text-start"><small>* required fields</small></p>
                     <button className="btn btn-secondary text-white" type="submit">Sign up</button>
                   </div>

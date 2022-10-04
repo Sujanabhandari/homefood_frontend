@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const url = "http://localhost:3000/offers"
+const url = "https://home-made.onrender.com/offers"
 
   export const create_offer = async (formData) => {
-    console.log("Create Offer", formData)
     //Axios does this automatically
     const requestOptions = {
       method: 'POST',
@@ -11,10 +10,10 @@ const url = "http://localhost:3000/offers"
       body: JSON.stringify(formData)
   };
     try {
-      console.log("Hello From Register")
-      axios.post('http://localhost:3000/offers', formData)
+
+      axios.post('https://home-made.onrender.com/offers', formData)
         .then(response => {
-          console.log("here", response);
+
           return JSON.parse(response);
         });
       

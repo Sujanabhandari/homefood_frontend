@@ -44,13 +44,11 @@ export default function MainContext({children})
     useEffect(() => {
 
       const validateToken = async () => {
-        console.log("test")
         try {
           const { data, error } = await getUser(token);
           if (error) {
             throw new Error(error.response?.data.error || error.message);
           }
-          console.log(data)
           setUser(data);
           setIsAuthenticated(true);
         } catch (error) {  
@@ -64,7 +62,7 @@ export default function MainContext({children})
     useEffect(() => {
       const getPosts = async () => {
         try {
-          const { data } = await axios.get(`http://localhost:3000/offers`);
+          const { data } = await axios.get(`https://home-made.onrender.com/offers`);
           setPrevPosts(data);
           setPosts(data);
         } catch (error) {
@@ -77,7 +75,7 @@ export default function MainContext({children})
     useEffect(() => {
       const getOrders = async () => {
         try {
-          const { data } = await axios.get(`http://localhost:3000/orders`);
+          const { data } = await axios.get(`https://home-made.onrender.com/orders`);
           setOrders(data);
         } catch (error) {
           console.log(error)

@@ -13,7 +13,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 
 const Categories = () => {
-  const { posts, setPosts, prevPosts, setPrevPosts, searchCategory, setsearchCategory } = useHomeContext();
+  const { setPosts, setPrevPosts, searchCategory, setsearchCategory } = useHomeContext();
 
   const handleLinkClick = event => {
     return setsearchCategory(event.target.innerText);
@@ -24,8 +24,7 @@ const Categories = () => {
     const getCategoryPost = async () => {
       try {
         if (searchCategory) {
-          const { data } = await axios.get(`http://localhost:3000/offers?categories=${searchCategory}`);
-          console.log("Fetched Data", data);
+          const { data } = await axios.get(`https://home-made.onrender.com/offers?categories=${searchCategory}`);
           if (data) {
             setPrevPosts(data);
             setPosts(data);
@@ -37,7 +36,6 @@ const Categories = () => {
 
       } catch (error) {
         setPosts([]);
-        console.log("Sorry")
         console.error(error);
       }
     };
@@ -67,7 +65,6 @@ const Categories = () => {
 
   return (
     <section className="container mb-5 px-0">
-      {/* <ButtonGroup /> */}
       <div className="row">
         <Carousel responsive={responsive} arrows={false} customButtonGroup={<ButtonGroup />} >
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
@@ -108,7 +105,7 @@ const Categories = () => {
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="np" />
 
-            <div className="mt-2">Philippines</div>
+            <div className="mt-2">Nepali</div>
           </div>
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="ph" />

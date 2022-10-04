@@ -1,15 +1,14 @@
-import { useParams, Link, Outlet, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
-import { handleFormData } from '../utils/handleFormData';
 import { useHomeContext } from './MainContext';
 
 
 const OrderFood = ({ posts }) => {
 
-  const { formState, setFormState, user } = useHomeContext();
+  const {  user } = useHomeContext();
 
   console.log("Form users",user);
   
@@ -59,9 +58,8 @@ const OrderFood = ({ posts }) => {
     try {
       e.preventDefault();
       console.log("quantityCounter", quantityCounter)
-      const formData = handleFormData(formState);
-      const { data } = await axios.post(
-        `http://localhost:3000/offers/${id}/order`,
+      await axios.post(
+        `https://home-made.onrender.com/offers/${id}/order`,
         {
           creatorId:creatorInformation[0].creatorId._id, 
           offerId: creatorInformation[0]._id,
@@ -71,7 +69,6 @@ const OrderFood = ({ posts }) => {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }
       }
       );
-
       navigate(`/`, { replace: false });
 
     } catch (error) {
@@ -143,10 +140,6 @@ const OrderFood = ({ posts }) => {
                               <button type="button" className="btn btn-secondary text-white btn-block mb-4 mx-1" onClick={handleShow}>
                                 <i className="bi bi-cash-coin"></i> Pay in cash
                               </button>
-
-                              {/* <button type="button" className="btn btn-secondary text-white btn-block mb-4">
-                                <i className="bi bi-paypal"></i> PayPal
-                              </button> */}
                             </div>
 
                             <Modal show={show} onHide={handleClose}>

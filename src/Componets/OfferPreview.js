@@ -10,11 +10,9 @@ import { handleFormData } from '../utils/handleFormData';
 
 const OfferPreview = () => {
 
-  const { formState, setFormState, user } = useHomeContext();
+  const { formState,user } = useHomeContext();
   const imagePreview = formState.image && URL.createObjectURL(formState.image);
 
-  console.log("About User Information", user)
- 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -22,7 +20,7 @@ const OfferPreview = () => {
       e.preventDefault();
       const formData = handleFormData(formState)
       const { data } = await axios.post(
-        `http://localhost:3000/offers/create`,
+        `https://home-made.onrender.com/offers/create`,
         formData, {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }
       }
@@ -32,7 +30,6 @@ const OfferPreview = () => {
     } catch (error) {
       console.log(error)
     }
-
   };
 
   return (
