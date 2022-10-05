@@ -2,10 +2,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import Flag from 'react-world-flags'
-import { useState, useEffect, useRef } from 'react';
-import { useSearchParams, useParams, Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import axios from 'axios';
-import { useHomeContext, prevPosts } from '../Componets/MainContext';
+import { useHomeContext} from '../Componets/MainContext';
 import ButtonGroup from './ButtonGroup';
 
 import Carousel from 'react-multi-carousel';
@@ -18,7 +17,6 @@ const Categories = () => {
   const handleLinkClick = event => {
     return setsearchCategory(event.target.innerText);
   };
-
 
   useEffect(() => {
     const getCategoryPost = async () => {
@@ -86,6 +84,12 @@ const Categories = () => {
           </div>
 
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
+            <Flag code="cn" />
+
+            <div className="mt-2">Chinese</div>
+          </div>
+
+          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="es" />
 
             <div className="mt-2">Spanish</div>
@@ -116,11 +120,6 @@ const Categories = () => {
             <Flag code="ch" />
 
             <div className="mt-2">Switzerland</div>
-          </div>
-          <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
-            <Flag code="cn" />
-
-            <div className="mt-2">Chinese</div>
           </div>
         </Carousel>
       </div>

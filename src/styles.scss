@@ -62,7 +62,20 @@ main {
     border: 1px solid #fff;
     color: #fff;
   }
-}  
+} 
+.react-multi-carousel-list {
+  height: 200px;
+  & .carousel-button-group {
+    position: absolute;
+    margin-top: 12px;
+    top: 0;
+    right: 0;
+    & button {
+      background: none;
+      border: 0;
+    }
+  }
+}
 
 /* Debug Wrapper IMG - "Order History" and "Orders received" */
 @media only screen and (max-width: 767px) {
