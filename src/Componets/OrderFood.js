@@ -8,26 +8,14 @@ import { useHomeContext } from './MainContext';
 
 const OrderFood = ({ posts }) => {
 
-  const {  user } = useHomeContext();
-
-  console.log("Form users",user);
+  const {  user, setPosts, orders, setOrders } = useHomeContext();
   
   const availiableMeals = posts.map((post) =>  post.quantity - post.reserved_quantity);
-  console.log("Availiable Meals", availiableMeals[0]);
-  
-
   const { id } = useParams();
-
-  
   const clickedPost = posts?.filter((post) => post._id == id);
-
   const creatorInformation = clickedPost.map((post) =>  post);
-
-  // console.log("Creator", creatorInformation[0]._id);
-
   const [quantityCounter, setquantityCounter] = useState(1);
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -54,12 +42,12 @@ const OrderFood = ({ posts }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    // console.log("From handle Submit");
     try {
       e.preventDefault();
       console.log("quantityCounter", quantityCounter)
-      await axios.post(
-        `https://home-made.onrender.com/offers/${id}/order`,
+      const {data: {newOrder, updateQuanity}} = await axios.post(
+        // `https://home-made.onrender.com/offers/${id}/order`,
+        `http://localhost:3000/offers/${id}/order`,
         {
           creatorId:creatorInformation[0].creatorId._id, 
           offerId: creatorInformation[0]._id,
@@ -69,6 +57,10 @@ const OrderFood = ({ posts }) => {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }
       }
       );
+      console.log("From Order Food", updateQuanity);
+      setPosts((prev) => [...prev.filter(post => post._id !== updateQuanity._id), updateQuanity]);
+      // console.log("From Create Posts", data);
+      
       navigate(`/`, { replace: false });
 
     } catch (error) {
@@ -147,13 +139,12 @@ const OrderFood = ({ posts }) => {
                                 <Modal.Title>Pay in cash</Modal.Title>
                               </Modal.Header>
                               <Modal.Body>
-                                Woohoo, thanks for ordering!
+                                <h3>Confirm to Order the food.</h3>
                                 Please bring your money with you exactly and perhaps remember bringing packaging for your food.
-
                               </Modal.Body>
                               <Modal.Footer>
                                 <Button variant="secondary text-white" onClick={handleSubmit}>
-                                  Thank you, got it
+                                  Confirm Order
                                 </Button>
                               </Modal.Footer>
                             </Modal>

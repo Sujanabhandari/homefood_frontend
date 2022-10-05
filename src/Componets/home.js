@@ -7,7 +7,7 @@ import MyCarousel from '../utils/MyCarousel.js';
 const Home = ({posts}) => {
   return (
     <>
-    <MyCarousel posts={posts}/>
+      <MyCarousel posts={posts}/>
       {/* <SpecialOffer /> */}
       <Categories posts={posts}/>
       <Post posts={posts}/>
