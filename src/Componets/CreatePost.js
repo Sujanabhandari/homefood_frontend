@@ -9,7 +9,7 @@ import { useHomeContext } from './MainContext';
 import { handleFormData } from '../utils/handleFormData';
 
 const CreatePost = () => {
-    const { formState, setFormState, posts, setPosts} = useHomeContext();
+    const { formState, setFormState, setPosts} = useHomeContext();
     let formFile = useRef(null);
     let imgFrame = useRef(null);
 
@@ -46,7 +46,6 @@ const CreatePost = () => {
 
             );
             setPosts((prev) => [...prev, data]);
-            console.log("From Create Posts", data);
             navigate(`/`, { replace: false });
         } catch (error) {
             console.log(error)

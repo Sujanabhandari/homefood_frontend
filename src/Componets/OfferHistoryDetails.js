@@ -30,7 +30,6 @@ const OffferHistoryDetails = () => {
           headers: { 'Authorization': `${localStorage.getItem("token")}` }
         }
       );
-      console.log("From Offer History delete", data);
       setPosts((prev) => [...prev, data]);
     
       navigate('/my_account/offer_history', { replace: true });

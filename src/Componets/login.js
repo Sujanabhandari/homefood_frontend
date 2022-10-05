@@ -37,9 +37,7 @@ const Login = () => {
       navigate('/', { replace: true });
 
     } catch (error) {
-     
       console.log("From Error", error)
-      // if(error) return alert("Invalid credentials - please double check email/password");
       setIsError(true);
     }
   };

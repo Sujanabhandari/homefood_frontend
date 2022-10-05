@@ -5,20 +5,22 @@ import { useHomeContext } from './MainContext';
 
 const Post = () => {
 
-  const { posts, setPosts } = useHomeContext();
+  const { posts } = useHomeContext();
 
-
-  console.log(posts);
   const sorryMessage = () => {
     if (!posts.length)
+    {
       return <div className="text-center">
-        <h2>Sorry there is no dish in this category.</h2>
-      </div>
+      <h2>Sorry there is no dish in this category.</h2>
+    </div>
+    }
+    
   }
   return (
     <>
       <section className="album">
         <div className="container px-0">
+        {sorryMessage()}
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {posts?.map((post, index) => (
 
@@ -98,7 +100,7 @@ const Post = () => {
               </div>
 
             ))}
-            {sorryMessage()}
+          
 
           </div>
 

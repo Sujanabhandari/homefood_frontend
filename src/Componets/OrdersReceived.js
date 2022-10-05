@@ -7,19 +7,12 @@ const OrdersReceived = () => {
   const { user, orders } = useHomeContext();
 
   const offerHistory = orders?.filter((history) => history.creatorId?._id === user?._id);
-  console.log("From OfferHistory", offerHistory);
-  
-  if(offerHistory?.offerId === 'null'){
-    console.log("null")
-    }
-
   const sorryMessage = () => {
     if (!offerHistory?.length)
       return <div className="text-center">
         <h2>You have not received any order.</h2> 
       </div>
   }
-
   return (
     <>
       <section className="container dashboard">

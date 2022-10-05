@@ -26,7 +26,6 @@ const OfferPreview = () => {
       }
       );
       setPosts((prev) => [...prev, data]);
-      console.log("From Create Posts publish", data);
       navigate(`/`, { replace: false });
 
     } catch (error) {
