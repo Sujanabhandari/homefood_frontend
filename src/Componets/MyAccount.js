@@ -1,18 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useHomeContext } from './MainContext';
 
 const MyAccount = () => {
   
-  const { orders, setOrders } = useHomeContext();
+  const { orders } = useHomeContext();
     return (
     <>
       <section className="container">
         <h1 className="mb-3">My Account</h1>
-
         <div className="row">
           <div className="col">
             <Link className="dashboardLinks" to='/create_offer'>
