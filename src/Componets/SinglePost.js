@@ -5,7 +5,7 @@ import ReactStars from "react-rating-stars-component";
 
 import { useHomeContext } from './MainContext';
 const SinglePost = () => {
-  const { formState, setFormState, posts, setPosts} = useHomeContext();
+  const {posts} = useHomeContext();
 
   const { id } = useParams();
   const clickedPost = posts?.filter((post) => post._id == id);

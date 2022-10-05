@@ -44,10 +44,8 @@ const OrderFood = ({ posts }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log("quantityCounter", quantityCounter)
       const {data: {newOrder, updateQuanity}} = await axios.post(
-        // `https://home-made.onrender.com/offers/${id}/order`,
-        `http://localhost:3000/offers/${id}/order`,
+        `https://home-made.onrender.com/offers/${id}/order`,
         {
           creatorId:creatorInformation[0].creatorId._id, 
           offerId: creatorInformation[0]._id,
@@ -57,9 +55,6 @@ const OrderFood = ({ posts }) => {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }
       }
       );
-      console.log("From Order Food", updateQuanity);
-      setPosts((prev) => [...prev.filter(post => post._id !== updateQuanity._id), updateQuanity]);
-      // console.log("From Create Posts", data);
       
       navigate(`/`, { replace: false });
 

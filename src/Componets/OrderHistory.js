@@ -10,7 +10,7 @@ const OrderHistory = () => {
  
 
   const sorryMessage = () => {
-    if(!orderHistory?.length)
+    if(!orders?.length)
       return <div className="text-center">
         <h2>Your Order history is clear. Please order a Home made food</h2>
         <Link className='text-secondary mt-5' to='/'>
@@ -18,7 +18,7 @@ const OrderHistory = () => {
         </Link>
         </div>
   }
-
+  
   return (
     <>
       <section className="container">

@@ -9,10 +9,8 @@ const OfferHistory = ({ posts }) => {
   const { user } = useHomeContext();
 
   const offerHistory = posts?.filter((history) => history.creatorId?._id == user?._id);
-  console.log(offerHistory.length)
-
   const displayOffers = () => {
-    if (!offerHistory.length === 0) {
+    if (offerHistory.length === 0) {
       return (
         <div className="text-center">
           <h2>Your Offer history is clear. Please create a new Offer</h2>
