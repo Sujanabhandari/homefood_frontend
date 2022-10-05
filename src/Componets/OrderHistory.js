@@ -18,7 +18,8 @@ const OrderHistory = () => {
     <>
       <section className="container">
         <h1 className="mb-3">My order history</h1>
-        {orderHistory?.map((orderHistory, index) => (
+        {orderHistory.length  ? 
+        orderHistory?.map((orderHistory, index) => (
           <div className="row" id={orderHistory.offerId._id}>
             <div className="col">
               <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3 mb-2">
@@ -47,7 +48,8 @@ const OrderHistory = () => {
               </div>
             </div>
           </div>  
-        ))}
+        ))
+        : <div>No offers found.</div>}
       </section>
     </>
   )

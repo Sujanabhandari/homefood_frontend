@@ -66,7 +66,7 @@ const Login = () => {
 
   return (
     <>
-      <section className="login col-lg-8 mx-auto">
+      <section className="container login col-lg-8 mx-auto">
 
             <div className="row justify-content-center bg-primary rounded-3 align-items-center">
 

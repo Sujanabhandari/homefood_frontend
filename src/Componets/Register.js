@@ -60,7 +60,7 @@ const Register = ({ isAuthenticated, setIsAuthenticated, setToken }) => {
 
   return (
     <>
-      <section className="register col-lg-8 mx-auto">
+      <section className="container register col-lg-8 mx-auto">
           <form onSubmit={handleSubmit}>
             <div className="row justify-content-center bg-primary rounded-3 align-items-center">
               <div className="col-md-5 rounded-3 p-5 text-center">

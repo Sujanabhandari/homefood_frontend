@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Link } from "react-router-dom";
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 const Post = ({ posts }) => {
@@ -9,13 +9,24 @@ const Post = ({ posts }) => {
   const { availableQuanity, setAvailiableQuanity } = useState();
   const[productList, setProductList]= useState();
 
+  let soldOutRef = useRef(null)
 
   const availiableMeals = posts.map((post) => {
     return post.quantity - post.reserved_quantity
   });
 
   if (availiableMeals[0] === 0) console.log("Sold Out");
+  
+  
+  // const soldOut = document.querySelectorAll(".soldOut");
+  // console.log('Ausverkauft:', soldOut);
 
+  // for (var i = 0; i < soldOut.length; ++i) {
+  //   soldOut[i].parentNode.classList.add('order-first');
+  // } 
+  
+  // console.log(soldOutRef.current.className + " " + "Susanna")
+  
   return (
     <>
       <section className="album">
@@ -24,8 +35,7 @@ const Post = ({ posts }) => {
 
             {posts?.map((post, index) => (
 
-              <div className="col" key={index}>
-
+              <div className="col" ref={soldOutRef} key={index}>
                
                 {post.quantity ? 
                 <div className="card shadow-sm soldOut">

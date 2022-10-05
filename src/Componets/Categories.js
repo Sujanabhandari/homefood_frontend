@@ -65,8 +65,8 @@ const Categories = () => {
   };
 
   return (
-    <section className="container mb-5 px-0">
-      {/* <ButtonGroup /> */}
+    <section className="container px-0">
+
       <div className="row">
 
         <Carousel responsive={responsive} arrows={false} customButtonGroup={<ButtonGroup />} >
@@ -105,27 +105,33 @@ const Categories = () => {
 
             <div className="mt-2">Korean</div>
           </div>  
+
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="np" />
 
             <div className="mt-2">Philippines</div>
           </div> 
+
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="ph" />
 
             <div className="mt-2">Romanian</div>
           </div> 
+
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="ch" />
 
             <div className="mt-2">Switzerland</div>
           </div> 
+
           <div className="catCard px-2 py-1 px-md-5 py-md-3 rounded d-inline-block" onClick={handleLinkClick}>
             <Flag code="cn" />
 
             <div className="mt-2">Chinese</div>
           </div> 
-          </Carousel>
+
+        </Carousel>
+
       </div>
       
     </section>

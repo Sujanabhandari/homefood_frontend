@@ -21,6 +21,7 @@ import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import OffferHistoryDetails from './Componets/OfferHistoryDetails';
+import Component404 from './Componets/Component404';
 // import Categories from './Componets/Categories';
 
 import RatingCreator from './Componets/RatingCreator';
@@ -73,8 +74,9 @@ function App() {
           </Route>
 
           <Route path="/offer_preview" element={<OfferPreview />} />
-          <Route path="/my_account/offer_history/:id" element={<OffferHistoryDetails posts={posts}/>} />
 
+          <Route path="*" element={<Component404 />} />
+      
         </Route>
       </Routes>
 

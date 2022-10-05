@@ -24,7 +24,8 @@ const OfferHistory = ({posts}) => {
     <>
       <section className="container">
         <h1 className="mb-3">My offer history</h1>
-        {offerHistory?.map((offerHistory, index) => (
+        {offerHistory.length  ? 
+        offerHistory?.map((offerHistory, index) => (
           <>
             <div className="row" key={index}>
               <div className="col">
@@ -45,7 +46,9 @@ const OfferHistory = ({posts}) => {
               </div>
             </div>
           </>
-        ))}
+        ))
+        : <div>No offers found.</div>
+      }
       </section>
     </>
   )
