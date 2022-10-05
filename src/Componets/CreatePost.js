@@ -9,7 +9,7 @@ import { useHomeContext } from './MainContext';
 import { handleFormData } from '../utils/handleFormData';
 
 const CreatePost = () => {
-    const { formState, setFormState} = useHomeContext();
+    const { formState, setFormState, posts, setPosts} = useHomeContext();
     let formFile = useRef(null);
     let imgFrame = useRef(null);
 
@@ -17,7 +17,6 @@ const CreatePost = () => {
 
         if (e.target.name === 'specials') {
             setFormState((prev) => {
-
                 return ({ ...prev, specials: [...prev.specials, e.target.value] })
             })
         }
@@ -46,7 +45,8 @@ const CreatePost = () => {
                 }
 
             );
-            // setFormState(null);
+            setPosts((prev) => [...prev, data]);
+            console.log("From Create Posts", data);
             navigate(`/`, { replace: false });
         } catch (error) {
             console.log(error)
@@ -58,7 +58,6 @@ const CreatePost = () => {
         <section className="container createPost">
             <form onSubmit={handleSubmit}>
                 <div className="row">
-
                     <h1 className="mb-3">Create post</h1>
                     <div className="col-md-8">
                         <div className="form-group mb-4">
@@ -133,9 +132,9 @@ const CreatePost = () => {
                                     </label>
                                 </div>
                                 <div className="col form-check">
-                                    <input className="form-check-input" type="radio" id="Philippines" name="categories" value="Philippines" onChange={handleChange} />
-                                    <label className="form-check-label" htmlFor="Philippines">
-                                        Philippines
+                                    <input className="form-check-input" type="radio" id="Mexican" name="categories" value="Mexican" onChange={handleChange} />
+                                    <label className="form-check-label" htmlFor="Mexican">
+                                        Mexican
                                     </label>
                                 </div>
                                 <div className="col form-check">

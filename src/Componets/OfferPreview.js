@@ -10,7 +10,7 @@ import { handleFormData } from '../utils/handleFormData';
 
 const OfferPreview = () => {
 
-  const { formState,user } = useHomeContext();
+  const { formState,user, poss, setPosts } = useHomeContext();
   const imagePreview = formState.image && URL.createObjectURL(formState.image);
 
   const navigate = useNavigate();
@@ -25,6 +25,8 @@ const OfferPreview = () => {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }
       }
       );
+      setPosts((prev) => [...prev, data]);
+      console.log("From Create Posts publish", data);
       navigate(`/`, { replace: false });
 
     } catch (error) {

@@ -1,20 +1,25 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Link } from "react-router-dom";
 import * as React from "react";
+import { useHomeContext } from './MainContext';
 
-const Post = ({ posts }) => {
-  console.log(posts)
+const Post = () => {
 
+  const { posts, setPosts } = useHomeContext();
+
+
+  console.log(posts);
   const sorryMessage = () => {
     if (!posts.length)
-      return <div className="text-center"><h2>Sorry there is no dish in this category.</h2></div>
+      return <div className="text-center">
+        <h2>Sorry there is no dish in this category.</h2>
+      </div>
   }
   return (
     <>
       <section className="album">
         <div className="container px-0">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
             {posts?.map((post, index) => (
 
               <div className="col" key={index}>

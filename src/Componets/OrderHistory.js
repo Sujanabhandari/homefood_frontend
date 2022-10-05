@@ -6,11 +6,11 @@ import OfferHistory from './OfferHistory';
 
 const OrderHistory = () => {
   const { user, orders} = useHomeContext();
-  const orderHistory = orders?.filter((history) => history.customerId._id == user?._id);
+  const orderHistory = orders?.filter((history) => history.customerId?._id == user?._id);
  
 
   const sorryMessage = () => {
-    if(!orders?.length)
+    if(!orderHistory?.length)
       return <div className="text-center">
         <h2>Your Order history is clear. Please order a Home made food</h2>
         <Link className='text-secondary mt-5' to='/'>
@@ -30,7 +30,7 @@ const OrderHistory = () => {
               <div className="d-flex flex-column flex-md-row flex-row justify-content-between align-items-center orderedFood p-3 mb-2">
                 <div className="p-2">
                   <div className="wrapperImg d-block d-md-inline-block mx-auto float-md-start">
-                    <img src={orderHistory.offerId.image} />
+                    <img src={orderHistory.offerId?.image} />
                   </div>
                   <span className="foodTitle"> {orderHistory.offerId?.title}</span>
                 </div>

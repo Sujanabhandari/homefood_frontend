@@ -3,15 +3,12 @@ import { useParams, Link } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
 import ReactStars from "react-rating-stars-component";
 
-
-const SinglePost = ({ posts }) => {
+import { useHomeContext } from './MainContext';
+const SinglePost = () => {
+  const { formState, setFormState, posts, setPosts} = useHomeContext();
 
   const { id } = useParams();
   const clickedPost = posts?.filter((post) => post._id == id);
-
-  const dateStr = "2021-10-26T12:24:33.433+00:00";
- const results =  new Date(dateStr).toLocaleDateString()
- console.log(results)
 
   return (
     <>
@@ -38,7 +35,7 @@ const SinglePost = ({ posts }) => {
                       <div className="col-lg-6 col-md-8 text-end">
                         <div>&nbsp;</div>
                         <div className="foodAddress"><i className="bi bi-geo-alt-fill"></i> {post.address}</div>
-                        <div className="foodCreator"><i class="bi bi-person"></i> {post.creatorId?.userName}</div>
+                        <div className="foodCreator"><i className="bi bi-person"></i> {post.creatorId?.userName}</div>
                       </div>
                     </div>
                     {post.specials ?
@@ -82,7 +79,6 @@ const SinglePost = ({ posts }) => {
                             isHalf={true}
                             edit={false}
                             />
-                          
                         </div>
                       </div>
                     </Accordion.Body>

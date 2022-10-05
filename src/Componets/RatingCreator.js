@@ -4,14 +4,12 @@ import { useHomeContext } from './MainContext';
 import { useLocation, useParams } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
 import axios from 'axios';
-import PopupModal from '../utils/Popup';
 
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 export default function RatingCreator() {
 
-    const { user, orders, customerRating, setCustomerRating } = useHomeContext();
+    const { user, orders, setCustomerRating } = useHomeContext();
     const { state } = useLocation();
 
     const { id } = useParams();
