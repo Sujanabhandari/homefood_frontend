@@ -4,4 +4,4 @@
 
 View Home Made API server hosted on Render.  https://home-made.onrender.com/
 
-View  Home Made API React App hosted on Netlify.  
+View  Home Made API React App hosted on Netlify.  https://homemadefood.netlify.app/
