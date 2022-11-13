@@ -1,6 +1,6 @@
 import './App.css';
-import Login from './Componets/Login.js'
-import Home from './Componets/Home.js';
+import Login from './Componets/SignIn.js'
+import Home from './Componets/HomePage.js';
 import OrderHistory from './Componets/OrderHistory.js';
 import OfferHistory from './Componets/OfferHistory.js';
 import Register from './Componets/Register';
