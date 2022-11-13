@@ -29,6 +29,7 @@
     "react-rating-stars-component": "^2.2.0",
     "react-responsive-carousel": "^3.2.23",
     "react-scripts": "5.0.1",
+    "react-spinners": "^0.13.6",
     "react-time-range": "^1.0.4",
     "react-toastify": "^9.0.8",
     "react-world-flags": "^1.5.1",
