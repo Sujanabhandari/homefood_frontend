@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './Componets/Login.js'
-import Home from './Componets/home.js';
+import Home from './Componets/Home.js';
 import OrderHistory from './Componets/OrderHistory.js';
 import OfferHistory from './Componets/OfferHistory.js';
 import Register from './Componets/Register';
@@ -13,7 +13,7 @@ import SinglePost from './Componets/SinglePost';
 import OrderFood from './Componets/OrderFood';
 import Footer from './Componets/Footer'
 import GlobalLayout from './Componets/GlobalLayout';
-import { NavLink, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ProtectedLayout from './Componets/ProtectedLayout';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import OffferHistoryDetails from './Componets/OfferHistoryDetails';
