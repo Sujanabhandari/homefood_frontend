@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import React, { Component } from 'react';
+import React from 'react';
 import logo from '../assets/logo.png';
 import hero from '../assets/hero-image.png';
 import { useState } from 'react';
-import { loginUser } from "../utils/regitsterUser";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useHomeContext } from './MainContext';
+import { toast } from 'react-toastify';
+import { loginUser } from '../utils/userData';
 
 const Login = () => {
 
@@ -17,9 +18,7 @@ const Login = () => {
     password: ""
   });
 
-  const { setIsAuthenticated, setToken} = useHomeContext();
-  const [isError, setIsError] = useState(false);
-
+  const { setIsAuthenticated, setToken } = useHomeContext();
   const handleChange = (e) =>
     setLoginFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
@@ -29,16 +28,17 @@ const Login = () => {
     e.preventDefault();
     try {
 
-      if (!email || !password) return alert("Please fill out all the fields");
-      const response = await loginUser({ email, password });
-      localStorage.setItem("token", response.headers.token);
-      setToken(response.headers.token);
+      const {error, headers} = await loginUser({ email, password });
+      if (error) {
+        throw new Error(error.response?.data.message);
+      }
+      localStorage.setItem("token", headers.token);
+      setToken(headers.token);
       setIsAuthenticated(true);
       navigate('/', { replace: true });
 
     } catch (error) {
-      console.log("From Error", error)
-      setIsError(true);
+      toast.error(error.message)
     }
   };
 
@@ -67,19 +67,6 @@ const Login = () => {
                 <input type="password" className="form-control" id="password" placeholder="Password" value={password}
                   onChange={handleChange} required />
               </div>
-
-              <div className="checkbox mt-2 mb-3">
-                <label>
-                  <input type="checkbox" value="remember-me" /> Remember me
-                </label>
-              </div>
-
-              {isError && (
-              <span className="text-rose-600 text-danger">
-                Invalid credentials - please double check email/password
-              </span>
-              // <p>hello</p>
-            )}
 
               <button className="w-100 btn btn-secondary text-white " type="submit">Login</button>
               <p className="mt-4 mb-3 text-center"><a href="#">Forgot password</a></p>

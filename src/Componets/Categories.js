@@ -9,6 +9,7 @@ import ButtonGroup from './ButtonGroup';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { toast } from 'react-toastify';
 
 
 const Categories = () => {
@@ -22,19 +23,17 @@ const Categories = () => {
     const getCategoryPost = async () => {
       try {
         if (searchCategory) {
-          const { data } = await axios.get(`https://home-made.onrender.com/offers?categories=${searchCategory}`);
-          if (data) {
-            setPrevPosts(data);
-            setPosts(data);
+          const { data, error } = await axios.get(`https://home-made.onrender.com/offers?categories=${searchCategory}`);
+          if (error) {
+            throw new Error(error.response?.data.data);
           }
-          else {
-            setPosts([]);
-          };
-        }
+          setPrevPosts(data);
+          setPosts(data);
+       }
 
       } catch (error) {
         setPosts([]);
-        console.error(error);
+        toast.error(error.response.data);
       }
     };
     getCategoryPost();

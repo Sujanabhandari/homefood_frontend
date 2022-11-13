@@ -10,13 +10,8 @@ import 'reactjs-popup/dist/index.css';
 export default function RatingCreator() {
 
     const { user, orders, setCustomerRating } = useHomeContext();
-    const { state } = useLocation();
-
     const { id } = useParams();
-
     const filteredOrders = orders?.filter((order) => order._id == id);
-
-    console.log("final creator", filteredOrders)
     const ratingChanged = async (newRating) => {
         setCustomerRating(newRating);
         try {
@@ -65,20 +60,20 @@ export default function RatingCreator() {
                                             <div>Joined Date: {new Date(filteredOrders.creatorId.date).toLocaleDateString()}</div>
                                         </div>
                                     </div>
-                                        <div className="row mt-3">
-                                            <div className="col text-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                <ReactStars
-                                                    count={5}
-                                                    onChange={ratingChanged}
-                                                    size={24}
-                                                    isHalf={true}
-                                                    emptyIcon={<i className="far fa-star"></i>}
-                                                    halfIcon={<i className="fa fa-star-half-alt"></i>}
-                                                    fullIcon={<i className="fa fa-star"></i>}
-                                                    activeColor="#ffd700" 
-                                                    />
-                                            </div>
+                                    <div className="row mt-3">
+                                        <div className="col text-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            <ReactStars
+                                                count={5}
+                                                onChange={ratingChanged}
+                                                size={24}
+                                                isHalf={true}
+                                                emptyIcon={<i className="far fa-star"></i>}
+                                                halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                                fullIcon={<i className="fa fa-star"></i>}
+                                                activeColor="#ffd700"
+                                            />
                                         </div>
+                                    </div>
                                     <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div className="modal-dialog">
                                             <div className="modal-content">

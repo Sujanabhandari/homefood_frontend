@@ -1,20 +1,20 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/alt-text */
 
-import React, { Component } from 'react'
+import React from 'react'
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
-import { useRef, useState} from 'react';
+import { useRef } from 'react';
 import { useNavigate } from "react-router-dom";
-
-import { registerUser } from "../utils/regitsterUser";
 import { useHomeContext } from './MainContext';
+import { toast } from "react-toastify";
+import { registerUser } from '../utils/userData';
 
 const Register = ({ setIsAuthenticated, setToken }) => {
 
   const { registerFormState, setRegisterFormState } = useHomeContext();
-
-  const [isError, setIsError] = useState(false);
+  let formFile = useRef(null);
+  let imgFrame = useRef(null);
 
   const handleChange = (e) =>
     setRegisterFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -24,37 +24,28 @@ const Register = ({ setIsAuthenticated, setToken }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-
       const formData = new FormData();
       formData.append('userName', registerFormState.userName);
       formData.append('email', registerFormState.email);
       formData.append('password', registerFormState.password);
       formData.append('profilePic', registerFormState.profilePic);
-
-      for (let [key, value] of formData.entries()) {
-        console.log(key, value)
-      }
-
       if (!registerFormState.userName || !registerFormState.password || !registerFormState.email)
         return alert("Please fill out all the fields");
 
-      const response = await registerUser(
+      const {data, error} = await registerUser(
         formData
       );
-      localStorage.setItem("token", response.headers.token);
-      setToken(response.headers.token);
+      if (error) {
+        throw new Error(error.response?.data.error || error.message);
+      }
       setIsAuthenticated(true);
-      navigate('/', { replace: true });
+      navigate('/login', { replace: true });
     }
     catch (error) {
-      console.log(error);
-      setIsError(true);
+      toast.error( error.response.data.message)
+      console.log("From error", error.response.data.message);
     }
   };
-
-
-  let formFile = useRef(null);
-  let imgFrame = useRef(null);
 
   const previewUploadedImage = (event) => {
     setRegisterFormState((prev) => ({ ...prev, profilePic: event.target.files[0] }));
@@ -77,11 +68,6 @@ const Register = ({ setIsAuthenticated, setToken }) => {
                 <h3>Create Account</h3>
               </div>
 
-              {isError && (
-              <span className="text-rose-600 text-danger">
-                User already exists , Register using another email address
-              </span> )}
-
               <div className='w-75 mx-auto'>
                 <div className="text-center">
                   <div className="form-outline mb-4">
@@ -101,14 +87,14 @@ const Register = ({ setIsAuthenticated, setToken }) => {
                       onChange={handleChange} required />
                   </div>
                   <div>
-                    <input className="form-control mb-3" type="file" ref={formFile} id="profilePic" onChange={previewUploadedImage} />
-                    <div className="wrapperImg d-block d-md-inline-block mx-auto">
-                      {imagePreview ? <img ref={imgFrame} src={imagePreview} /> : <p></p>}
+                    <input className="form-control mb-3" type="file" ref={formFile} id="profilePic" onChange={previewUploadedImage} required />
+                    <div className="wrapperImg d-block d-md-inline-block mx-auto input-group has-validation">
+                      {imagePreview ? <img ref={imgFrame} src={imagePreview} required /> : <p></p>}
                     </div>
                   </div>
-                    <p className="text-muted text-start"><small>* required fields</small></p>
-                    <button className="btn btn-secondary text-white" type="submit">Sign up</button>
-                  </div>
+                  <p className="text-muted text-start"><small>* required fields</small></p>
+                  <button className="btn btn-secondary text-white" type="submit">Sign up</button>
+                </div>
               </div>
               <div className='mt-4'>
                 <p>Already have an account?
