@@ -9,12 +9,25 @@ import { useNavigate } from "react-router-dom";
 import { useHomeContext } from './MainContext';
 import { toast } from "react-toastify";
 import { registerUser } from '../utils/userData';
+import PacmanLoader from "react-spinners/ClipLoader";
+import { useState } from 'react';
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  borderWidth: "3px"
+};
+
 
 const Register = ({ setIsAuthenticated, setToken }) => {
 
   const { registerFormState, setRegisterFormState } = useHomeContext();
   let formFile = useRef(null);
   let imgFrame = useRef(null);
+  let [loading, setLoading] = useState(false);
 
   const handleChange = (e) =>
     setRegisterFormState((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -24,6 +37,7 @@ const Register = ({ setIsAuthenticated, setToken }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      // setLoading(true);
       const formData = new FormData();
       formData.append('userName', registerFormState.userName);
       formData.append('email', registerFormState.email);
@@ -38,7 +52,6 @@ const Register = ({ setIsAuthenticated, setToken }) => {
       if (error) {
         throw new Error(error.response?.data.error || error.message);
       }
-      setIsAuthenticated(true);
       navigate('/login', { replace: true });
     }
     catch (error) {
@@ -56,7 +69,16 @@ const Register = ({ setIsAuthenticated, setToken }) => {
   return (
     <>
       <section className="register col-lg-8 mx-auto">
+      <PacmanLoader
+                color={"#e8dd61"}
+                loading={loading}
+                cssOverride={override}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
         <form onSubmit={handleSubmit}>
+
           <div className="row justify-content-center bg-primary rounded-3 align-items-center">
             <div className="col-md-5 rounded-3 p-5 text-center">
               <h2 className='text-white'>Healthy Home Made Food Made With Love For You</h2>

@@ -53,7 +53,6 @@ function App() {
 
           <Route path="/my_account" element={<MyAccount isAuthenticated={isAuthenticated}
             setToken={setToken} />} />
-
           <Route path="/my_account/order_history" element={<OrderHistory />} />
           <Route path="/my_account/offer_history" element={<OfferHistory posts={posts} />} />
           <Route path="/my_account/orders_received" element={<OrdersReceived />} />
