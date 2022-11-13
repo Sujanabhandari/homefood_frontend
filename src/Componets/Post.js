@@ -6,24 +6,12 @@ import { useHomeContext } from './MainContext';
 const Post = () => {
 
   const { posts } = useHomeContext();
-
-  const sorryMessage = () => {
-    if (!posts.length)
-    {
-      return <div className="text-center">
-      <h2>Sorry there is no dish in this category.</h2>
-    </div>
-    }
-    
-  }
   return (
     <>
       <section className="album">
         <div className="container px-0">
-        {sorryMessage()}
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {posts?.map((post, index) => (
-
               <div className="col" key={index}>
                 {post.quantity ?
                   <div className="card shadow-sm soldOut">
@@ -35,7 +23,6 @@ const Post = () => {
                           <img src={post.image} />
                         </div>
                       </Link>
-
                       <div className="card-body">
                         <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
                           <div className="col-lg-6 col-md-8">

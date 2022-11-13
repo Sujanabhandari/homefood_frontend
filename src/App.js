@@ -1,5 +1,5 @@
 import './App.css';
-import Login from './Componets/login.js'
+import Login from './Componets/Login.js'
 import Home from './Componets/home.js';
 import OrderHistory from './Componets/OrderHistory.js';
 import OfferHistory from './Componets/OfferHistory.js';
@@ -11,18 +11,15 @@ import OrdersReceived from './Componets/OrdersReceived';
 import MyAccount from './Componets/MyAccount';
 import SinglePost from './Componets/SinglePost';
 import OrderFood from './Componets/OrderFood';
-import NoItems from './Componets/NoItems';
 import Footer from './Componets/Footer'
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import GlobalLayout from './Componets/GlobalLayout';
 import { NavLink, Routes, Route, Link } from "react-router-dom";
-import { getUser } from "./utils/regitsterUser";
 import ProtectedLayout from './Componets/ProtectedLayout';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import OffferHistoryDetails from './Componets/OfferHistoryDetails';
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import RatingCreator from './Componets/RatingCreator';
 import { useHomeContext } from './Componets/MainContext';
 
@@ -42,6 +39,7 @@ function App() {
 
   return (
     <>
+    <ToastContainer limit={5} />
       <Navbar isAuthenticated={isAuthenticated}
         setToken={setToken} logout={logout} />
 
@@ -62,16 +60,12 @@ function App() {
 
           <Route path="/order_history/rating_creator" element={<RatingCreator />} />
           <Route path="/order_history/rating_creator/:id" element={<RatingCreator />} />
-
-          <Route path="/login" element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
-
-          <Route path="/register" element={<Register isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
           <Route path='secret' element={<ProtectedLayout isAuthenticated={isAuthenticated} />}>
-
           </Route>
-
           <Route path="/offer_preview" element={<OfferPreview />} />
           <Route path="/my_account/offer_history/:id" element={<OffferHistoryDetails posts={posts} />} />
+          <Route path="/login" element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
+          <Route path="/register" element={<Register isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setToken={setToken} />} />
 
         </Route>
       </Routes>

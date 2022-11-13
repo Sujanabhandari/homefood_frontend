@@ -1,17 +1,27 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { Component } from 'react'
+import React from 'react'
 import { useRef, useState } from 'react';
-import { create_offer } from "../utils/createOffer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useHomeContext } from './MainContext';
 import { handleFormData } from '../utils/handleFormData';
+import PacmanLoader from "react-spinners/ClipLoader";
+
+const override = {
+    display: "block",
+    margin: "0 auto",
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    borderWidth: "3px"
+};
 
 const CreatePost = () => {
-    const { formState, setFormState, setPosts} = useHomeContext();
+    const { formState, setFormState, setPosts } = useHomeContext();
     let formFile = useRef(null);
     let imgFrame = useRef(null);
+    let [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
 
@@ -36,17 +46,19 @@ const CreatePost = () => {
             //Solve error
             e.preventDefault();
             const formData = handleFormData(formState)
-
+            setLoading(true);
             const { data } = await axios.post(
                 `https://home-made.onrender.com/offers/create`,
                 formData,
                 {
-                    headers:{'Authorization': `${localStorage.getItem("token")}`}
+                    headers: { 'Authorization': `${localStorage.getItem("token")}` }
                 }
 
             );
             setPosts((prev) => [...prev, data]);
+            setLoading(false);
             navigate(`/`, { replace: false });
+            
         } catch (error) {
             console.log(error)
         }
@@ -55,6 +67,14 @@ const CreatePost = () => {
 
     return (
         <section className="container createPost">
+            <PacmanLoader
+                color={"#e8dd61"}
+                loading={loading}
+                cssOverride={override}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <h1 className="mb-3">Create post</h1>
@@ -196,8 +216,8 @@ const CreatePost = () => {
                             <div className="col-md-6">
                                 <div className="mb-5">
                                     <p className='form-label fw-bold'>Upload you Profile Picture *</p>
-                                    <input className="form-control mt-3 mb-3" type="file" ref={formFile} id="image" onChange={previewUploadedImage} />
-                                    <img ref={imgFrame} className="imagePreview" src={imagePreview} required />
+                                    <input className="form-control mt-3 mb-3" type="file" ref={formFile} id="image" onChange={previewUploadedImage} required />
+                                    <img ref={imgFrame} className="imagePreview" src={imagePreview} />
                                 </div>
                             </div>
                         </div>

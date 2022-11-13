@@ -8,8 +8,7 @@ const Home = ({posts}) => {
   return (
     <>
       <MyCarousel posts={posts}/>
-      {/* <SpecialOffer /> */}
-      <Categories posts={posts}/>
+        <Categories posts={posts}/>
       <Post posts={posts}/>
     </>
   );

@@ -5,27 +5,40 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useHomeContext } from './MainContext';
 import ReactStars from "react-rating-stars-component";
-
 import { handleFormData } from '../utils/handleFormData';
+import PacmanLoader from "react-spinners/ClipLoader";
+import { useState } from 'react';
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  borderWidth: "3px"
+};
 
 const OfferPreview = () => {
 
-  const { formState,user, poss, setPosts } = useHomeContext();
+  const { formState,user, setPosts } = useHomeContext();
   const imagePreview = formState.image && URL.createObjectURL(formState.image);
-
+  let [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
       const formData = handleFormData(formState)
-      const { data } = await axios.post(
+      setLoading(true);
+      const { data, error } = await axios.post(
         `https://home-made.onrender.com/offers/create`,
         formData, {
         headers: { 'Authorization': `${localStorage.getItem("token")}` }
       }
       );
+      console.log(error)
       setPosts((prev) => [...prev, data]);
+      setLoading(false);
       navigate(`/`, { replace: false });
 
     } catch (error) {
@@ -38,6 +51,14 @@ const OfferPreview = () => {
         <section className="album singlePost">
           <div className="container">
             <h1>Preview</h1>
+            <PacmanLoader
+                color={"#e8dd61"}
+                loading={loading}
+                cssOverride={override}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
             <form onSubmit={handleSubmit}>
             <div className="row">
                 <div className="col-12 col-md-4">
@@ -87,16 +108,16 @@ const OfferPreview = () => {
                       <div className="row g-3">
                         <div className="col-12 col-md-4">
                           <div className="wrapperImgCreator">
-                            <img src={user.profilePic} />
+                            <img src={user?.profilePic} />
                           </div>
                         </div>
                         <div className="col-12 col-md-8">
-                          <div>{user.userName}</div>
-                          <div>Joined at: {new Date(user.date).toLocaleDateString()}</div>
-                          <div>Average Rating: {Math.round(user.averageRating * 10) / 10} / 5</div>
+                          <div>{user?.userName}</div>
+                          <div>Joined at: {new Date(user?.date).toLocaleDateString()}</div>
+                          <div>Average Rating: {Math.round(user?.averageRating * 10) / 10} / 5</div>
                           <ReactStars
                             count={5}
-                            value={Math.round(user.averageRating * 10) / 10}
+                            value={Math.round(user?.averageRating * 10) / 10}
                             size={24}
                             isHalf={true}
                             emptyIcon={<i className="far fa-star"></i>}

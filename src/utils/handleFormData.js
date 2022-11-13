@@ -1,7 +1,4 @@
 
-import axios
-    from "axios";
-
 const handleFormData = (data) => {
     const formData = new FormData();
 

@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const baseUrl = 'https://home-made.onrender.com'
+
 export const getUser = async (token) => {
   try {
-    const { data } = await axios.get(`https://home-made.onrender.com/me`, {
+    const { data } = await axios.get(`${baseUrl}/me`, {
       headers: { Authorization: token }
     });
     return { data };
@@ -12,14 +14,14 @@ export const getUser = async (token) => {
 };
 
 export const registerUser = async (formData) => {
-  const response = await axios.post('https://home-made.onrender.com/signup', formData)
+  const response = await axios.post(`${baseUrl}/signup`, formData)
   return response;
 
 };
 
 export const getUserByID = async () => {
   try {
-    const response = await axios.get(`https://home-made.onrender.com/users/:id`)
+    const response = await axios.get(`${baseUrl}/users/:id`)
     return response;
   } catch (error) {
     return { error };
@@ -29,7 +31,7 @@ export const getUserByID = async () => {
 export const loginUser = async (formData) => {
   try {
     const response = await axios.post(
-      `https://home-made.onrender.com/signin`,
+      `${baseUrl}/signin`,
       formData
     );
     return response;
