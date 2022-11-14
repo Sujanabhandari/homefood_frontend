@@ -10,6 +10,16 @@ import { useNavigate } from "react-router-dom";
 import { useHomeContext } from './MainContext';
 import { toast } from 'react-toastify';
 import { loginUser } from '../utils/userData';
+import PacmanLoader from "react-spinners/ClipLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  borderWidth: "3px"
+};
 
 const Login = () => {
 
@@ -17,6 +27,7 @@ const Login = () => {
     email: "",
     password: ""
   });
+  let [loading, setLoading] = useState(false);
 
   const { setIsAuthenticated, setToken } = useHomeContext();
   const handleChange = (e) =>
@@ -27,7 +38,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-
+      setLoading(true)
       const {error, headers} = await loginUser({ email, password });
       if (error) {
         throw new Error(error.response?.data.message);
@@ -35,9 +46,11 @@ const Login = () => {
       localStorage.setItem("token", headers.token);
       setToken(headers.token);
       setIsAuthenticated(true);
+      setLoading(false)
       navigate('/', { replace: true });
 
     } catch (error) {
+      setLoading(false)
       toast.error(error.message)
     }
   };
@@ -45,6 +58,14 @@ const Login = () => {
   return (
     <>
       <section className="login col-lg-8 mx-auto">
+      <PacmanLoader
+                color={"#e8dd61"}
+                loading={loading}
+                cssOverride={override}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
 
         <div className="row justify-content-center bg-primary rounded-3 align-items-center">
 

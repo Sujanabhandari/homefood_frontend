@@ -22,7 +22,7 @@ const override = {
 };
 
 
-const Register = ({ setIsAuthenticated, setToken }) => {
+const Register = () => {
 
   const { registerFormState, setRegisterFormState } = useHomeContext();
   let formFile = useRef(null);
@@ -37,7 +37,7 @@ const Register = ({ setIsAuthenticated, setToken }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      // setLoading(true);
+      setLoading(true);
       const formData = new FormData();
       formData.append('userName', registerFormState.userName);
       formData.append('email', registerFormState.email);
@@ -52,9 +52,11 @@ const Register = ({ setIsAuthenticated, setToken }) => {
       if (error) {
         throw new Error(error.response?.data.error || error.message);
       }
+      setLoading(false);
       navigate('/login', { replace: true });
     }
     catch (error) {
+      setLoading(false)
       toast.error( error.response.data.message)
       console.log("From error", error.response.data.message);
     }
