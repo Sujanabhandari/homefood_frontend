@@ -47,6 +47,7 @@ const Login = () => {
       setToken(headers.token);
       setIsAuthenticated(true);
       setLoading(false)
+      toast.success("Welcome to home Page")
       navigate('/', { replace: true });
 
     } catch (error) {

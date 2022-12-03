@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 import { useHomeContext } from './MainContext';
-import { useLocation, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
 import axios from 'axios';
 

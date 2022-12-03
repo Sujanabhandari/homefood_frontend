@@ -22,11 +22,20 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RatingCreator from './Componets/RatingCreator';
 import { useHomeContext } from './Componets/MainContext';
+import PacmanLoader from "react-spinners/ClipLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  borderWidth: "3px"
+};
 
 function App() {
 
-  const { setUser, setToken, isAuthenticated, setIsAuthenticated, posts } = useHomeContext();
-
+  const { setUser, setToken, isAuthenticated, setIsAuthenticated, posts, loading } = useHomeContext();
   const navigate = useNavigate();
 
   const logout = () => {
@@ -68,6 +77,14 @@ function App() {
 
         </Route>
       </Routes>
+      <PacmanLoader
+        color={"#e8dd61"}
+        loading={loading}
+        cssOverride={override}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
 
       <Footer />
     </>

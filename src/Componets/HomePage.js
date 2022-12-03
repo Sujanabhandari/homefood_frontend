@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { Component } from 'react';
-import SpecialOffer from './SpecialOffer.js';
+import React from 'react';
 import Categories from './Categories.js';
 import Post from './Post.js';
 import MyCarousel from '../utils/MyCarousel.js';

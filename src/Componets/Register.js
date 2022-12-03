@@ -49,6 +49,7 @@ const Register = () => {
       const {data, error} = await registerUser(
         formData
       );
+      toast.success("Congratulations! Your Account is created.")
       if (error) {
         throw new Error(error.response?.data.error || error.message);
       }
@@ -58,7 +59,6 @@ const Register = () => {
     catch (error) {
       setLoading(false)
       toast.error( error.response.data.message)
-      console.log("From error", error.response.data.message);
     }
   };
 
