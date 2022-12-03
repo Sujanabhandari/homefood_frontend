@@ -38,6 +38,7 @@ export default function MainContext({children})
     const [prevPosts, setPrevPosts] = useState([]);
     const [categoryPosts, setCategoryPosts] = useState([]);
     const [searchCategory, setsearchCategory] = useState("");
+    let [loading, setLoading] = useState(true);
     
   
     useEffect(() => {
@@ -62,10 +63,12 @@ export default function MainContext({children})
       const getPosts = async () => {
         try {
           const { data } = await axios.get(`https://home-made.onrender.com/offers`);
+          setLoading(false)
           setPrevPosts(data);
           setPosts(data);
         } catch (error) {
           console.log(error)
+          setLoading(true);
         }
       };
       getPosts();
@@ -88,7 +91,7 @@ export default function MainContext({children})
      <HomeContext.Provider value={{
         isAuthenticated, setIsAuthenticated, setFormState, formState, registerFormState,
         setRegisterFormState, token, setToken, user, setUser, orders,setOrders, customerRating, setCustomerRating, posts, setPosts, prevPosts, setPrevPosts,
-        searchCategory, setsearchCategory, categoryPosts, setCategoryPosts
+        searchCategory, setsearchCategory, categoryPosts, setCategoryPosts, loading
 
         
      }}>

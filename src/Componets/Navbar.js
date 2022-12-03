@@ -4,9 +4,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo-white.png';
-import girl from '../assets/girl.png';
 import { useHomeContext } from './MainContext';
-import { debounce, result } from 'lodash';
+import { debounce } from 'lodash';
 
 import { useState, useEffect, useRef } from 'react';
 

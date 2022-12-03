@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const ProtectedLayout = ({ isAuthenticated, children }) => {
   if (isAuthenticated || localStorage.getItem('token')) {

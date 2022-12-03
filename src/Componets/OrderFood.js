@@ -3,14 +3,10 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
-import { useHomeContext } from './MainContext';
 
 
 const OrderFood = ({ posts }) => {
-
-  const {  user, setPosts, orders, setOrders } = useHomeContext();
   
-  const availiableMeals = posts.map((post) =>  post.quantity - post.reserved_quantity);
   const { id } = useParams();
   const clickedPost = posts?.filter((post) => post._id == id);
   const creatorInformation = clickedPost.map((post) =>  post);

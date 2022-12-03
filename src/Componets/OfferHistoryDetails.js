@@ -1,23 +1,17 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { Component } from 'react';
+import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-
 import { useHomeContext } from './MainContext';
+
 const OffferHistoryDetails = () => {
   const { posts, setPosts} = useHomeContext();
 
   const { id } = useParams();
   const clickedPost = posts?.filter((post) => post?._id == id);
   const result = clickedPost[0]?._id;
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const navigate = useNavigate();
 
